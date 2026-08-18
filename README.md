@@ -2,7 +2,7 @@
 
 A writing curriculum reverse-engineered from Om Swami's prose, built by measuring it rather than admiring it.
 
-**Live:** https://os-writing.vercel.app  (also at learn-to-write-like-os.vercel.app)
+**Live:** https://os-writing.vercel.app
 
 ## What this is
 
@@ -16,7 +16,7 @@ Hardik wants to write like Om Swami. Reading him and hoping it rubs off does not
 
 ## The three layers
 
-1. **Lexicon** - **1,506 English words**, mined from all 1,202,959 words of books and blog together, tiered by rarity (354 very rare, 733 rare, 419 uncommon). Every entry carries a plain definition, a modern example, and **the real sentence he used it in**, linked to the source post. No Sanskrit tier: Hardik speaks Hindi, so every Indic term, proper noun and mythological name was stripped out.
+1. **Lexicon** - **2,668 English words**, mined from all 1,331,489 words of books and blog together, tiered by rarity (500 very rare, 839 rare, 1,329 uncommon). Every entry carries a plain definition, a modern example, and **the real sentence he used it in**, linked to the source post. No Sanskrit tier: Hardik speaks Hindi, so every Indic term, proper noun and mythological name was stripped out.
 2. **Phrase** - 18 named sentence templates with scaffolds, plus **80 real examples** (5 per move) pulled from the corpus by per-move matchers and linked to the posts they came from.
 3. **Pattern** - 13 headline findings plus **42 deep mechanisms** in 7 groups (compression, withholding, grandeur, the explanation engine, humour, restraint, unfamiliar words), each with a drill. Plus the negative space of what he never does.
 
