@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Write like Om Swami - a measured curriculum</title>
-<meta name="description" content="A reverse-engineered writing curriculum built from 589,000 words of Om Swami's books and 603,000 words of his blog.">
+<meta name="description" content="A reverse-engineered writing curriculum built from the full corpus of Om Swami's books and 603,000 words of his blog.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -9,7 +9,7 @@
 </head><body>
 
 <div class="hero"><div class="wrap">
-  <div class="eyebrow">1,331,489 words measured · 15 books · 528 blog posts · 2011-2026</div>
+  <div class="eyebrow" id="eyebrow">measuring the corpus…</div>
   <h1>He writes simply.<br>That simplicity is <em>engineered</em>.</h1>
   <p class="lede">You said you try your best and still fail. Here is why: you have been copying the surface. This is the machinery underneath, measured rather than admired - every sentence he writes, counted, and turned into something you can practise for eight hours a day.</p>
   <div class="stat-strip" id="hstats"></div>
@@ -72,15 +72,9 @@
 
 <section><div class="wrap">
   <div class="eyebrow">How to use this</div>
-  <h2 class="h2">The seven rooms</h2>
-  <div class="grid g2">
-    <a class="card" href="evolution.html" style="border-bottom:1px solid var(--rule)"><div class="k">01 · Evolution</div><h3>Ten years of books, fifteen of blog</h3><p class="small muted">What changed, what did not, and the adoption order ranked by impact over difficulty. Read this before anything else.</p></a>
-    <a class="card" href="lexicon.html" style="border-bottom:1px solid var(--rule)"><div class="k">02 · Lexicon</div><h3>158 words, three tiers</h3><p class="small muted">Portable literary vocabulary, the dharmic register, and the concreteness engine. With a spaced-repetition trainer.</p></a>
-    <a class="card" href="phrase.html" style="border-bottom:1px solid var(--rule)"><div class="k">03 · Phrase</div><h3>18 sentence templates</h3><p class="small muted">The verdict beat, the disposable gloss, the echo pivot. Named, shaped, and drillable with a generator.</p></a>
-    <a class="card" href="pattern.html" style="border-bottom:1px solid var(--rule)"><div class="k">04 · Pattern</div><h3>The structural moves</h3><p class="small muted">How he opens, closes, compresses, withholds, and buys the right to make a strong claim.</p></a>
-    <a class="card" href="workbench.html" style="border-bottom:1px solid var(--rule)"><div class="k">05 · Workbench</div><h3>Write here. Get scored live.</h3><p class="small muted">A prompt, a live audit against his measured bands, word suggestions, and flags for every habit he dropped.</p></a>
-    <a class="card" href="regimen.html" style="border-bottom:1px solid var(--rule)"><div class="k">06 · Regimen</div><h3>The eight-hour day, twelve weeks</h3><p class="small muted">Hour by hour. Copywork, drills, shipping, and audit. With progress you can tick off.</p></a>
-  </div>
+  <h2 class="h2">The eight rooms</h2>
+  <p class="lede">In the order that works. Evolution first, because it tells you which habits to drop before you try to add anything.</p>
+  <div class="grid g2" id="rooms"></div>
 </div></section>
 
 <footer><div class="wrap">
@@ -91,7 +85,7 @@
 <script>
 initChrome();
 function svgLine(el,pts,{yl,xl,fmt=(v)=>v,h=170,alt=null,altLabel=""}){
-  const w=460,pad={l:38,r:12,t:12,b:26};
+  const w=460,pad={l:38,r:22,t:12,b:26};
   const ys=pts.map(p=>p.y).concat(alt?alt.map(p=>p.y):[]);
   let mn=Math.min(...ys), mx=Math.max(...ys);
   const padY=(mx-mn)*0.22||1; mn=Math.max(0,mn-padY); mx=mx+padY;
@@ -104,22 +98,42 @@ function svgLine(el,pts,{yl,xl,fmt=(v)=>v,h=170,alt=null,altLabel=""}){
         <text class="lbl" x="4" y="${Y(v)+3}">${fmt(+v.toFixed(1))}</text>`;}
   const dots=pts.map((p,i)=>`<circle class="dot" cx="${X(i)}" cy="${Y(p.y)}" r="2.6"><title>${p.t}: ${p.y}</title></circle>`).join("");
   const xlab=pts.map((p,i)=>(i%Math.ceil(pts.length/6)===0||i===pts.length-1)
-    ?`<text class="lbl" x="${X(i)}" y="${h-8}" text-anchor="middle">${p.x}</text>`:"").join("");
+    ?`<text class="lbl" x="${X(i)}" y="${h-8}" text-anchor="${i===0?'start':i===pts.length-1?'end':'middle'}">${p.x}</text>`:"").join("");
   el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" style="height:${h}px">
     ${g}${alt?`<path class="ln alt" d="${path(alt)}"/>`:""}<path class="ln" d="${path(pts)}"/>${dots}${xlab}</svg>
     ${alt?`<div class="small muted" style="margin-top:6px"><span style="color:var(--accent)">▬</span> ${yl} &nbsp; <span style="color:var(--muted)">▭</span> ${altLabel}</div>`:""}`;
 }
-load("metrics","blog").then(({metrics,blog})=>{
+load("metrics","blog","corpus","vocab").then(({metrics,blog,corpus,vocab})=>{
   const S=metrics.series, bib=metrics.bibliography;
   const own=bib.filter(b=>b.have).length;
+  const tot=corpus.total_words, bk=corpus.books, sn=corpus.sentences;
+  const meanSent=(S.reduce((a,r)=>a+r.sent_mean*r.n_sents,0)/S.reduce((a,r)=>a+r.n_sents,0)).toFixed(1);
+  const mono=(S.reduce((a,r)=>a+r.pct_1syl*r.n_words,0)/S.reduce((a,r)=>a+r.n_words,0)).toFixed(0);
+  document.getElementById("eyebrow").textContent =
+    `${tot.toLocaleString()} words measured · ${bk} books · ${corpus.blog_posts} blog posts · 2011-2026`;
   document.getElementById("hstats").innerHTML=[
-    ["1.33M","words of his prose measured"],
-    ["54,913","sentences from 15 books"],
-    ["528","blog posts, 2011 to 2026"],
-    ["13.3","words in his average sentence"],
-    ["68%","of his words are one syllable"],
-    ["1,506","words in your vocabulary curriculum"]
+    [(tot/1e6).toFixed(2)+"M","words of his prose measured"],
+    [sn.toLocaleString(),"sentences from "+bk+" books"],
+    [String(corpus.blog_posts),"blog posts, 2011 to 2026"],
+    [meanSent,"words in his average sentence"],
+    [mono+"%","of his words are one syllable"],
+    [vocab.meta.total.toLocaleString(),"words in your vocabulary curriculum"]
   ].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+  const ROOMS=[
+   ["evolution.html","Evolution","Ten years of books, fifteen of blog","What changed, what did not, and the adoption order ranked by impact over difficulty. Read this before anything else."],
+   ["lexicon.html","Lexicon",vocab.meta.total.toLocaleString()+" rare English words","Every word he uses that is rarer than everyday speech, each with a plain definition, a modern example, and his real sentence. With a spaced-repetition trainer."],
+   ["phrase.html","Phrase","18 templates, 80 real examples","The verdict beat, the disposable gloss, the echo pivot. Named, shaped, and each shown five times in his own prose."],
+   ["pattern.html","Pattern","42 mechanisms, grouped","How he compresses, withholds, jokes, restrains, and buys the right to make a strong claim. Plus the Stephen King adverb test."],
+   ["register.html","Register","Books against blog","Which register to copy for essays and landing pages, the measured pronoun arc, and the 1,100-word skeleton."],
+   ["workbench.html","Workbench","Write here. Get scored live.","A prompt, a live audit against his measured bands, word suggestions, and flags for every habit he dropped."],
+   ["drills.html","Drills","36 drills, each with a test","One mechanic per drill and a pass/fail you can apply without asking anyone's opinion."],
+   ["regimen.html","Regimen","The eight-hour day, twelve weeks","Hour by hour. Copywork, drills, shipping, and audit, with progress you can tick off."]
+  ];
+  document.getElementById("rooms").innerHTML=ROOMS.map(([href,tag,title,desc],i)=>
+    `<a class="card" href="${href}" style="border-bottom:1px solid var(--rule)">
+       <div class="k">${String(i+1).padStart(2,"0")} · ${tag}</div>
+       <h3>${title}</h3><p class="small muted">${desc}</p></a>`).join("");
 
   document.getElementById("shelf").innerHTML=bib.map(b=>{
     const key=b.year===2024;

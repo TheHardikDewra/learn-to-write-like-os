@@ -2,7 +2,7 @@
 
 A writing curriculum reverse-engineered from Om Swami's prose, built by measuring it rather than admiring it.
 
-**Live:** https://learn-to-write-like-os.vercel.app
+**Live:** https://os-writing.vercel.app  (also at learn-to-write-like-os.vercel.app)
 
 ## What this is
 
@@ -10,9 +10,9 @@ Hardik wants to write like Om Swami. Reading him and hoping it rubs off does not
 
 | Corpus | Size | Span |
 |---|---|---|
-| Books | 12 books, 43,246 sentences, 588,782 words | 2012 - 2024 |
+| Books | 15 books, 54,913 sentences, 728,051 words | 2012 - 2024 |
 | Blog (os.me) | 528 posts, 603,438 words | 2011 - 2026 |
-| **Total** | **~1.19 million words** | **15 years** |
+| **Total** | **1,331,489 words** | **15 years** |
 
 ## The three layers
 
@@ -41,6 +41,14 @@ The **Regimen** is a 12-week, 8-hour-a-day programme in three phases: Demolition
 
 Progress for flashcards, drills, weeks, and drafts is stored in `localStorage`.
 
+## Corrections
+
+Claims that could not survive a re-measurement were changed rather than quietly dropped.
+
+1. **The long-then-short rule is false.** An earlier version of this study called the verdict beat his governing rhythm. Measured across 91,862 sentences, the sentence following a 30-word-plus sentence averages **17.71 words** against an overall mean of **14.61**. It gets longer, in all 15 books, no exceptions. Long sentences cluster. The true verdict beat (25w+ answered by 6w or fewer) is **1.6%** of his sentences: a deliberate device, not a metronome. What is distinctive is the width of his range. Independently confirmed by the earlier [Guru Purnima study](https://om-swami-prose-study.vercel.app) on a different corpus.
+2. **The pronoun inversion is blog-only.** First written up as universal. His books moved the opposite way.
+3. **Aggregates hid two live changes.** Averaging the last forty posts masked both the em-dash cliff and the 2026 sentence tightening. Recency is now measured separately.
+
 ## Copyright
 
 No book text is reproduced anywhere on the site or in this repo. What ships is measurements, abstracted patterns, drills, and original examples written in his shape from Hardik's own world. The source PDFs and scraped post bodies are gitignored and stay local.
@@ -61,6 +69,6 @@ public/
 
 ## Re-running the analysis
 
-The analysis pipeline lives in `~/Documents/Om-Swami-Library/_analysis/` (prep, lexicon, rhythm, patterns) and `~/Documents/Om-Swami-Library/blog/` (scrape, analyse). Drop the five missing books beside the others and re-run to fold them in:
+The analysis pipeline lives in `~/Documents/Om-Swami-Library/_analysis/` (prep, lexicon, rhythm, patterns) and `~/Documents/Om-Swami-Library/blog/` (scrape, analyse). Drop the two missing books beside the others and re-run to fold them in:
 
-> The Big Questions of Life (2020) · The Book of Kindness (2019) · Mind Full to Mindful (2018) · A Fistful of Wisdom (2017) · The Last Gambit (2017)
+> The Book of Kindness (2019) · A Fistful of Wisdom (2017)

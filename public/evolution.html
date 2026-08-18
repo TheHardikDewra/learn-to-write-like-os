@@ -18,11 +18,11 @@
   <h2 class="h2" style="font-size:1.6rem">What changed in both books and blog</h2>
   <p class="lede small">These four moved the same direction, the same decade, in both media. That makes them habits of the hand rather than choices about audience - which means they transfer to anything you write.</p>
   <div class="card">
-    <div class="vs"><div class="a">2.9 per 1k</div><div><div class="arrow" style="text-align:center">→</div><div class="m">Semicolons. Down 84% on the blog, 83% in the books. He confirmed it himself in a footnote: he now uses one only in the rarest case.</div></div><div class="b">0.5 per 1k</div></div>
-    <div class="vs"><div class="a">14.8 words</div><div><div class="arrow" style="text-align:center">→</div><div class="m">Mean sentence length. It went <b>up</b>, not down. The tails widened at both ends and the middle hollowed out.</div></div><div class="b">15.9 words</div></div>
-    <div class="vs"><div class="a">5.4%</div><div><div class="arrow" style="text-align:center">→</div><div class="m">Sentences opening with And, But, So, Because. Doubled. This is the main reason the late prose reads faster despite longer sentences - each sentence arrives pre-attached.</div></div><div class="b">11.2%</div></div>
-    <div class="vs"><div class="a">4.5%</div><div><div class="arrow" style="text-align:center">→</div><div class="m">Latinate abstraction - the -tion, -ment, -ness, -ity layer. He did not shorten his words; mean word length held flat. He swapped which long words.</div></div><div class="b">3.4%</div></div>
-  </div>
+    <div class="vs"><div class="m"><b>Semicolons.</b> Down 84% on the blog and 83% in the books. He confirmed it himself in a footnote: he now uses one only in the rarest case.</div><div class="nums"><span class="a">2.9 per 1k</span><span class="arrow">→</span><span class="b">0.5 per 1k</span></div></div>
+    <div class="vs"><div class="m"><b>Mean sentence length.</b> It went <b>up</b>, not down. The tails widened at both ends and the middle hollowed out.</div><div class="nums"><span class="a">14.8 words</span><span class="arrow">→</span><span class="b">15.9 words</span></div></div>
+    <div class="vs"><div class="m"><b>Sentences opening with And, But, So, Because.</b> Doubled. This is the main reason the late prose reads faster despite longer sentences: each one arrives already attached to the last.</div><div class="nums"><span class="a">5.4%</span><span class="arrow">→</span><span class="b">11.2%</span></div></div>
+    <div class="vs"><div class="m"><b>Latinate abstraction</b>, the -tion, -ment, -ness, -ity layer. He did not shorten his words; mean word length held flat. He swapped which long words he used.</div><div class="nums"><span class="a">4.5%</span><span class="arrow">→</span><span class="b">3.4%</span></div></div>
+</div>
 </div></section>
 
 <section><div class="wrap">
@@ -81,7 +81,7 @@ document.getElementById("adopt").innerHTML=ADOPT.map((a,i)=>`
     <div><h4>${a[0]}</h4><p class="small muted" style="margin:0">${a[1]}</p></div></div>`).join("");
 
 function mini(el,pts,{alt=null,lab="",altLab="",h=150,bars=false}={}){
-  const w=440,pad={l:34,r:10,t:10,b:24};
+  const w=440,pad={l:34,r:20,t:10,b:24};
   const ys=pts.map(p=>p.y).concat(alt?alt.map(p=>p.y):[]);
   let mn=Math.min(0,...ys), mx=Math.max(...ys)*1.15||1;
   const X=i=>pad.l+i*(w-pad.l-pad.r)/Math.max(1,pts.length-1);
@@ -99,7 +99,7 @@ function mini(el,pts,{alt=null,lab="",altLab="",h=150,bars=false}={}){
       pts.map((p,i)=>`<circle class="dot" cx="${X(i)}" cy="${Y(p.y)}" r="2.4"><title>${p.x}: ${p.y}</title></circle>`).join("");
   }
   const step=Math.ceil(pts.length/6);
-  const xl=pts.map((p,i)=>(i%step===0||i===pts.length-1)?`<text class="lbl" x="${X(i)}" y="${h-7}" text-anchor="middle">${p.x}</text>`:"").join("");
+  const xl=pts.map((p,i)=>(i%step===0||i===pts.length-1)?`<text class="lbl" x="${X(i)}" y="${h-7}" text-anchor="${i===0?'start':i===pts.length-1?'end':'middle'}">${p.x}</text>`:"").join("");
   el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" style="height:${h}px">${g}${body}${xl}</svg>`+
     (alt?`<div class="small muted" style="margin-top:5px"><span style="color:var(--accent)">▬</span> ${lab} &nbsp; <span style="color:var(--muted)">▭</span> ${altLab}</div>`:"");
 }

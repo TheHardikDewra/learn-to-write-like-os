@@ -12,9 +12,12 @@
 .beat .wc{font-family:var(--mono);font-size:.7rem;color:var(--faint);padding-top:3px}
 .beat h4{font-size:.98rem;margin-bottom:3px}
 @media(max-width:640px){.beat{grid-template-columns:44px 1fr}.beat .wc{grid-column:2;padding-top:0}}
-.arcbar{display:flex;align-items:flex-end;gap:3px;height:120px;margin:6px 0 4px}
-.arcbar div{flex:1;display:flex;flex-direction:column-reverse;gap:2px}
-.arcbar i{display:block;border-radius:1px}
+.arcbar{display:flex;align-items:flex-end;gap:6px;height:150px;margin:14px 0 4px;
+  padding-top:6px;border-bottom:1px solid var(--rule-2);box-sizing:content-box}
+.arcbar .col{flex:1;min-width:0;display:flex;align-items:flex-end;justify-content:center;gap:2px;height:100%}
+.arcbar i{display:block;width:100%;max-width:11px;border-radius:1px 1px 0 0}
+.arcx{display:flex;gap:6px;margin-top:5px}
+.arcx span{flex:1;text-align:center;font-family:var(--mono);font-size:.58rem;color:var(--faint)}
 .lg{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
 .lg b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
 </style></head><body>
@@ -35,8 +38,10 @@
   <h2 class="h2" style="font-size:1.6rem">The pronoun arc</h2>
   <p class="lede">This is the most copyable structure he has. Split any post of his into ten equal slices and the pronouns move in a fixed shape: he opens in <b>"I"</b>, drains it, ramps <b>"you"</b>, and saves the imperatives for the very end. He earns the right to instruct rather than opening with it.</p>
   <div class="chart"><h4>Pronouns per 1,000 words, by tenth of a post</h4>
-    <div class="sub">Each column is 10% of the way through. 45 posts averaged.</div>
+    <div class="sub">Three bars per column: you, I, we. Each column is one tenth of a post, 45 posts averaged. Tallest bar = 44.6 per 1k.</div>
     <div class="arcbar" id="arc"></div>
+    <div class="arcx" id="arcx"></div>
+    <div class="small muted" style="font-family:var(--mono);font-size:.58rem;margin-top:2px">% through the post</div>
     <div class="lg"><span><b style="background:var(--accent)"></b>you / your</span>
       <span><b style="background:var(--ink-2)"></b>I / my / me</span>
       <span><b style="background:var(--rule-2)"></b>we / our / us</span></div>
@@ -118,12 +123,13 @@ document.getElementById("lp").innerHTML=LP.map((r,i)=>`<div class="wk"
   <p class="small muted" style="margin:0">${r[2]}</p></div></div>`).join("");
 load("arc").then(({arc})=>{
   const mx=Math.max(...arc.arc.flatMap(d=>[d.you,d.I,d.we]));
-  const H=v=>Math.max(2,116*v/mx);
-  document.getElementById("arc").innerHTML=arc.arc.map(d=>`<div title="${d.decile}
-you ${d.you} · I ${d.I} · we ${d.we} · imperatives ${d.imp}%">
+  const H=v=>Math.max(2,Math.round(150*v/mx));
+  document.getElementById("arc").innerHTML=arc.arc.map(d=>`<div class="col" title="${d.decile} of the post — you ${d.you} · I ${d.I} · we ${d.we} · imperatives ${d.imp}%">
     <i style="height:${H(d.you)}px;background:var(--accent)"></i>
     <i style="height:${H(d.I)}px;background:var(--ink-2)"></i>
     <i style="height:${H(d.we)}px;background:var(--rule-2)"></i></div>`).join("");
+  document.getElementById("arcx").innerHTML=arc.arc.map((d,i)=>
+    `<span>${i*10}</span>`).join("");
   const f=arc.arc[0], l=arc.arc[9];
   document.getElementById("arcnote").innerHTML=
     `"you" ramps <b>${f.you} → ${l.you}</b> per 1k (${(l.you/f.you).toFixed(1)}×). `+
