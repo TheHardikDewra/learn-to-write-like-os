@@ -1,83 +1,294 @@
 {
-"day":[
- {"t":"Block 1","min":60,"nm":"Copywork and rhythm transcription",
-  "d":"30 min: open your own copy of the week's book and hand-copy two pages, longhand. Not typing. You are training the hand and the ear, not the eye. 30 min: rhythm transcription - take a sentence-length pattern and write your own paragraph that matches it exactly.",
-  "why":"Copying by hand is the only exercise that installs cadence below the level of choice. Rhythm transcription gives you the same benefit using your own sentences."},
- {"t":"Block 2","min":45,"nm":"Lexicon",
-  "d":"20 min flashcards on the Lexicon page until the due queue is empty. 25 min: take the five hardest words from today's session and write three sentences with each - one about work, one about a person, one about your practice. Fifteen sentences.",
-  "why":"A word you have only recognised is not yours. A word you have written three times in your own life is."},
- {"t":"Block 3","min":90,"nm":"Drill of the day",
-  "d":"Run the week's assigned drill from the Drills page, start to finish, and apply its success test honestly. If you fail the test, run it again rather than moving on.",
-  "why":"Each drill isolates one mechanic. Isolation is the whole point - you cannot fix six things at once."},
- {"t":"Break","min":30,"nm":"Walk. No screen.",
-  "d":"Outside if possible. Do not read anything. Do not listen to a podcast.",
-  "why":"Consolidation happens off-task. This block is not optional and it is not a reward."},
- {"t":"Block 4","min":120,"nm":"The ship",
-  "d":"Write on the week's real deliverable - the piece you will publish or send. Draft only. No editing while drafting. Use a Workbench prompt if you are stuck for a subject.",
-  "why":"Drills without shipping produce a technician who has never faced a reader. This is the block that makes the rest real."},
- {"t":"Block 5","min":60,"nm":"The audit pass",
-  "d":"Paste yesterday's draft into the Workbench. Hit every band. Clear every flag. Then do one pass reading only for the mechanic you drilled this week.",
-  "why":"Revising against a number removes the argument. You either hit 68% monosyllables or you did not."},
- {"t":"Block 6","min":45,"nm":"Read him aloud",
-  "d":"Read 10 pages of the week's book aloud, at speaking pace. Mark in the margin every time you spot the week's mechanic. Count them at the end.",
-  "why":"Reading aloud catches rhythm your eye skips. Marking the mechanic turns passive admiration into pattern recognition."},
- {"t":"Block 7","min":30,"nm":"The notebook",
-  "d":"Write 200 words on what you noticed today. What did he do that you would not have thought to do? What did you fail at? Name one thing to carry into tomorrow.",
-  "why":"He calls it his own practice: the day is not finished until it has been looked at."}
-],
-"phases":[
- {"n":1,"nm":"Demolition","weeks":"1 to 4","goal":"Strip out everything he dropped. This phase is subtraction only. You will feel like your writing is getting worse before the numbers turn.",
-  "w":[
-   {"n":1,"nm":"The four deletions","focus":"Semicolons, front-loaded participles, the meaning paragraph, and hedge stacks.",
-    "drills":["d25","d07","d26"],"book":"Thirteen Months in the Himalaya",
-    "tasks":["Purge every semicolon from everything you have ever written","Grep your drafts for a sentence opening with an -ing word plus a comma. Un-invert all of them","Find every paragraph that explains what the previous scene meant. Keep one sentence, delete the rest"],
-    "ship":"One 800-word essay with zero semicolons and zero fronted participles"},
-   {"n":2,"nm":"Length and spread","focus":"Not shorter sentences. Wider range. Learn to write the 30-word sentence and the 4-word sentence, next to each other.",
-    "drills":["d01","d23","d30"],"book":"Thirteen Months in the Himalaya",
-    "tasks":["Twenty verdict beats a day","Push monosyllables past 65% on every draft","Match ten rhythm patterns exactly"],
-    "ship":"One 1,000-word piece scoring 70+ in the Workbench"},
-   {"n":3,"nm":"Kill the abstraction","focus":"The -tion, -ment, -ness, -ity layer. Replace it with the named thing rather than a simpler word.",
-    "drills":["d32","d06","d03"],"book":"The Legend of the Goddess",
-    "tasks":["Every abstract noun in a draft gets swapped for a named object","Learn all 40 Tier C words and use each once","Seven numerals per 1,000 words"],
-    "ship":"A 600-word piece where deleting every adjective loses almost nothing"},
-   {"n":4,"nm":"Intensifiers out","focus":"Adjectives are for objects. Numbers are for feelings.",
-    "drills":["d06","d13","d12"],"book":"Thirteen Months in the Himalaya",
-    "tasks":["Zero intensifiers for the whole week, in writing and in speech","Rate yourself numerically instead of describing how something felt","Close three pieces on a clock time"],
-    "ship":"A 700-word account of something intense, with zero emotional adjectives"}]},
- {"n":2,"nm":"Construction","weeks":"5 to 8","goal":"Install the templates. This phase is addition. By the end you should be reaching for these without deciding to.",
-  "w":[
-   {"n":5,"nm":"The verdict beat","focus":"His central rhythmic unit. Long sentence does the world, short sentence does the meaning.",
-    "drills":["d01","d08","d22"],"book":"The Legend of the Goddess",
-    "tasks":["Twenty beats a day, every day","End-load 20 sentences so the payload lands last","Audit your peaks - they must be plainer than your exposition"],
-    "ship":"A 1,200-word essay with 15+ verdict beats"},
-   {"n":6,"nm":"Gloss and clarity","focus":"Handling any unfamiliar term without slowing down. His fastest-growing habit.",
-    "drills":["d02","d36","d27"],"book":"The Ancient Science of Mantras",
-    "tasks":["Fifty glosses in thirty minutes, twice this week","Every jargon term in your client work gets an inline gloss","Fifteen cold openings"],
-    "ship":"A landing page that explains a technical product with zero parenthetical definitions"},
-   {"n":7,"nm":"Analogy and the re-claim","focus":"The image is not the explanation. The restatement in the image's noun is.",
-    "drills":["d31","d10","d05"],"book":"A Million Thoughts",
-    "tasks":["Twelve analogies, every vehicle humbler than its subject","Fifteen re-claim beats","No analogy runs past two sentences"],
-    "ship":"An 800-word explainer built on exactly three analogies"},
-   {"n":8,"nm":"Openings and closings","focus":"Where most writers lose the reader, and where he never does.",
-    "drills":["d33","d18","d19"],"book":"A Fistful of Love",
-    "tasks":["Eight openings and eight closings, shuffled and sorted by a friend","Five different closes for one piece","Eight one-breath question cascades"],
-    "ship":"Five short pieces, each with a different closing type"}]},
- {"n":3,"nm":"Voice","weeks":"9 to 12","goal":"The hard part. Stance, authority, restraint, humour. This is what cannot be faked and what took him ten years.",
-  "w":[
-   {"n":9,"nm":"Pronoun discipline","focus":"Diagnose in we. Prescribe in you. Rank in the third person. The largest single change in fifteen years of his blog.",
-    "drills":["d15","d17","d24"],"book":"The Heart of Success",
-    "tasks":["Rewrite three old pieces under the we/you rule","Ten echo pivots","Tag every transition in a 2,000-word draft"],
-    "ship":"An 1,100-word personal essay with exactly one we-to-you crossover"},
-   {"n":10,"nm":"Authority","focus":"Cost, claim, limit. Concede rather than rebut. Refuse rather than pad.",
-    "drills":["d16","d35","d09"],"book":"Thirteen Months in the Himalaya",
-    "tasks":["Ten cost-claim-limit sequences","Eight conceded objections with zero rebuttals","Twelve refusals"],
-    "ship":"A 1,000-word piece making your strongest claim, with one cost sentence and one scope limit"},
-   {"n":11,"nm":"Restraint and humour","focus":"Language magnitude must not track event magnitude. And the joke is always on you.",
-    "drills":["d21","d28","d11","d14"],"book":"Thirteen Months in the Himalaya",
-    "tasks":["Five peaks, each followed by something that costs you","Ten two-hander jokes, butt is always the expert","Ten moments of grandeur with zero grandeur words"],
-    "ship":"A 1,400-word piece about your worst year, funny in at least three places"},
-   {"n":12,"nm":"Whole pieces","focus":"Everything at once, at length, for a real reader.",
-    "drills":["d04","d34","d18"],"book":"The Legend of the Goddess",
-    "tasks":["Triage every scene: reported or quoted","Exile every procedure to the end","Rewrite the last line of every section as something unresolved"],
-    "ship":"Publish three pieces. Then re-audit week 1's essay and see what you now see."}]}
-]}
+ "day": [
+  {
+   "t": "Block 1",
+   "min": 60,
+   "nm": "Copywork and rhythm transcription",
+   "d": "30 min: open your own copy of the week's book and hand-copy two pages, longhand. Not typing. You are training the hand and the ear, not the eye. 30 min: rhythm transcription - take a sentence-length pattern and write your own paragraph that matches it exactly.",
+   "why": "Copying by hand is the only exercise that installs cadence below the level of choice. Rhythm transcription gives you the same benefit using your own sentences."
+  },
+  {
+   "t": "Block 2",
+   "min": 45,
+   "nm": "Lexicon",
+   "d": "20 min flashcards on the Lexicon page until the due queue is empty. 25 min: take the five hardest words from today's session and write three sentences with each - one about work, one about a person, one about your practice. Fifteen sentences.",
+   "why": "A word you have only recognised is not yours. A word you have written three times in your own life is."
+  },
+  {
+   "t": "Block 3",
+   "min": 90,
+   "nm": "Drill of the day",
+   "d": "Run the week's assigned drill from the Drills page, start to finish, and apply its success test honestly. If you fail the test, run it again rather than moving on.",
+   "why": "Each drill isolates one mechanic. Isolation is the whole point - you cannot fix six things at once."
+  },
+  {
+   "t": "Break",
+   "min": 30,
+   "nm": "Walk. No screen.",
+   "d": "Outside if possible. Do not read anything. Do not listen to a podcast.",
+   "why": "Consolidation happens off-task. This block is not optional and it is not a reward."
+  },
+  {
+   "t": "Block 4",
+   "min": 120,
+   "nm": "The ship",
+   "d": "Write on the week's real deliverable - the piece you will publish or send. Draft only. No editing while drafting. Use a Workbench prompt if you are stuck for a subject.",
+   "why": "Drills without shipping produce a technician who has never faced a reader. This is the block that makes the rest real."
+  },
+  {
+   "t": "Block 5",
+   "min": 60,
+   "nm": "The audit pass",
+   "d": "Paste yesterday's draft into the Workbench. Hit every band. Clear every flag. Then do one pass reading only for the mechanic you drilled this week.",
+   "why": "Revising against a number removes the argument. You either hit 68% monosyllables or you did not."
+  },
+  {
+   "t": "Block 6",
+   "min": 45,
+   "nm": "Read him aloud",
+   "d": "Read 10 pages of the week's book aloud, at speaking pace. Mark in the margin every time you spot the week's mechanic. Count them at the end.",
+   "why": "Reading aloud catches rhythm your eye skips. Marking the mechanic turns passive admiration into pattern recognition."
+  },
+  {
+   "t": "Block 7",
+   "min": 30,
+   "nm": "The notebook",
+   "d": "Write 200 words on what you noticed today. What did he do that you would not have thought to do? What did you fail at? Name one thing to carry into tomorrow.",
+   "why": "He calls it his own practice: the day is not finished until it has been looked at."
+  }
+ ],
+ "phases": [
+  {
+   "n": 1,
+   "nm": "Demolition",
+   "weeks": "1 to 4",
+   "goal": "Strip out everything he dropped. This phase is subtraction only. You will feel like your writing is getting worse before the numbers turn.",
+   "w": [
+    {
+     "n": 1,
+     "nm": "The four deletions",
+     "focus": "Semicolons, front-loaded participles, the meaning paragraph, and hedge stacks.",
+     "drills": [
+      "d25",
+      "d07",
+      "d26"
+     ],
+     "book": "Thirteen Months in the Himalaya",
+     "tasks": [
+      "Purge every semicolon from everything you have ever written",
+      "Grep your drafts for a sentence opening with an -ing word plus a comma. Un-invert all of them",
+      "Find every paragraph that explains what the previous scene meant. Keep one sentence, delete the rest"
+     ],
+     "ship": "One 800-word essay with zero semicolons and zero fronted participles"
+    },
+    {
+     "n": 2,
+     "nm": "Length and spread",
+     "focus": "Not shorter sentences. Wider range. Learn to write the 30-word sentence and the 4-word sentence, next to each other.",
+     "drills": [
+      "d01",
+      "d23",
+      "d30"
+     ],
+     "book": "The Last Gambit",
+     "tasks": [
+      "Twenty verdict beats a day",
+      "Push monosyllables past 65% on every draft",
+      "Match ten rhythm patterns exactly"
+     ],
+     "ship": "One 1,000-word piece scoring 70+ in the Workbench",
+     "booknote": "His tightest prose by a wide margin: 10.5 words per sentence, 24% of them five words or shorter, 72% monosyllabic. Fiction pulls him tighter than anything else he writes. Read it for range."
+    },
+    {
+     "n": 3,
+     "nm": "Kill the abstraction",
+     "focus": "The -tion, -ment, -ness, -ity layer. Replace it with the named thing rather than a simpler word.",
+     "drills": [
+      "d32",
+      "d06",
+      "d03"
+     ],
+     "book": "The Legend of the Goddess",
+     "tasks": [
+      "Every abstract noun in a draft gets swapped for a named object",
+      "Learn all 40 Tier C words and use each once",
+      "Seven numerals per 1,000 words"
+     ],
+     "ship": "A 600-word piece where deleting every adjective loses almost nothing"
+    },
+    {
+     "n": 4,
+     "nm": "Intensifiers out",
+     "focus": "Adjectives are for objects. Numbers are for feelings.",
+     "drills": [
+      "d06",
+      "d13",
+      "d12"
+     ],
+     "book": "Thirteen Months in the Himalaya",
+     "tasks": [
+      "Zero intensifiers for the whole week, in writing and in speech",
+      "Rate yourself numerically instead of describing how something felt",
+      "Close three pieces on a clock time"
+     ],
+     "ship": "A 700-word account of something intense, with zero emotional adjectives"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "nm": "Construction",
+   "weeks": "5 to 8",
+   "goal": "Install the templates. This phase is addition. By the end you should be reaching for these without deciding to.",
+   "w": [
+    {
+     "n": 5,
+     "nm": "The verdict beat",
+     "focus": "His central rhythmic unit. Long sentence does the world, short sentence does the meaning.",
+     "drills": [
+      "d01",
+      "d08",
+      "d22"
+     ],
+     "book": "The Legend of the Goddess",
+     "tasks": [
+      "Twenty beats a day, every day",
+      "End-load 20 sentences so the payload lands last",
+      "Audit your peaks - they must be plainer than your exposition"
+     ],
+     "ship": "A 1,200-word essay with 15+ verdict beats"
+    },
+    {
+     "n": 6,
+     "nm": "Gloss and clarity",
+     "focus": "Handling any unfamiliar term without slowing down. His fastest-growing habit.",
+     "drills": [
+      "d02",
+      "d36",
+      "d27"
+     ],
+     "book": "Mind Full to Mindful",
+     "tasks": [
+      "Fifty glosses in thirty minutes, twice this week",
+      "Every jargon term in your client work gets an inline gloss",
+      "Fifteen cold openings"
+     ],
+     "ship": "A landing page that explains a technical product with zero parenthetical definitions",
+     "booknote": "Short-form wisdom, so you see a whole idea open and close inside two pages."
+    },
+    {
+     "n": 7,
+     "nm": "Analogy and the re-claim",
+     "focus": "The image is not the explanation. The restatement in the image's noun is.",
+     "drills": [
+      "d31",
+      "d10",
+      "d05"
+     ],
+     "book": "A Million Thoughts",
+     "tasks": [
+      "Twelve analogies, every vehicle humbler than its subject",
+      "Fifteen re-claim beats",
+      "No analogy runs past two sentences"
+     ],
+     "ship": "An 800-word explainer built on exactly three analogies"
+    },
+    {
+     "n": 8,
+     "nm": "Openings and closings",
+     "focus": "Where most writers lose the reader, and where he never does.",
+     "drills": [
+      "d33",
+      "d18",
+      "d19"
+     ],
+     "book": "A Fistful of Love",
+     "tasks": [
+      "Eight openings and eight closings, shuffled and sorted by a friend",
+      "Five different closes for one piece",
+      "Eight one-breath question cascades"
+     ],
+     "ship": "Five short pieces, each with a different closing type"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "nm": "Voice",
+   "weeks": "9 to 12",
+   "goal": "The hard part. Stance, authority, restraint, humour. This is what cannot be faked and what took him ten years.",
+   "w": [
+    {
+     "n": 9,
+     "nm": "Pronoun discipline",
+     "focus": "Diagnose in we. Prescribe in you. Rank in the third person. The largest single change in fifteen years of his blog.",
+     "drills": [
+      "d15",
+      "d17",
+      "d24"
+     ],
+     "book": "The Big Questions of Life",
+     "tasks": [
+      "Rewrite three old pieces under the we/you rule",
+      "Ten echo pivots",
+      "Tag every transition in a 2,000-word draft"
+     ],
+     "ship": "An 1,100-word personal essay with exactly one we-to-you crossover",
+     "booknote": "His most argued book, and the clearest place to watch him concede an objection instead of rebutting it."
+    },
+    {
+     "n": 10,
+     "nm": "Authority",
+     "focus": "Cost, claim, limit. Concede rather than rebut. Refuse rather than pad.",
+     "drills": [
+      "d16",
+      "d35",
+      "d09"
+     ],
+     "book": "Thirteen Months in the Himalaya",
+     "tasks": [
+      "Ten cost-claim-limit sequences",
+      "Eight conceded objections with zero rebuttals",
+      "Twelve refusals"
+     ],
+     "ship": "A 1,000-word piece making your strongest claim, with one cost sentence and one scope limit"
+    },
+    {
+     "n": 11,
+     "nm": "Restraint and humour",
+     "focus": "Language magnitude must not track event magnitude. And the joke is always on you.",
+     "drills": [
+      "d21",
+      "d28",
+      "d11",
+      "d14"
+     ],
+     "book": "Thirteen Months in the Himalaya",
+     "tasks": [
+      "Five peaks, each followed by something that costs you",
+      "Ten two-hander jokes, butt is always the expert",
+      "Ten moments of grandeur with zero grandeur words"
+     ],
+     "ship": "A 1,400-word piece about your worst year, funny in at least three places"
+    },
+    {
+     "n": 12,
+     "nm": "Whole pieces",
+     "focus": "Everything at once, at length, for a real reader.",
+     "drills": [
+      "d04",
+      "d34",
+      "d18"
+     ],
+     "book": "The Legend of the Goddess",
+     "tasks": [
+      "Triage every scene: reported or quoted",
+      "Exile every procedure to the end",
+      "Rewrite the last line of every section as something unresolved"
+     ],
+     "ship": "Publish three pieces. Then re-audit week 1's essay and see what you now see."
+    }
+   ]
+  }
+ ]
+}

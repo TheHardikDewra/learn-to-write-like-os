@@ -53,7 +53,7 @@ load("schedule","drills").then(({schedule,drills})=>{
         <div class="n">WK ${w.n}<div style="margin-top:6px"><input type="checkbox" class="chk wchk" data-w="${w.n}" ${W[w.n]?"checked":""}></div></div>
         <div><h4>${w.nm}</h4>
           <p class="small" style="color:var(--ink-2);margin:0 0 6px">${w.focus}</p>
-          <p class="small muted" style="margin:0 0 4px"><b>Read aloud this week.</b> ${w.book}</p>
+          <p class="small muted" style="margin:0 0 4px"><b>Read aloud this week.</b> ${w.book}${w.booknote?` <span style="color:var(--ink-2)">${w.booknote}</span>`:""}</p>
           <ul>${w.tasks.map(t=>`<li>${t}</li>`).join("")}</ul>
           <div class="small" style="margin-top:8px"><b>Drills.</b> ${w.drills.map(id=>DM[id]?`<a href="drills.html">${DM[id].nm}</a>`:id).join(" · ")}</div>
           <div class="ship">Ship: ${w.ship}</div></div></div>`).join("")}
