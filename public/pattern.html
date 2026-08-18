@@ -13,6 +13,17 @@
   <div id="pats"></div>
 </div></section>
 <section><div class="wrap">
+  <div class="eyebrow">The deep set</div>
+  <h2 class="h2" style="font-size:1.6rem">Forty-two mechanisms, grouped by the job they do</h2>
+  <p class="lede">The section above gives you the twelve findings. This is the machinery underneath them, taken apart. Each one names a specific thing he does, says why it works, and gives you the drill. Compression is where the succinctness you admire actually comes from - it is removed material, not short words.</p>
+  <div class="controls">
+    <input type="search" id="mq" placeholder="search the mechanisms…">
+    <span class="small muted" id="mcount" style="margin-left:auto"></span>
+  </div>
+  <div id="mechs"></div>
+</div></section>
+
+<section><div class="wrap">
   <div class="eyebrow">Tested claim</div>
   <h2 class="h2" style="font-size:1.6rem">The Stephen King adverb rule, checked against 950,000 words</h2>
   <p class="lede">"The road to hell is paved with adverbs." It is the most repeated piece of writing advice there is, so it is worth knowing whether the writer you admire actually follows it. He follows half of it, and the half he ignores is the half most people obsess over.</p>
@@ -38,7 +49,30 @@
 <script src="app.js"></script>
 <script>
 initChrome();
-load("content","adverbs").then(({content,adverbs})=>{
+function drawMech(){
+  const q=(document.getElementById("mq").value||"").toLowerCase();
+  let n=0;
+  document.getElementById("mechs").innerHTML=MECH.groups.map(g=>{
+    const hits=g.m.filter(m=>!q||(m.n+m.d+m.t+g.g).toLowerCase().includes(q));
+    if(!hits.length) return "";
+    n+=hits.length;
+    return `<div style="margin-bottom:26px">
+      <h3 style="font-size:1.15rem;margin-bottom:4px">${g.g}
+        <span class="mono small" style="color:var(--faint);font-weight:400">${hits.length}</span></h3>
+      <p class="small muted" style="max-width:70ch;margin-bottom:12px">${g.sub}</p>
+      ${hits.map((m,i)=>`<div class="tpl">
+        <div class="nm">${m.n}</div>
+        <div class="dsc">${m.d}</div>
+        <div class="demo"><b style="font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+          text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px">Drill</b>${m.t}</div>
+      </div>`).join("")}</div>`;
+  }).join("");
+  document.getElementById("mcount").textContent=`${n} mechanisms`;
+}
+let MECH={groups:[]};
+document.getElementById("mq").oninput=drawMech;
+load("content","adverbs","mechanisms").then(({content,adverbs,mechanisms})=>{
+  MECH=mechanisms; drawMech();
   document.getElementById("advrows").innerHTML=adverbs.rows.map(r=>`<tr>
     <td class="w" style="font-size:.92rem">${r.corpus}</td>
     <td class="mono">${r.ly_per1k}</td>

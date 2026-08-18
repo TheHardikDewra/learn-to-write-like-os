@@ -1,3 +1,29 @@
+/* ---------------------------------------------------------------
+   Hardik's own licensed fonts, loaded from HIS machine via local().
+   No font file is served, so no licence is breached. Anyone without
+   them installed falls through to the Google webfonts below.
+   --------------------------------------------------------------- */
+@font-face{font-family:"HafferL";src:local("Haffer Light"),local("Haffer-Light");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferL";src:local("Haffer Regular"),local("Haffer-Regular"),local("Haffer");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferL";src:local("Haffer Medium"),local("Haffer-Medium");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferL";src:local("Haffer SemiBold"),local("Haffer-SemiBold");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferL";src:local("Haffer Bold"),local("Haffer-Bold");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferL";src:local("Haffer Regular Italic"),local("Haffer-RegularItalic");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"HafferL";src:local("Haffer Bold Italic"),local("Haffer-BoldItalic");font-weight:700;font-style:italic;font-display:swap}
+
+@font-face{font-family:"HafferMonoL";src:local("Haffer Mono Regular"),local("HafferMono-Regular"),local("Haffer Mono");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferMonoL";src:local("Haffer Mono Medium"),local("HafferMono-Medium");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferMonoL";src:local("Haffer Mono SemiBold"),local("HafferMono-SemiBold");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"HafferMonoL";src:local("Haffer Mono Bold"),local("HafferMono-Bold");font-weight:700;font-style:normal;font-display:swap}
+
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Light"),local("MartinaPlantijn-Light");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Regular"),local("MartinaPlantijn-Regular"),local("Martina Plantijn");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Medium"),local("MartinaPlantijn-Medium");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Bold"),local("MartinaPlantijn-Bold");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Italic"),local("MartinaPlantijn-Italic");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Bold Italic"),local("MartinaPlantijn-BoldItalic");font-weight:700;font-style:italic;font-display:swap}
+@font-face{font-family:"MartinaL";src:local("Martina Plantijn Medium Italic"),local("MartinaPlantijn-MediumItalic");font-weight:500;font-style:italic;font-display:swap}
+
 /* learn-to-write-like-os - flat, editorial, zero gradients, zero glows */
 :root{
   --bg:#FAF8F4; --surface:#FFFFFF; --surface-2:#F2EFE8;
@@ -5,9 +31,9 @@
   --rule:#E2DCCF; --rule-2:#CFC7B6;
   --accent:#9A3412; --accent-ink:#FFFFFF; --accent-soft:#F6E9E1;
   --good:#2F6B3A; --warn:#8A6A12; --bad:#A03030;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-  --sans:"Inter","Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,monospace;
+  --serif:"MartinaL","Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"HafferL","Inter","Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"HafferMonoL","JetBrains Mono","SF Mono",ui-monospace,Menlo,monospace;
   --maxw:1120px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -143,12 +169,15 @@ svg{display:block;width:100%;overflow:visible}
 .tbl{width:100%;border-collapse:collapse;font-size:.9rem}
 .tbl th{text-align:left;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);font-weight:600;
-  padding:9px 12px;border-bottom:1px solid var(--rule-2);position:sticky;top:58px;background:var(--bg)}
+  padding:11px 12px;border-bottom:1px solid var(--rule-2);
+  position:sticky;top:0;z-index:3;background:var(--surface);
+  box-shadow:inset 0 -1px 0 var(--rule-2)}
 .tbl td{padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
 .tbl tr:last-child td{border-bottom:0}
 .tbl .w{font-family:var(--serif);font-weight:600;font-size:1.02rem;white-space:nowrap}
 .tbl .ex{color:var(--ink-2);font-style:italic}
-.scroller{max-height:520px;overflow-y:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;
+/* own scrollport: sticky th anchors to this, not the page */
+.scroller{position:relative;max-height:520px;overflow-y:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;
   border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
 
 /* ---------- controls ---------- */

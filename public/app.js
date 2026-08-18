@@ -1,6 +1,6 @@
 /* ===== shared: theme, nav, data, text engine ===== */
 const PAGES=[["index.html","Overview"],["evolution.html","Evolution"],["lexicon.html","Lexicon"],
-  ["phrase.html","Phrase"],["pattern.html","Pattern"],["workbench.html","Workbench"],
+  ["phrase.html","Phrase"],["pattern.html","Pattern"],["register.html","Register"],["workbench.html","Workbench"],
   ["drills.html","Drills"],["regimen.html","Regimen"]];
 
 function initChrome(){
@@ -140,7 +140,7 @@ const BANDS={
   pct_ly_adverb:[0,1.9,"% -ly adverbs","Live 1.4%. He kept measuring adverbs and cut manner adverbs."],
   comma_per_sent:[0.7,1.35,"commas per sentence","Live 1.07. One or two clauses, not four."],
   burstiness:[7,12.5,"gear-change (avg jump)","Live 9.0. Long, then short."],
-  beats_per1k_s:[10,70,"verdict beats / 1k sentences","Live 21.8. A 25w+ sentence answered by a ≤6w one."],
+  beats_per1k_s:[0,60,"verdict beats / 1k sentences","Rare by design: only 1.6% of his sentences. A deliberate device, not a rhythm to hit."],
   conj_open_pct:[7,18,"% sentences opening And/But/So","Live 12.9%. One in eight. This is why he reads like speech."]
 };
 function grade(k,v){

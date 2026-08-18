@@ -1,0 +1,133 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+<style>
+.beat{display:grid;grid-template-columns:52px 78px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:start}
+.beat:last-child{border-bottom:0}
+.beat .no{font-family:var(--mono);font-size:.72rem;color:var(--accent);font-weight:700;padding-top:2px}
+.beat .wc{font-family:var(--mono);font-size:.7rem;color:var(--faint);padding-top:3px}
+.beat h4{font-size:.98rem;margin-bottom:3px}
+@media(max-width:640px){.beat{grid-template-columns:44px 1fr}.beat .wc{grid-column:2;padding-top:0}}
+.arcbar{display:flex;align-items:flex-end;gap:3px;height:120px;margin:6px 0 4px}
+.arcbar div{flex:1;display:flex;flex-direction:column-reverse;gap:2px}
+.arcbar i{display:block;border-radius:1px}
+.lg{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.lg b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+</style></head><body>
+
+<section style="padding-top:56px"><div class="wrap">
+  <div class="eyebrow">Books against blog</div>
+  <h2 class="h2">Two registers. Copy the right one.</h2>
+  <p class="lede">You asked what differs between his books and his blog. It matters more than it sounds, because you write essays and landing pages, not books - and for that work the blog is the better model on almost every axis. Both corpora were measured on the same pipeline so the columns are directly comparable.</p>
+  <div class="scroller" style="max-height:none"><table class="tbl"><thead><tr>
+    <th>Measure</th><th>Books 2024</th><th>Blog, all 528</th><th>Blog 2026</th><th>Copy which</th>
+  </tr></thead><tbody id="cmp"></tbody></table></div>
+  <div class="note"><b>The verdict for your work</b>
+    <p class="small" style="margin:0">Take the <b>blog</b> register for almost everything: the pronoun arc, the one-image spine, the 25% turn, the disclaimer before the ask, conjunction openings, and the hard stop. Take from the <b>books</b> only their sentence-length discipline. And note the target keeps moving: his 2026 posts are tighter than both his older blog and his own books. Aim at the last column.</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Measured across 45 recent posts</div>
+  <h2 class="h2" style="font-size:1.6rem">The pronoun arc</h2>
+  <p class="lede">This is the most copyable structure he has. Split any post of his into ten equal slices and the pronouns move in a fixed shape: he opens in <b>"I"</b>, drains it, ramps <b>"you"</b>, and saves the imperatives for the very end. He earns the right to instruct rather than opening with it.</p>
+  <div class="chart"><h4>Pronouns per 1,000 words, by tenth of a post</h4>
+    <div class="sub">Each column is 10% of the way through. 45 posts averaged.</div>
+    <div class="arcbar" id="arc"></div>
+    <div class="lg"><span><b style="background:var(--accent)"></b>you / your</span>
+      <span><b style="background:var(--ink-2)"></b>I / my / me</span>
+      <span><b style="background:var(--rule-2)"></b>we / our / us</span></div>
+    <div id="arcnote" class="small muted" style="margin-top:10px"></div></div>
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card"><div class="k">Opening</div><h3>Testify</h3><p class="small muted">"I" runs at 44.6 per 1k in the first tenth, its highest point. You pay for the piece with your own story before you ask anything.</p></div>
+    <div class="card"><div class="k">Middle</div><h3>Diagnose in "we"</h3><p class="small muted">The failure is always "we", never "you". A "you" fault can be rejected on sight. A "we" fault cannot be refused without self-indictment.</p></div>
+    <div class="card"><div class="k">Close</div><h3>Hand over the verb</h3><p class="small muted">Imperatives run 0.9% in the first tenth and 5.3% in the last, a near sixfold ramp. The commands live at the end or nowhere.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">The shape of one post</div>
+  <h2 class="h2" style="font-size:1.6rem">The 1,100-word skeleton</h2>
+  <p class="lede">His posts are strikingly consistent in build. This is that build, beat by beat, with the word budget for each. Use it as a template for an essay, and see the landing-page mapping underneath.</p>
+  <div class="card" id="beats"></div>
+  <div class="note"><b>The load-bearing fact</b><p class="small" style="margin:0">The argument is never delivered continuously. It arrives in the gaps between narrative blocks, and he rarely runs more than about 450 words of pure abstraction before dropping back into a scene.</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">For your actual job</div>
+  <h2 class="h2" style="font-size:1.6rem">Mapped onto a landing page</h2>
+  <p class="lede">You design and write landing pages. The same skeleton maps almost one to one, and the pronoun arc is the part most pages get backwards - they open by accusing the visitor and close by talking about themselves.</p>
+  <div id="lp"></div>
+</div></section>
+
+<footer><div class="wrap"><p class="small"><a href="pattern.html">← patterns</a> · <a href="workbench.html">go write →</a></p></div></footer>
+
+<script src="app.js"></script>
+<script>
+initChrome();
+const CMP=[
+ ["Mean sentence length","14.2 w","15.5 w","14.0 w","Blog 2026"],
+ ["Sentences 8 words or fewer","29.6%","24.2%","30.5%","Blog 2026"],
+ ["Sentences 30 words or more","6.4%","7.9%","5.8%","Blog 2026"],
+ ["One-syllable words","68.2%","70.5%","72.8%","Blog"],
+ ["Latinate abstraction","3.0%","3.8%","2.6%","Blog 2026"],
+ ["Commas per sentence","1.02","0.99","1.07","Tie"],
+ ["Opens with And / But / So","8.1%","7.8%","13.0%","Blog 2026"],
+ ["\"you\" + \"your\" per 1k","15.5","37.6","28.2","Blog, strongly"],
+ ["\"I\" per 1k","27.6","13.7","19.0","Blog"],
+ ["Semicolons per 1k","0.8","1.3","0.0","Blog 2026"],
+ ["Em dashes","present","present","zero in last 10 posts","Blog 2026"],
+ ["Evidence per claim","many","one story + one joke","same","Blog"],
+ ["Summary at the close","sometimes","never","never","Blog"]
+];
+const BEATS=[
+ [1,"0-140 w","Cold open","A scene, a dated memory, or a stranger's sentence. Sixty per cent of his posts open inside a scene or someone speaking. Never weather, never a roadmap, never a statistic."],
+ [2,"~80-200 w","Name the thing","One flat general claim, usually in \"we\", then abandoned for four hundred words. The thesis is stated once, plainly, and not repeated."],
+ [3,"150-450 w","The story","Fable, news item, or his own past, told with dialogue and no interpretive interruption. He does not gloss the story while telling it."],
+ [4,"at ~25-45%","The turn","One paragraph where the subject flips from he/they/I to you/we. Usually short. Often opens with a conjunction."],
+ [5,"300-450 w","The principle","The argument proper. His longest sentences live here, built as second-person conditionals with an embedded qualifier."],
+ [6,"60-100 w","The disclaimer","At roughly 75%: \"I am not suggesting…\". States the strongest objection and narrows the claim to survive it. He concedes rather than rebuts."],
+ [7,"100-150 w","The second story","A joke or a second parable at about 80%. It restates the argument in comic form and drops the pressure right before the highest-pressure beat."],
+ [8,"80-120 w","The escalation","Peak \"we\", peak imperatives. He indicts himself, then hands over the verb."],
+ [9,"15-40 w","The landing","One to three sentences. Imperative or question. Around half call back the title. No summary, ever."],
+ [10," - ","Hard stop","No recap, no call to share. Anything administrative goes after the sign-off, never inside the piece."]
+];
+const LP=[
+ ["Hero","Cold open + name the thing","Open on a concrete object or a specific moment, not a benefit claim. One flat sentence of what this is. Your title should be a physical noun you could photograph."],
+ ["Problem","Diagnose in \"we\"","The failure section is where most pages accuse the visitor. Write it as \"we\" and your bounce rate stops punishing you for it. Nobody rejects a fault they are invited into."],
+ ["Story / proof","One story, one joke","One customer story told properly beats six logos and three stats. His whole evidence budget for 1,100 words is one narrative and one lighter beat."],
+ ["Mechanism","The principle","Second-person conditionals: if you are in this situation, given this caveat, here is what happens. This is where your long sentences are allowed to live."],
+ ["Objections","The 75% disclaimer","The \"this is not for you if\" block, placed immediately before the price. Concede what is true in the objection and narrow the offer. Do not rebut."],
+ ["CTA","Hand over the verb","Imperatives belong here and nowhere else. Two to three words. \"you\" density at its highest point on the page."],
+ ["Footer","Hard stop","No summary of the page. Administrative links go after the ask, never woven through it."]
+];
+document.getElementById("cmp").innerHTML=CMP.map(r=>`<tr>
+  <td class="w" style="font-size:.9rem">${r[0]}</td><td class="mono">${r[1]}</td>
+  <td class="mono">${r[2]}</td><td class="mono" style="color:var(--accent);font-weight:700">${r[3]}</td>
+  <td class="small">${r[4]}</td></tr>`).join("");
+document.getElementById("beats").innerHTML=BEATS.map(b=>`<div class="beat">
+  <div class="no">BEAT ${b[0]}</div><div class="wc">${b[1]}</div>
+  <div><h4>${b[2]}</h4><p class="small muted" style="margin:0">${b[3]}</p></div></div>`).join("");
+document.getElementById("lp").innerHTML=LP.map((r,i)=>`<div class="wk"
+  style="border:1px solid var(--rule);border-radius:9px;margin-bottom:9px;background:var(--surface)">
+  <div class="n">${String(i+1).padStart(2,"0")}</div>
+  <div><h4>${r[0]} <span class="muted" style="font-weight:400;font-size:.85rem">· ${r[1]}</span></h4>
+  <p class="small muted" style="margin:0">${r[2]}</p></div></div>`).join("");
+load("arc").then(({arc})=>{
+  const mx=Math.max(...arc.arc.flatMap(d=>[d.you,d.I,d.we]));
+  const H=v=>Math.max(2,116*v/mx);
+  document.getElementById("arc").innerHTML=arc.arc.map(d=>`<div title="${d.decile}
+you ${d.you} · I ${d.I} · we ${d.we} · imperatives ${d.imp}%">
+    <i style="height:${H(d.you)}px;background:var(--accent)"></i>
+    <i style="height:${H(d.I)}px;background:var(--ink-2)"></i>
+    <i style="height:${H(d.we)}px;background:var(--rule-2)"></i></div>`).join("");
+  const f=arc.arc[0], l=arc.arc[9];
+  document.getElementById("arcnote").innerHTML=
+    `"you" ramps <b>${f.you} → ${l.you}</b> per 1k (${(l.you/f.you).toFixed(1)}×). `+
+    `"I" drains <b>${f.I} → ${l.I}</b>. Imperatives go <b>${f.imp}% → ${l.imp}%</b>, a `+
+    `${(l.imp/f.imp).toFixed(1)}× ramp. "you" overtakes "I" at the <b>${arc.crossover}</b> mark.`;
+});
+</script></body></html>

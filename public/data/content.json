@@ -4,7 +4,7 @@
    "nm": "The Verdict Beat",
    "sh": "[long sentence 25-35w] \u2192 [3-6w judgement]",
    "layer": "phrase",
-   "dsc": "A long sentence does the world. The short one that follows does the meaning. The short sentence never describes \u2014 it judges, negates, questions, or names the cost.",
+   "dsc": "A long sentence does the world. The short one that follows does the meaning. Important caveat, measured: this is a DELIBERATE DEVICE, not his default rhythm. Only about 1.6% of his sentences are a 25-word-plus sentence answered by a 6-word one. On average a long sentence is followed by a longer-than-average one. Use the beat to land a judgement, not as a metronome.",
    "demo": "He rebuilt the checkout flow three times, tested every variant, and shipped it on a Friday because he could not bear another week of the old one. It changed nothing."
   },
   {
@@ -130,9 +130,9 @@
  "patterns": [
   {
    "k": "RHYTHM",
-   "nm": "Not shorter sentences. Wider range.",
-   "dsc": "The single most misread thing about his prose. Memoir to memoir, his mean sentence length went UP over ten years, from 13.6 to 14.1 words. What rose faster was the spread: standard deviation up 15%, and the odds that a long sentence is followed immediately by a very short one up about 19%. The speed you feel is the gear change, not the gear.",
-   "do": "Stop trimming toward a uniform middle. Write the 30-word sentence AND the 4-word one, and put them next to each other."
+   "nm": "Range, not alternation",
+   "dsc": "The single most misread thing about his prose, and I got it wrong first too. Memoir to memoir his mean sentence length went UP, 13.6 to 14.1 words. But the popular fix - follow a long sentence with a short one - is measurably false. Across 91,862 sentences, the sentence after a 30-word-plus sentence averages 17.7 words against a 14.6 mean. Longer. In every one of the 15 books, no exceptions. Long sentences cluster together. What is actually distinctive is the width of his range: he writes both 4-word and 40-word sentences, where most writers live in a narrow middle.",
+   "do": "Stop trying to alternate. Widen instead: make sure you actually write some sentences under 8 words and some over 30, and check the spread rather than the sequence. Save the short-after-long beat for the handful of moments that deserve a verdict."
   },
   {
    "k": "DICTION",

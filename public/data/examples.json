@@ -1,0 +1,578 @@
+{
+ "verdict-beat": {
+  "nm": "The Verdict Beat",
+  "dsc": "A 24-38 word sentence carrying the action, answered immediately by a 2-6 word judgement. The short one never describes.",
+  "ex": [
+   {
+    "t": "She cares about the splash, about the mud on her knees, about the sound the water makes, and she cares completely, holding nothing back. \u27f6 Nobody has to teach her.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "The mistake we make is thinking we must find the great, correct, cosmically ordained thing to care about before we are allowed to begin. \u27f6 So we begin nothing.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "People came and went, some bowed, some left offerings of flowers and rice, a stray dog growled and pulled at the edge of his shawl. \u27f6 He did not stir.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "I am fatter than they are and poorer than they are, and I do not even have what they have, which is that they never lost anything because they never reached for anything. \u27f6 I am neither, a nobody now.",
+    "src": "The Curse of Hindsight | On Regret and the Roads Not Taken",
+    "y": 2026,
+    "url": "https://os.me/the-curse-of-hindsight"
+   },
+   {
+    "t": "We assume the woman who returns to the unhappy house is weak, the man who returns to the bottle is weak, the entrepreneur who runs back to his desk job after his first failed venture is weak. \u27f6 But I don't think it's weakness.",
+    "src": "The Old Door",
+    "y": 2026,
+    "url": "https://os.me/the-old-door"
+   }
+  ]
+ },
+ "two-beat": {
+  "nm": "The Two-Beat Close",
+  "dsc": "Two short imperatives back to back. His workhorse ending, about a third of all chapter closes.",
+  "ex": [
+   {
+    "t": "Pick something. Give it your whole heart.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "Give it your whole heart. Watch what happens.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "Do it sincerely. Do it even when it feels pointless.",
+    "src": "Training Without Power Steering",
+    "y": 2026,
+    "url": "https://os.me/training-without-power-steering"
+   },
+   {
+    "t": "Do I like it? Do I love it?",
+    "src": "A Difficult Decision",
+    "y": 2023,
+    "url": "https://os.me/a-difficult-decision"
+   },
+   {
+    "t": "Stop dreaming and start walking. Keep walking.",
+    "src": "Resistance",
+    "y": 2021,
+    "url": "https://os.me/resistance"
+   }
+  ]
+ },
+ "and-so": {
+  "nm": "And So",
+  "dsc": "His causal hinge, up roughly thirtyfold since 2014. Hands off to the next movement with no transition paragraph.",
+  "ex": [
+   {
+    "t": "And so, at the edge of a bustling city, he found a tree and an abandoned hut.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "And so I read this beautiful story in it the other day.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "And so it pays to pick our battles carefully.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "And so he moved into a small lodge on the banker's property.",
+    "src": "The Bet",
+    "y": 2026,
+    "url": "https://os.me/the-bet"
+   },
+   {
+    "t": "And so I\u2019ve written a little prayer for you.",
+    "src": "I Stand Corrected",
+    "y": 2025,
+    "url": "https://os.me/i-stand-corrected"
+   }
+  ]
+ },
+ "confession": {
+  "nm": "Confession Pivot",
+  "dsc": "Flags an admission that lowers him, which buys the right to assert in the next line.",
+  "ex": [
+   {
+    "t": "Truth be told, it's only with words on the page that I feel I've actually served you, our dharma, or humanity in any meaningful way.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "Truth be told, in my humble opinion, it is the only option that makes our time here beautiful.",
+    "src": "The Only Option",
+    "y": 2026,
+    "url": "https://os.me/the-only-option"
+   },
+   {
+    "t": "To be candid, while outside, I did feel a bit scared.",
+    "src": "Thirteen Months in the Himalayas",
+    "y": 2024,
+    "url": "https://os.me/thirteen-months-in-the-himalayas"
+   },
+   {
+    "t": "Truth be told, true contentment is impossible without being okay with where you are emotionally, intellectually, and financially.",
+    "src": "The Paradox of Praise",
+    "y": 2024,
+    "url": "https://os.me/the-paradox-of-praise"
+   },
+   {
+    "t": "Truth be told, I can\u2019t imagine anything that Baba would have asked of me to which I would have said no.",
+    "src": "Guru",
+    "y": 2022,
+    "url": "https://os.me/guru"
+   }
+  ]
+ },
+ "concession": {
+  "nm": "Concession Pivot",
+  "dsc": "Raises the counter-case against himself before you can, then turns.",
+  "ex": [
+   {
+    "t": "Then again, to care about something is a perilous act.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "Granted, we did not choose to wake up in this strange world.",
+    "src": "The Only Option",
+    "y": 2026,
+    "url": "https://os.me/the-only-option"
+   },
+   {
+    "t": "Having said that, the next time you see a couple desperate to have children, or parents pushing their grown-ups to marry, or if you are simply thinking of bringing a soul into this world, do think about it: what\u2019s the point?",
+    "src": "The Uninvited Guest",
+    "y": 2025,
+    "url": "https://os.me/the-uninvited-guest"
+   },
+   {
+    "t": "Having said that, there\u2019s a fundamental problem with approaching an idea with that mindset.",
+    "src": "Between Two Bales of Hay",
+    "y": 2025,
+    "url": "https://os.me/between-two-bales-of-hay"
+   },
+   {
+    "t": "No doubt, it is far more joyous to remain committed to an idea if you are passionate about it.",
+    "src": "Between Two Bales of Hay",
+    "y": 2025,
+    "url": "https://os.me/between-two-bales-of-hay"
+   }
+  ]
+ },
+ "correction": {
+  "nm": "The Correction Frame",
+  "dsc": "Names the wrong model first, then the right one, so the image does argumentative work rather than decoration.",
+  "ex": [
+   {
+    "t": "Our work is not to silence them, for we cannot, but to remember, in their presence, who we are.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "After all, the point is not to fight nothing but to fight for something.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "If I may put it this way, avidya is not the absence of knowledge but the presence of a limited one.",
+    "src": "The Only Option",
+    "y": 2026,
+    "url": "https://os.me/the-only-option"
+   },
+   {
+    "t": "Going to the gym is not necessarily enjoyable but it\u2019s the after-effects that make everything worthwhile.",
+    "src": "Training Without Power Steering",
+    "y": 2026,
+    "url": "https://os.me/training-without-power-steering"
+   },
+   {
+    "t": "The question, then, is not which idea is the best but which idea am I prepared to give the next seven or ten years of my life to?",
+    "src": "Between Two Bales of Hay",
+    "y": 2025,
+    "url": "https://os.me/between-two-bales-of-hay"
+   }
+  ]
+ },
+ "q-answer": {
+  "nm": "Question, Then Answer",
+  "dsc": "A short question answered in the very next sentence. He delays the answer under ten per cent of the time.",
+  "ex": [
+   {
+    "t": "Ever seen a small child at a puddle? \u27f6 She does not ask the puddle what it means, but simply gets into it.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "Why not start learning then? \u27f6 That is all there is to it, the rest is commentary.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "What was the point of even starting? \u27f6 \"That knee turning in the ring was a real grief,\" the master said.",
+    "src": "The Curse of Hindsight | On Regret and the Roads Not Taken",
+    "y": 2026,
+    "url": "https://os.me/the-curse-of-hindsight"
+   },
+   {
+    "t": "Why don't you teach him a lesson? \u27f6 The lion stopped, his magnificent mane flowing serenely like the gentle waves of the ocean on a calm morning.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "And more importantly: what will it cost you? \u27f6 Here is something I have learned: every battle we fight, even the ones we win, takes something from us.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   }
+  ]
+ },
+ "cascade": {
+  "nm": "The Question Cascade",
+  "dsc": "Two or more questions, each shorter than the last, read as one breath.",
+  "ex": [
+   {
+    "t": "So do you have a song you wish to sing? Why not start learning then?",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "The real question is, should you? Should you bother?",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "A more pertinent question, however, is how to make a good decision? How to ensure that it\u2019s the right one?",
+    "src": "The Three Most Important Decisions",
+    "y": 2025,
+    "url": "https://os.me/the-three-most-important-decisions"
+   },
+   {
+    "t": "Why hadn\u2019t they? Would they ever?",
+    "src": "It Seemed Like a Good Idea",
+    "y": 2025,
+    "url": "https://os.me/it-seemed-like-a-good-idea"
+   },
+   {
+    "t": "Who is afraid? The ego?",
+    "src": "Thirteen Months in the Himalayas",
+    "y": 2024,
+    "url": "https://os.me/thirteen-months-in-the-himalayas"
+   }
+  ]
+ },
+ "anaphora": {
+  "nm": "The Anaphora Stack",
+  "dsc": "Three or more consecutive sentences opening on the same two words, naming different faces of one failure.",
+  "ex": [
+   {
+    "t": "You didn\u2019t want to feel a certain way, but you did. You didn\u2019t want to act in that manner, but you did. You didn\u2019t mean to say those things, but you did.",
+    "src": "Healing Trauma",
+    "y": 2024,
+    "url": "https://os.me/healing-trauma"
+   },
+   {
+    "t": "We might desire good health, but eat far too much junk food or find excuses not to exercise. We might yearn for a romantic relationship, but distance ourselves as soon as a potential partner gets close. We might want a career that\u2019s meaningful, but fail to take the steps necessary to achieve it.",
+    "src": "It Didn't Start With You",
+    "y": 2024,
+    "url": "https://os.me/it-didnt-start-with-you"
+   },
+   {
+    "t": "You can write on Medium. You can start your own blog on wordpress.com or blogger.com. You can start your own newsletter using Substack.",
+    "src": "A Difficult Decision",
+    "y": 2023,
+    "url": "https://os.me/a-difficult-decision"
+   },
+   {
+    "t": "I hope you feel things you never felt before. I hope you meet people with a different point of view. I hope you live a life you\u2019re proud of.",
+    "src": "Change",
+    "y": 2020,
+    "url": "https://os.me/change"
+   },
+   {
+    "t": "They may address you with what is true or what is false. They may address you in an affectionate way or a harsh way. They may address you in a beneficial way or an unbeneficial way.",
+    "src": "The Eight Stages of Anger",
+    "y": 2020,
+    "url": "https://os.me/eight-stages-of-anger"
+   }
+  ]
+ },
+ "definition": {
+  "nm": "Definition Landing",
+  "dsc": "An abstract noun compressed into a portable definition. The ending most likely to get quoted back at you.",
+  "ex": [
+   {
+    "t": "Because everything is a piece of cake for a well-trained mind.",
+    "src": "Training Without Power Steering",
+    "y": 2026,
+    "url": "https://os.me/training-without-power-steering"
+   },
+   {
+    "t": "Each man is tortured by this dream.",
+    "src": "Between Two Bales of Hay",
+    "y": 2025,
+    "url": "https://os.me/between-two-bales-of-hay"
+   },
+   {
+    "t": "Because honesty is uncomfortable.",
+    "src": "Healing Without Honesty",
+    "y": 2025,
+    "url": "https://os.me/healing-without-honesty"
+   },
+   {
+    "t": "Pain is a strange thing.",
+    "src": "Euthanasia",
+    "y": 2025,
+    "url": "https://os.me/euthanasia"
+   },
+   {
+    "t": "When it is lived, not just suffered.",
+    "src": "Euthanasia",
+    "y": 2025,
+    "url": "https://os.me/euthanasia"
+   }
+  ]
+ },
+ "negation": {
+  "nm": "The Absolute Negation",
+  "dsc": "Asserts an absence rather than arguing a presence. Short, flat, unhedged.",
+  "ex": [
+   {
+    "t": "Nobody has to teach her.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "There is no escaping the world, it says.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "No one is immune to the bubbles of regrets and inadequacy.",
+    "src": "It Seemed Like a Good Idea",
+    "y": 2025,
+    "url": "https://os.me/it-seemed-like-a-good-idea"
+   },
+   {
+    "t": "There are no right or wrong answers, and there are a million things I have absolutely no opinion on.",
+    "src": "Euthanasia",
+    "y": 2025,
+    "url": "https://os.me/euthanasia"
+   },
+   {
+    "t": "No one wanted anything from it.",
+    "src": "Being Ordinary",
+    "y": 2024,
+    "url": "https://os.me/being-ordinary"
+   }
+  ]
+ },
+ "tricolon": {
+  "nm": "Tricolon",
+  "dsc": "Three items, almost never four. Three is his ceiling for the descriptive form.",
+  "ex": [
+   {
+    "t": "YouTube, podcasts, social media, OTT, and other platforms promising instant gratification have reshaped, if not ruined, our reading habits.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "I stay indoors for days on end, only getting up to bathe, exercise, and eat twice a day.",
+    "src": "I Have Words in Me",
+    "y": 2026,
+    "url": "https://os.me/i-have-words-in-me"
+   },
+   {
+    "t": "His guru, a wise and slightly amused short man, simply nodded whenever he passed.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "For a moment, nothing happened and the young child continued to laugh, drawing her face even closer with wide eyes.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "Might come handy.\u201d The hut had cash, sweets, clothes, jewels, and other offerings made to him over the last few weeks.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   }
+  ]
+ },
+ "gloss": {
+  "nm": "The Disposable Gloss",
+  "dsc": "An unfamiliar term with a short plain gloss between commas. Delete the gloss and the sentence still parses.",
+  "ex": [
+   {
+    "t": "Three days of mauna, silence, then seven, then a full month.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "As you progress on the path, your devotion, focus, stamina, your posture, everything improves.",
+    "src": "Your Story",
+    "y": 2023,
+    "url": "https://os.me/your-story"
+   },
+   {
+    "t": "You can be still as the mountain or moving as any stream, either way, you remain perfectly aware.",
+    "src": "The Six Stages of Awakening",
+    "y": 2022,
+    "url": "https://os.me/six-stages-of-awakening"
+   },
+   {
+    "t": "I would rush back to the ashram, give discourses, do my meetings and then travel back to Patiala to be with him.",
+    "src": "Make Hay While the Sun Shines",
+    "y": 2022,
+    "url": "https://os.me/make-hay-while-the-sun-shines"
+   },
+   {
+    "t": "M.K Paul.\u21a9 The three modes of material nature are sattva, rajas, and tamas for clarity/goodness, passion/self-centredness, and ignorance/selfishness respectively.\u21a9 You can read the full story on Wikipedia too.\u21a9 Philosophy",
+    "src": "Mind, O Mind!",
+    "y": 2022,
+    "url": "https://os.me/mind-o-mind"
+   }
+  ]
+ },
+ "would": {
+  "nm": "The Would-Tense Flashforward",
+  "dsc": "'would' used as a tense of destiny, jumping forward without leaving the scene.",
+  "ex": [
+   {
+    "t": "I believed, and hoped, wholeheartedly that there was a good chance that Mother Goddess would one day emerge from this idol and grant me Her vision.",
+    "src": "Thirteen Months in the Himalayas",
+    "y": 2024,
+    "url": "https://os.me/thirteen-months-in-the-himalayas"
+   },
+   {
+    "t": "If each spiritual question was a coffee bean and I ground all of them most carefully, I would end up with this fragrant powder of human consciousness.",
+    "src": "The Purpose of Your Life",
+    "y": 2018,
+    "url": "https://os.me/the-purpose-of-your-life"
+   },
+   {
+    "t": "Google, Facebook or Microsoft founders, when starting out, never thought they would end up building mammoth organizations.",
+    "src": "The Right to Dream",
+    "y": 2018,
+    "url": "https://os.me/the-right-to-dream"
+   },
+   {
+    "t": "Most miraculously though, however he hit the ball that day, it would end up in the hole.",
+    "src": "Whom to Please",
+    "y": 2017,
+    "url": "https://os.me/whom-to-please"
+   },
+   {
+    "t": "He would later apologize but the impact of the apology almost vanished, for, the pattern of verbal bashing and subsequent apologizing seemed intertwined and constant.",
+    "src": "Emotional Healing \u2014 Getting Over the Pain",
+    "y": 2012,
+    "url": "https://os.me/emotional-healing-getting-over-the-pain"
+   }
+  ]
+ },
+ "skeptic": {
+  "nm": "Pre-empt the Skeptic",
+  "dsc": "States the objection in the reader's own voice, then narrows the claim instead of rebutting it.",
+  "ex": [
+   {
+    "t": "You could tell that something was eating him from the inside like a termite eats a beam while the wall still looks like a wall.",
+    "src": "The Curse of Hindsight | On Regret and the Roads Not Taken",
+    "y": 2026,
+    "url": "https://os.me/the-curse-of-hindsight"
+   },
+   {
+    "t": "I am not suggesting that you let your life fall apart.",
+    "src": "The Old Door",
+    "y": 2026,
+    "url": "https://os.me/the-old-door"
+   },
+   {
+    "t": "Just to be clear, I am not asking you to withdraw from life or become a pushover who shrugs at every injustice.",
+    "src": "The Rabid Dog: When Not to Fight Back",
+    "y": 2026,
+    "url": "https://os.me/the-rabid-dog"
+   },
+   {
+    "t": "I am not saying that life is bad but for most people it is unsatisfactory.",
+    "src": "The Uninvited Guest",
+    "y": 2025,
+    "url": "https://os.me/the-uninvited-guest"
+   },
+   {
+    "t": "I am not suggesting that you too start living in the pipes of some municipal corporation.",
+    "src": "Socrates and Ripped Jeans",
+    "y": 2025,
+    "url": "https://os.me/socrates-and-ripped-jeans"
+   }
+  ]
+ },
+ "cost": {
+  "nm": "Cost With a Number",
+  "dsc": "First person plus a hard number. The number is the credential, so no adjective is needed.",
+  "ex": [
+   {
+    "t": "Meanwhile, I'm pleased to announce a live event in Delhi on 4-Oct-2026.",
+    "src": "The Bhagavad Gita Retold : Latest Book by Om Swami",
+    "y": 2026,
+    "url": "https://os.me/the-bhagavad-gita-retold"
+   },
+   {
+    "t": "I mean, I have even been writing about it since 2011.",
+    "src": "The Bet",
+    "y": 2026,
+    "url": "https://os.me/the-bet"
+   },
+   {
+    "t": "I\u2019ve been writing on this blog for the last 15 years.",
+    "src": "Between Two Bales of Hay",
+    "y": 2025,
+    "url": "https://os.me/between-two-bales-of-hay"
+   },
+   {
+    "t": "And then, 300 of you joined me for the 7-week virtual retreat Walk the Dragon.",
+    "src": "Walk the Dragon",
+    "y": 2025,
+    "url": "https://os.me/walk-the-dragon-launch"
+   },
+   {
+    "t": "I\u2019m excited to be unveiling something truly beautiful on our YouTube channel on 31-Jul at 5 PM IST.",
+    "src": "Healing Without Honesty",
+    "y": 2025,
+    "url": "https://os.me/healing-without-honesty"
+   }
+  ]
+ }
+}

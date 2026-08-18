@@ -16,9 +16,9 @@ Hardik wants to write like Om Swami. Reading him and hoping it rubs off does not
 
 ## The three layers
 
-1. **Lexicon** - 158 words in three tiers. Portable literary vocabulary (80), the dharmic register (38), and the concreteness engine (40). Extracted statistically: every word rarer than everyday English that he uses far more than average, then filtered so what survives is voice rather than subject matter. Words spread across many books are voice; words clustered in one book are that book's topic, and those were cut.
-2. **Phrase** - 18 named sentence templates with scaffolds.
-3. **Pattern** - 13 structural moves, plus the negative space of what he never does.
+1. **Lexicon** - **1,506 English words**, mined from all 1,202,959 words of books and blog together, tiered by rarity (354 very rare, 733 rare, 419 uncommon). Every entry carries a plain definition, a modern example, and **the real sentence he used it in**, linked to the source post. No Sanskrit tier: Hardik speaks Hindi, so every Indic term, proper noun and mythological name was stripped out.
+2. **Phrase** - 18 named sentence templates with scaffolds, plus **80 real examples** (5 per move) pulled from the corpus by per-move matchers and linked to the posts they came from.
+3. **Pattern** - 13 headline findings plus **42 deep mechanisms** in 7 groups (compression, withholding, grandeur, the explanation engine, humour, restraint, unfamiliar words), each with a drill. Plus the negative space of what he never does.
 
 ## Findings that contradict the usual advice
 
@@ -31,7 +31,9 @@ Hardik wants to write like Om Swami. Reading him and hoping it rubs off does not
 
 ## The site
 
-Eight pages: Overview, Evolution, Lexicon, Phrase, Pattern, Workbench, Drills, Regimen.
+Nine pages: Overview, Evolution, Lexicon, Phrase, Pattern, Register, Workbench, Drills, Regimen. **Register** covers books vs blog, the measured pronoun arc across a post, the 1,100-word essay skeleton, and how it maps onto a landing page.
+
+Typography uses Hardik's own licensed fonts (Haffer, Haffer Mono, Martina Plantijn) via `local()` so they render on his machine without the font files ever being served. Everyone else falls through to Inter and Newsreader.
 
 The **Workbench** is the working part. Paste or write, and it scores the shape of your prose against twelve bands measured from his live voice - the last twelve posts he published. It flags every habit he dropped (semicolons, front-loaded participles, intensifiers, dead phrases, adverbs on dialogue tags), suggests concrete word swaps, and draws your sentence rhythm as bars so you can see whether you are gear-changing or writing a flat wall. 216 prompts, each training one named mechanic under a hard constraint with a testable pass/fail check.
 

@@ -5,18 +5,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
-</head><body>
+<style>
+.wrow{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:16px 18px;border-bottom:1px solid var(--rule)}
+.wrow:last-child{border-bottom:0}
+.wrow .hd .w{font-family:var(--serif);font-size:1.18rem;font-weight:600;line-height:1.15}
+.wrow .hd .meta{font-family:var(--mono);font-size:.66rem;color:var(--faint);margin-top:4px;line-height:1.5}
+.wrow .df{font-size:.96rem;color:var(--ink);margin-bottom:7px}
+.wrow .yours{font-family:var(--serif);font-style:italic;color:var(--ink-2);font-size:.98rem;margin-bottom:8px}
+.wrow .his{font-size:.86rem;color:var(--muted);border-left:2px solid var(--rule-2);padding-left:11px}
+.wrow .his b{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:3px}
+.tpill{font-family:var(--mono);font-size:.58rem;padding:2px 6px;border-radius:3px;font-weight:700;letter-spacing:.05em}
+.t3{background:var(--accent);color:var(--accent-ink)}
+.t2{background:var(--accent-soft);color:var(--accent)}
+.t1{background:transparent;color:var(--faint);border:1px solid var(--rule-2)}
+@media(max-width:640px){.wrow{grid-template-columns:1fr;gap:8px}}
+</style></head><body>
 
 <section style="padding-top:56px"><div class="wrap">
   <div class="eyebrow">Layer one · the word</div>
-  <h2 class="h2">158 words, three tiers</h2>
-  <p class="lede">Pulled statistically from 589,000 words: every word rarer than everyday English that he uses far more than average, then filtered so what survives is <em>voice</em> rather than subject matter. Words spread across many books are voice. Words clustered in one book are that book's topic, and those were cut.</p>
-
-  <div class="grid g3" style="margin-bottom:34px">
-    <div class="card"><div class="k">Tier A · 80 words</div><h3>Portable</h3><p class="small muted">Rare enough to be worth learning, secular enough to survive a client call. Use these tomorrow.</p></div>
-    <div class="card"><div class="k">Tier B · 38 terms</div><h3>Dharmic</h3><p class="small muted">Sanskrit that carries precision English loses. Each one says when to reach for it over the English near-miss.</p></div>
-    <div class="card"><div class="k">Tier C · 40 words</div><h3>Concrete</h3><p class="small muted">Not hard words. Specific ones. Each kills a generic noun: banyan instead of tree, jaggery instead of sugar.</p></div>
-  </div>
+  <h2 class="h2"><span id="bigcount">1,506</span> English words he actually uses</h2>
+  <p class="lede">Mined from the full <b>1,202,959 words</b> of his books and his blog together. Every word here is rarer than everyday English, is a real English word rather than a Sanskrit term you already know, and <b>he genuinely used it</b> - each entry carries the sentence he used it in, with a link to the post.</p>
+  <div class="stat-strip" id="vstats" style="margin-bottom:30px"></div>
+  <div class="note"><b>Why no Sanskrit tier</b><p class="small" style="margin:0">You speak Hindi and you already know prakriti, purusha, maya, sattva, rajas, tamas, rishi and bhava. Teaching you those would be filler. Every Indic term, every proper noun and every mythological name was stripped out. What is left is English you can put in a client email.</p></div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
@@ -24,15 +35,15 @@
   <h2 class="h2" style="font-size:1.5rem">Flashcards</h2>
   <p class="lede small">Spaced repetition, saved in this browser. <b>Space</b> flips, <b>1</b> again, <b>2</b> hard, <b>3</b> got it.</p>
   <div class="controls">
-    <button class="chip on" data-deck="a">Tier A</button>
-    <button class="chip" data-deck="b">Tier B</button>
-    <button class="chip" data-deck="c">Tier C</button>
+    <button class="chip on" data-deck="3">Tier 3 · very rare</button>
+    <button class="chip" data-deck="2">Tier 2 · rare</button>
+    <button class="chip" data-deck="1">Tier 1 · uncommon</button>
     <button class="chip" data-deck="due">Due only</button>
     <span class="small muted" id="deckinfo" style="margin-left:auto"></span>
   </div>
   <div class="fc" id="card"><div class="muted small">loading…</div></div>
   <div class="fc-bar">
-    <button class="btn ghost" id="flip">Flip &nbsp;<kbd>space</kbd></button>
+    <button class="btn ghost" id="flip">Flip <kbd>space</kbd></button>
     <button class="btn ghost" id="g1">Again <kbd>1</kbd></button>
     <button class="btn ghost" id="g2">Hard <kbd>2</kbd></button>
     <button class="btn" id="g3">Got it <kbd>3</kbd></button>
@@ -45,64 +56,63 @@
   <h2 class="h2" style="font-size:1.5rem">The full list</h2>
   <div class="controls">
     <input type="search" id="q" placeholder="search word, meaning, or example…">
-    <button class="chip on" data-t="a">A · portable</button>
-    <button class="chip on" data-t="b">B · dharmic</button>
-    <button class="chip on" data-t="c">C · concrete</button>
-    <select id="lvl"><option value="">any difficulty</option><option value="1">1 · use tomorrow</option>
-      <option value="2">2 · writing first</option><option value="3">3 · one per essay</option></select>
+    <button class="chip on" data-t="3">3 · very rare</button>
+    <button class="chip on" data-t="2">2 · rare</button>
+    <button class="chip on" data-t="1">1 · uncommon</button>
+    <select id="pos"><option value="">any part of speech</option>
+      <option>noun</option><option>verb</option><option>adj</option><option>adv</option></select>
+    <select id="sort"><option value="rare">rarest first</option>
+      <option value="az">A to Z</option><option value="freq">he uses most</option>
+      <option value="late">used most recently</option></select>
   </div>
-  <div class="scroller"><table class="tbl"><thead><tr>
-    <th style="width:130px">Word</th><th style="width:34%">Means</th><th>Use it like this</th><th style="width:52px">Tier</th>
-  </tr></thead><tbody id="rows"></tbody></table></div>
-  <p class="small muted" style="margin-top:12px" id="cnt"></p>
+  <p class="small muted" id="cnt" style="margin-bottom:10px"></p>
+  <div class="scroller" style="max-height:760px" id="listbox"></div>
+  <p class="small muted" style="margin-top:12px">Showing the first 400 matches. Narrow the search to see more.</p>
 </div></section>
 
-<footer><div class="wrap"><p class="small"><a href="index.html">← back to overview</a> · next: <a href="phrase.html">the phrase layer →</a></p></div></footer>
+<footer><div class="wrap"><p class="small"><a href="index.html">← overview</a> · <a href="phrase.html">the phrase layer →</a></p></div></footer>
 
 <script src="app.js"></script>
 <script>
 initChrome();
-const KEY="os_srs_v1";
+const KEY="os_srs_v2";
 let SRS=JSON.parse(localStorage.getItem(KEY)||"{}");
 const save=()=>localStorage.setItem(KEY,JSON.stringify(SRS));
-let ALL=[],deck="a",queue=[],cur=null,shown=false;
-
-function norm(v){
-  const A=v.tier_a.map(r=>({id:"a:"+r.word,tier:"a",word:r.word,sub:r.pos,def:r.def,ex:r.example,lvl:r.difficulty}));
-  const B=v.tier_b.map(r=>({id:"b:"+r.term,tier:"b",word:r.term,sub:"sanskrit",def:r.def,ex:r.when,lvl:2}));
-  const C=v.tier_c.map(r=>({id:"c:"+r.word,tier:"c",word:r.word,sub:r.domain,def:"replaces "+r.replaces,ex:"",lvl:1}));
-  return [...A,...B,...C];
-}
+let ALL=[],deck="3",queue=[],cur=null,shown=false;
 const now=()=>Date.now();
-function due(c){const s=SRS[c.id]; return !s||s.due<=now();}
+const due=c=>{const s=SRS[c.w]; return !s||s.due<=now();};
+
 function build(){
-  let pool = deck==="due" ? ALL.filter(due) : ALL.filter(c=>c.tier===deck);
-  if(deck!=="due") pool=pool.sort((x,y)=>(due(y)?1:0)-(due(x)?1:0));
-  else pool=pool.sort(()=>Math.random()-.5);
-  queue=pool; next();
+  let pool = deck==="due" ? ALL.filter(due) : ALL.filter(c=>String(c.tier)===deck);
+  pool = deck==="due" ? pool.sort(()=>Math.random()-.5)
+                      : pool.slice().sort((a,b)=>(due(b)?1:0)-(due(a)?1:0)||a.z-b.z);
+  queue=pool; next(); info();
+}
+function info(){
   document.getElementById("deckinfo").textContent =
     `${ALL.filter(due).length} due of ${ALL.length} · ${Object.keys(SRS).length} started`;
 }
 function next(){ cur=queue.shift()||null; shown=false; render(); }
 function render(){
   const el=document.getElementById("card");
-  if(!cur){el.innerHTML=`<div class="word" style="font-size:1.6rem">Deck clear</div>
-    <div class="def muted">Nothing due in this tier. Switch decks or come back later.</div>`;return;}
-  el.innerHTML=`<div class="pos">${cur.sub||""} · tier ${cur.tier.toUpperCase()}</div>
-    <div class="word">${cur.word}</div>
+  if(!cur){el.innerHTML=`<div class="word" style="font-size:1.5rem">Deck clear</div>
+    <div class="def muted">Nothing due in this tier right now.</div>`;return;}
+  el.innerHTML=`<div class="pos">${cur.pos} · tier ${cur.tier} · he used it ${cur.n}×</div>
+    <div class="word">${cur.w}</div>
     <div class="def ${shown?"":"hidden"}">${cur.def}</div>
-    ${cur.ex?`<div class="exs ${shown?"":"hidden"}">${cur.ex}</div>`:""}
+    ${shown?`<div class="exs">${cur.ex}</div>`:""}
+    ${shown&&cur.his?`<div class="small muted" style="max-width:52ch;border-left:2px solid var(--rule-2);padding-left:11px;text-align:left">
+       <b style="font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block">His sentence</b>
+       ${cur.his}</div>`:""}
     ${shown?"":'<div class="small muted">press space to flip</div>'}`;
 }
 function gradeCard(g){
   if(!cur)return;
-  const s=SRS[cur.id]||{n:0};
-  const mins=g===1?1:g===2?(s.n?60*10:10):(s.n?60*24*Math.min(30,2**s.n):60*24);
-  s.n=g===1?0:(s.n||0)+1; s.due=now()+mins*60000; SRS[cur.id]=s; save();
+  const s=SRS[cur.w]||{n:0};
+  const mins=g===1?1:g===2?(s.n?60*8:8):(s.n?60*24*Math.min(45,2**s.n):60*24);
+  s.n=g===1?0:(s.n||0)+1; s.due=now()+mins*60000; SRS[cur.w]=s; save();
   if(g===1) queue.push(cur);
-  next();
-  document.getElementById("deckinfo").textContent =
-    `${ALL.filter(due).length} due of ${ALL.length} · ${Object.keys(SRS).length} started`;
+  next(); info();
 }
 document.getElementById("flip").onclick=()=>{shown=!shown;render();};
 document.getElementById("g1").onclick=()=>gradeCard(1);
@@ -119,24 +129,47 @@ document.querySelectorAll("[data-deck]").forEach(b=>b.onclick=()=>{
   b.classList.add("on"); deck=b.dataset.deck; build();
 });
 
-const tiers={a:true,b:true,c:true};
+const tiers={1:true,2:true,3:true};
 function table(){
-  const q=document.getElementById("q").value.toLowerCase();
-  const lv=document.getElementById("lvl").value;
-  const rows=ALL.filter(c=>tiers[c.tier]
-    && (!lv||String(c.lvl)===lv)
-    && (!q||(c.word+" "+c.def+" "+c.ex).toLowerCase().includes(q)));
-  document.getElementById("rows").innerHTML=rows.map(c=>`<tr>
-    <td class="w">${c.word}<div class="small muted" style="font-weight:400;font-family:var(--sans)">${c.sub||""}</div></td>
-    <td>${c.def}</td><td class="ex">${c.ex||"<span class='muted'> - </span>"}</td>
-    <td><span class="pill ${c.tier==="a"?"own":"no"}">${c.tier.toUpperCase()}</span></td></tr>`).join("");
-  document.getElementById("cnt").textContent=`${rows.length} of ${ALL.length} shown`;
+  const q=document.getElementById("q").value.toLowerCase().trim();
+  const pf=document.getElementById("pos").value;
+  const sort=document.getElementById("sort").value;
+  let rows=ALL.filter(c=>tiers[c.tier] && (!pf||c.pos===pf)
+    && (!q||(c.w+" "+c.def+" "+c.ex+" "+(c.his||"")).toLowerCase().includes(q)));
+  rows.sort(sort==="az"?(a,b)=>a.w.localeCompare(b.w)
+    :sort==="freq"?(a,b)=>b.n-a.n
+    :sort==="late"?(a,b)=>b.late-a.late||b.n-a.n
+    :(a,b)=>a.z-b.z);
+  document.getElementById("cnt").textContent=`${rows.length.toLocaleString()} of ${ALL.length.toLocaleString()} words`;
+  document.getElementById("listbox").innerHTML=rows.slice(0,400).map(c=>`
+    <div class="wrow">
+      <div class="hd"><div class="w">${c.w}</div>
+        <div class="meta">${c.pos} · <span class="tpill t${c.tier}">T${c.tier}</span><br>
+        used ${c.n}× · rarity ${c.z}</div></div>
+      <div>
+        <div class="df">${c.def}</div>
+        <div class="yours">${c.ex}</div>
+        ${c.his?`<div class="his"><b>How he used it${c.hu?"":" ("+c.hs+", "+c.hy+")"}</b>${c.his}
+          ${c.hu?`<div style="margin-top:4px"><a href="${c.hu}" target="_blank" rel="noopener">${c.hs}</a>, ${c.hy}</div>`:""}
+        </div>`:""}
+      </div></div>`).join("") || '<p class="small muted" style="padding:18px">Nothing matches.</p>';
 }
-document.getElementById("q").oninput=table;
-document.getElementById("lvl").onchange=table;
+["q","pos","sort"].forEach(id=>{const e=document.getElementById(id);e.oninput=table;e.onchange=table;});
 document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{
   b.classList.toggle("on"); tiers[b.dataset.t]=b.classList.contains("on"); table();
 });
-load("vocab").then(({vocab})=>{ ALL=norm(vocab); build(); table(); });
+load("vocab").then(({vocab})=>{
+  ALL=vocab.words; const m=vocab.meta;
+  document.getElementById("bigcount").textContent=m.total.toLocaleString();
+  document.getElementById("vstats").innerHTML=[
+    [m.total.toLocaleString(),"English words, all used by him"],
+    [m.t3,"tier 3 · very rare"],
+    [m.t2,"tier 2 · rare"],
+    [m.t1,"tier 1 · uncommon"],
+    ["100%","carry his real sentence"],
+    ["1.20M","words mined"]
+  ].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+  build(); table();
+});
 </script>
 </body></html>

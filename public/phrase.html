@@ -20,6 +20,17 @@
   <div id="list"></div>
 </div></section>
 <section><div class="wrap">
+  <div class="eyebrow">How he actually used it</div>
+  <h2 class="h2" style="font-size:1.6rem">Five real examples per move</h2>
+  <p class="lede">Templates are useless without evidence. Every line below was pulled out of the corpus by a matcher written for that specific move, then checked. All of them come from his public blog rather than the books, and each links to the post it came from so you can read the sentence in its place. <b>The arrow marks the beat change.</b></p>
+  <div class="controls">
+    <input type="search" id="eq" placeholder="search the examples…">
+    <span class="small muted" id="ecount" style="margin-left:auto"></span>
+  </div>
+  <div id="exlist"></div>
+</div></section>
+
+<section><div class="wrap">
   <div class="eyebrow">Generator</div>
   <h2 class="h2" style="font-size:1.5rem">Drill one shape</h2>
   <p class="lede small">Pick a template, get a blank scaffold to fill. Twenty reps of one shape beats one rep of twenty.</p>
@@ -73,7 +84,36 @@ document.getElementById("gen").onclick=()=>{
        <p class="small muted" style="margin-top:12px">Write twenty of these. Then take the best three into the <a href="workbench.html">Workbench</a>.</p>`
     : `<p class="small muted">No scaffold for that one yet - use the shape line above it.</p>`;
 };
-load("content").then(({content})=>{
+function drawEx(){
+  const q=(document.getElementById("eq").value||"").toLowerCase();
+  const keys=Object.keys(EX);
+  let shown=0;
+  document.getElementById("exlist").innerHTML=keys.map(k=>{
+    const v=EX[k];
+    const hits=v.ex.filter(e=>!q||(e.t+" "+v.nm).toLowerCase().includes(q));
+    if(!hits.length) return "";
+    shown+=hits.length;
+    return `<div class="card" style="margin-bottom:14px">
+      <div class="k">${v.nm}</div>
+      <p class="small muted" style="margin-bottom:12px">${v.dsc}</p>
+      ${hits.map(e=>{
+        const parts=e.t.split(" ⟶ ");
+        const body=parts.length>1
+          ? `${parts[0]} <b style="color:var(--accent)">⟶</b> <b>${parts[1]}</b>`
+          : e.t;
+        const cite=e.url
+          ? `<a href="${e.url}" target="_blank" rel="noopener">${e.src}</a>, ${e.y}`
+          : `${e.src}, ${e.y}`;
+        return `<div class="demo" style="margin-bottom:8px">${body}
+          <div class="small muted" style="font-family:var(--sans);font-style:normal;margin-top:6px">${cite}</div></div>`;
+      }).join("")}</div>`;
+  }).join("");
+  document.getElementById("ecount").textContent=`${shown} examples`;
+}
+let EX={};
+document.getElementById("eq").oninput=drawEx;
+load("content","examples").then(({content,examples})=>{
+  EX=examples; drawEx();
   T=content.templates; draw();
   document.getElementById("gsel").innerHTML=T.map(t=>`<option>${t.nm}</option>`).join("");
 });
