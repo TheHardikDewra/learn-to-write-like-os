@@ -1,0 +1,223 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Workbench - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+<style>
+.wb{display:grid;grid-template-columns:1.35fr 1fr;gap:20px;align-items:start}
+@media(max-width:980px){.wb{grid-template-columns:1fr}}
+.pane{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px}
+.pane h4{font-size:.95rem;margin-bottom:4px}
+#editor{min-height:440px;border:0;padding:0;background:transparent;font-size:1.06rem}
+#editor:focus{outline:0}
+.promptbox{background:var(--surface-2);border-radius:8px;padding:15px 17px;margin-bottom:14px}
+.promptbox .t{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin-bottom:6px}
+.promptbox .c{font-size:.85rem;color:var(--ink-2);margin-top:8px;
+  border-left:3px solid var(--accent);padding-left:11px}
+.rhythm{display:flex;gap:2px;align-items:flex-end;height:56px;margin:12px 0;overflow-x:auto;padding-bottom:2px}
+.rhythm i{display:block;width:7px;flex:none;background:var(--rule-2);border-radius:1px}
+.rhythm i.s{background:var(--accent)} .rhythm i.l{background:var(--ink-2)}
+.sug{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sug span{font-family:var(--mono);font-size:.72rem;padding:4px 9px;border-radius:5px;
+  background:var(--accent-soft);color:var(--accent);font-weight:600;cursor:pointer}
+.sug span:hover{background:var(--accent);color:var(--accent-ink)}
+.subtab{display:flex;gap:2px;margin-bottom:12px;border-bottom:1px solid var(--rule)}
+.subtab button{background:0;border:0;border-bottom:2px solid transparent;color:var(--muted);
+  font-family:var(--sans);font-size:.82rem;font-weight:600;padding:8px 12px;cursor:pointer}
+.subtab button.on{color:var(--accent);border-bottom-color:var(--accent)}
+</style></head><body>
+
+<section style="padding:44px 0 0"><div class="wrap">
+  <div class="eyebrow">The workbench</div>
+  <h2 class="h2">Write. Get measured against him.</h2>
+  <p class="lede">Every band on the right is measured from <b>his live voice</b> - the last twelve posts he published, September 2025 to July 2026. That is deliberately not his books: his 2026 sentences run 14.0 words against 16.6 in 2024, and nearly one in three is now eight words or shorter. He is still tightening. Green means you are inside his current range. This does not check whether your writing is good, it checks whether it has his <em>shape</em>. Shape is the part you can drill.</p>
+</div></section>
+
+<section style="padding:22px 0 72px"><div class="wrap"><div class="wb">
+  <div>
+    <div class="pane">
+      <div class="controls" style="margin-bottom:12px">
+        <select id="mech" style="flex:1"><option value=""> - pick a mechanic to drill - </option></select>
+        <button class="chip" id="newp">new prompt</button>
+        <button class="chip" id="clear">clear</button>
+      </div>
+      <div class="promptbox" id="pbox"><div class="t">Free write</div>
+        <div class="small muted">Pick a mechanic above to get a prompt with a hard constraint, or just write.</div></div>
+      <textarea id="editor" placeholder="Start writing. Everything is measured live and saved in this browser."></textarea>
+      <div class="small muted" id="saved" style="margin-top:8px"></div>
+    </div>
+    <div class="pane" style="margin-top:16px">
+      <h4>Rhythm</h4>
+      <div class="sub small muted">Each bar is a sentence. Orange = 8 words or fewer. Dark = 25+. You want visible gear changes, not a flat wall.</div>
+      <div class="rhythm" id="rhythm"></div>
+      <div class="small muted" id="rhythmnote"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane" style="text-align:center">
+      <div class="small muted" style="letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono);font-size:.68rem">Shape score</div>
+      <div class="score" id="score"> - </div>
+      <div class="small muted" id="scorenote">write 60+ words to score</div>
+    </div>
+    <div class="pane" style="margin-top:16px">
+      <div class="subtab">
+        <button class="on" data-tab="m">Metrics</button>
+        <button data-tab="f">Flags</button>
+        <button data-tab="s">Word swaps</button>
+      </div>
+      <div id="tab-m"></div>
+      <div id="tab-f" class="hidden"></div>
+      <div id="tab-s" class="hidden"></div>
+    </div>
+  </div>
+</div></div></section>
+
+<footer><div class="wrap"><p class="small"><a href="drills.html">← the drills</a> · <a href="regimen.html">the daily regimen →</a></p></div></footer>
+
+<script src="app.js"></script>
+<script>
+initChrome();
+const ed=document.getElementById("editor");
+const DKEY="os_draft_v1";
+ed.value=localStorage.getItem(DKEY)||"";
+
+/* --- word swap engine --- */
+let SWAPS={};
+function buildSwaps(v){
+  const m={};
+  const add=(k,val)=>{k=k.toLowerCase().replace(/[^a-z ]/g,"").trim(); if(!k)return;
+    (m[k]=m[k]||[]).push(val);};
+  v.tier_c.forEach(r=>{
+    // "replaces 'tree' - the huge spreading one" → key = tree
+    const mm=r.replaces.match(/'([^']+)'/);
+    if(mm) mm[1].split(/\s*\/\s*|\s+or\s+/).forEach(g=>add(g,r.word));
+  });
+  const A={
+    "calm":["equanimity","quietude","serene"],"quiet":["quietude","seclusion"],
+    "big":["immense","sumptuous"],"rich":["opulence","affluence","sumptuous"],
+    "tired":["lethargy","torpor","listless"],"lazy":["torpor","listless"],
+    "boring":["mundane"],"ordinary":["mundane"],"normal":["mundane"],
+    "good":["impeccable","peerless","adept","sublime"],"great":["peerless","sublime"],
+    "amazing":["peerless","resplendent","sublime"],"beautiful":["resplendent","sublime"],
+    "clean":["pristine","austere"],"simple":["austere","pristine"],"plain":["austere"],
+    "clear":["lucidity","lucid"],"clarity":["lucidity"],
+    "skilled":["adept"],"expert":["adept"],"kind":["benevolent"],
+    "passionate":["ardent"],"cheap":["frugal","frugally"],"careful with money":["frugal"],
+    "fake":["unctuous"],"smarmy":["unctuous"],"complicated":["esoteric"],"niche":["esoteric"],
+    "short lived":["transient","fleeting"],"temporary":["transient","fleeting"],
+    "hidden":["latent"],"natural":["innate"],"constant":["incessant","unrelenting"],
+    "always":["invariably","unfailingly"],"without":["devoid"],
+    "unimportant":["immaterial"],"helps":["conducive"],"strange":["inexplicable"],
+    "respect":["reverence"],"effort":["exertion"],"enough":["suffice"],
+    "gather":["muster"],"explain":["expound"],"give":["bestow","impart"],
+    "absorb":["imbibe"],"find out":["ascertain"],"list":["enumerate"],
+    "bring out":["evoke"],"start":["embark"],"calm down":["subside"],
+    "want":["hanker","longing"],"exaggerate":["overstate"],
+    "leftover":["residue"],"nature":["temperament"],"period":["stint"],
+    "cure":["panacea","elixir"],"blessing":["boon"],"history":["lineage"],
+    "focused":["engrossed"],"amazed":["spellbound"],"upset":["distraught"],
+    "thoughtful":["pensive"],"exciting":["heady"],"power":["potency"]
+  };
+  Object.entries(A).forEach(([k,arr])=>arr.forEach(w=>add(k,w)));
+  return m;
+}
+function swapsFor(text){
+  const low=" "+text.toLowerCase().replace(/[^a-z ]/g," ").replace(/\s+/g," ")+" ";
+  const hits=[];
+  for(const [gen,arr] of Object.entries(SWAPS)){
+    if(low.includes(" "+gen+" ")) hits.push([gen,[...new Set(arr)]]);
+  }
+  return hits.slice(0,26);
+}
+
+/* --- prompts --- */
+let PROMPTS=[],curPrompt=null;
+function setPrompt(p){
+  curPrompt=p; const b=document.getElementById("pbox");
+  if(!p){b.innerHTML=`<div class="t">Free write</div><div class="small muted">Pick a mechanic above to get a prompt with a hard constraint.</div>`;return;}
+  b.innerHTML=`<div class="t">${p.title}</div>
+    <div class="small">${p.prompt}</div>
+    <div class="c"><b>Constraint.</b> ${p.constraint}<br><b>Passes if.</b> ${p.check}</div>
+    <div class="small muted" style="margin-top:8px">${p.mechanic} · level ${p.level} · ~${p.minutes} min · ${p.format}</div>`;
+}
+function pickPrompt(){
+  const m=document.getElementById("mech").value;
+  const pool=PROMPTS.filter(p=>!m||p.mechanic===m);
+  setPrompt(pool.length?pool[Math.floor(Math.random()*pool.length)]:null);
+}
+document.getElementById("newp").onclick=pickPrompt;
+document.getElementById("mech").onchange=pickPrompt;
+document.getElementById("clear").onclick=()=>{if(confirm("Clear the editor?")){ed.value="";run();}};
+
+/* --- render --- */
+function run(){
+  const t=ed.value;
+  localStorage.setItem(DKEY,t);
+  document.getElementById("saved").textContent=
+    t.trim()?`${words(t).length} words · saved in this browser`:"";
+  const m=analyse(t);
+  const mt=document.getElementById("tab-m"), ft=document.getElementById("tab-f"), stx=document.getElementById("tab-s");
+  if(!m||m.n_words<60){
+    document.getElementById("score").textContent=" - ";
+    document.getElementById("scorenote").textContent="write 60+ words to score";
+    mt.innerHTML='<p class="small muted">Metrics appear once you have 60 words.</p>';
+    ft.innerHTML=""; stx.innerHTML=""; document.getElementById("rhythm").innerHTML=""; return;
+  }
+  const sc=scoreOf(m);
+  document.getElementById("score").textContent=sc;
+  document.getElementById("scorenote").textContent =
+    sc>=80?"his shape. now make it true.":sc>=60?"close. fix the reds.":sc>=40?"still yours, not his.":"start with sentence length and the flags.";
+
+  mt.innerHTML=Object.entries(BANDS).map(([k,[lo,hi,label,note]])=>{
+    const v=m[k], g=grade(k,v);
+    const span=hi-lo||1, pos=Math.max(0,Math.min(1,(v-lo)/span));
+    return `<div class="metric"><div><div class="nm">${label}</div>
+      <div class="tg">${note}</div></div>
+      <div class="v ${g}">${v}</div>
+      <div class="gauge"><i class="${g}" style="width:${(pos*100).toFixed(0)}%"></i></div></div>`;
+  }).join("")+`<p class="small muted" style="margin-top:10px">${m.n_sents} sentences · ${m.n_words} words</p>`;
+
+  const flags=findFlags(t);
+  ft.innerHTML=flags.length
+    ? flags.map(f=>`<div class="flags"><div class="hit"><b>${f.txt}</b> ${f.n>1?`×${f.n}`:""}<br>
+        <span class="small muted">${f.why}</span></div></div>`).join("")
+    : `<p class="small" style="color:var(--good)">Clean. None of the habits he dropped.</p>`;
+
+  const sw=swapsFor(t);
+  stx.innerHTML = sw.length
+    ? `<p class="small muted">Generic words you used, and what he would reach for. Click to copy.</p>`
+      + sw.map(([g,arr])=>`<div class="metric" style="display:block"><div class="nm">${g}</div>
+        <div class="sug">${arr.map(w=>`<span data-w="${w}">${w}</span>`).join("")}</div></div>`).join("")
+    : `<p class="small muted">No obvious generic words to swap. Add more text, or check the Concreteness tier on the Lexicon page.</p>`;
+  stx.querySelectorAll("[data-w]").forEach(el=>el.onclick=()=>{
+    navigator.clipboard?.writeText(el.dataset.w); el.textContent=el.dataset.w+" ✓";
+    setTimeout(()=>el.textContent=el.dataset.w,900);
+  });
+
+  const R=document.getElementById("rhythm");
+  const mx=Math.max(...m.lengths,1);
+  R.innerHTML=m.lengths.map(L=>`<i class="${L<=8?"s":L>=25?"l":""}" style="height:${Math.max(3,56*L/mx)}px" title="${L} words"></i>`).join("");
+  const shortRun=m.lengths.filter(x=>x<=8).length, longRun=m.lengths.filter(x=>x>=25).length;
+  document.getElementById("rhythmnote").textContent =
+    `${shortRun} short · ${longRun} long · ${m.beats_per1k_s} verdict beats per 1,000 sentences (his books: 16)`;
+}
+ed.addEventListener("input",run);
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  ["m","f","s"].forEach(k=>document.getElementById("tab-"+k).classList.toggle("hidden",k!==b.dataset.tab));
+});
+load("vocab").then(({vocab})=>{ SWAPS=buildSwaps(vocab); run(); });
+fetch("data/prompts.json").then(r=>r.ok?r.json():null).then(d=>{
+  if(!d||!d.prompts)return;
+  PROMPTS=d.prompts;
+  const ms=[...new Set(PROMPTS.map(p=>p.mechanic))].sort();
+  document.getElementById("mech").innerHTML=
+    '<option value=""> - any mechanic - </option>'+ms.map(m=>`<option>${m}</option>`).join("");
+}).catch(()=>{});
+run();
+</script>
+</body></html>

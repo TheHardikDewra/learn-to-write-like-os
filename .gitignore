@@ -1,0 +1,11 @@
+# never commit the source books or scraped post bodies
+*.pdf
+*.epub
+*.mobi
+books/
+text/
+raw/
+clean.json
+node_modules/
+.DS_Store
+.vercel

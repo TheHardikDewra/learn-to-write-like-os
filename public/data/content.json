@@ -1,0 +1,229 @@
+{
+ "templates": [
+  {
+   "nm": "The Verdict Beat",
+   "sh": "[long sentence 25-35w] \u2192 [3-6w judgement]",
+   "layer": "phrase",
+   "dsc": "A long sentence does the world. The short one that follows does the meaning. The short sentence never describes \u2014 it judges, negates, questions, or names the cost.",
+   "demo": "He rebuilt the checkout flow three times, tested every variant, and shipped it on a Friday because he could not bear another week of the old one. It changed nothing."
+  },
+  {
+   "nm": "The Disposable Gloss",
+   "sh": "term, plain gloss, \u2026sentence continues",
+   "layer": "phrase",
+   "dsc": "Introduce an unfamiliar word by dropping a 1-6 word plain-English gloss between commas. No parentheses, no 'which means'. The gloss is grammatically disposable \u2014 delete it and the sentence still stands.",
+   "demo": "She wanted sannidhya, nearness, more than she wanted answers."
+  },
+  {
+   "nm": "Point At It",
+   "sh": "abstract claim \u2192 physical thing in the room \u2192 4-word verdict",
+   "layer": "pattern",
+   "dsc": "Never deliver an abstraction twice in a row. State the idea, then point at something already present, then confirm in four words or fewer. The metaphysics is pointed at, not argued.",
+   "demo": "Ambition is not the problem. He pointed at the treadmill in the corner. \"That's the problem.\""
+  },
+  {
+   "nm": "Cost, Claim, Limit",
+   "sh": "[number you paid] \u2192 [the claim] \u2192 [what you are not saying]",
+   "layer": "pattern",
+   "dsc": "Before a claim strong enough to sound like a lecture, state what it cost you, with a number and zero adjectives. Make the claim. Then bound it. The order is fixed \u2014 the limit comes after, never before.",
+   "demo": "I spent eleven months and \u20b94 lakh on ads that did not convert. Positioning beats creative. I am not saying creative does not matter."
+  },
+  {
+   "nm": "We Diagnose, You Prescribe",
+   "sh": "problem in 'we' \u2192 one crossover \u2192 instruction in 'you'",
+   "layer": "pattern",
+   "dsc": "Every sentence naming a fault goes in first person plural. Every sentence giving an instruction goes in second person. One clean crossover, not an alternating mess. Ranked lists go in third person so nobody has to admit which rung they are on.",
+   "demo": "We ship the thing we can build instead of the thing they asked for. You can fix that in one afternoon: read the last twenty support tickets before you open the design file."
+  },
+  {
+   "nm": "The Echo Pivot",
+   "sh": "story ends on a line \u2192 repeat that line \u2192 colon \u2192 principle",
+   "layer": "phrase",
+   "dsc": "End the anecdote on a line of speech. Open the next paragraph by repeating that exact line, then a colon, then the principle in twelve words or fewer.",
+   "demo": "\"I just wanted someone to tell me it was fine.\" I just wanted someone to tell me it was fine: reassurance is a product, and almost nobody sells it."
+  },
+  {
+   "nm": "The Correction Frame",
+   "sh": "It is not a [wrong object]. It is a [right object].",
+   "layer": "phrase",
+   "dsc": "Name the wrong mental model your reader is already running, as a physical object, then name the right one. The analogy now does argumentative work rather than decoration.",
+   "demo": "A landing page is not a brochure. It is a doorway. A brochure is browsed; a doorway is walked through or it is not."
+  },
+  {
+   "nm": "The One-Breath Cascade",
+   "sh": "Q? shorter q? shorter q? \u2192 answer next sentence",
+   "layer": "phrase",
+   "dsc": "Three or four questions, each strictly shorter than the last, the later ones beginning lowercase so the stack reads as a single breath. Answer immediately.",
+   "demo": "What actually makes someone buy on the first visit? the thing they check before price? the one line they need to see? It is proof that somebody like them already did."
+  },
+  {
+   "nm": "The Timestamp Close",
+   "sh": "[peak of feeling] \u2192 [clock, date, or measurement]",
+   "layer": "pattern",
+   "dsc": "End the most intense passage on a clock reading or a measurement, never on a reflection. The number re-anchors the reader to the physical world at the exact moment the prose could inflate.",
+   "demo": "I sat there and let it go, all of it, the whole rotten year of it. The clock read 4.12 a.m."
+  },
+  {
+   "nm": "Number, Not Adjective",
+   "sh": "replace every intensifier with a count",
+   "layer": "lexicon",
+   "dsc": "Adjectives are for objects. Numbers are for feelings. Swap 'huge', 'endless', 'countless' for a specific, slightly odd figure. Round numbers read as estimates; odd ones read as records.",
+   "demo": "Not \"we tested loads of headlines.\" We tested forty-one headlines over nine weeks."
+  },
+  {
+   "nm": "Pre-empt the Skeptic",
+   "sh": "claim \u2192 name the three rational explanations \u2192 decline to persuade",
+   "layer": "pattern",
+   "dsc": "Offer the reader their disbelief before they can form it. Name the likely rational counter-explanations yourself. Then explicitly refuse to argue. The refusal is what buys the credibility.",
+   "demo": "You can put this down to survivorship bias, or a good month, or luck. Any of those could be right. I am not trying to convince you."
+  },
+  {
+   "nm": "The Re-Claim Beat",
+   "sh": "claim \u2192 image \u2192 restate claim in the image's noun",
+   "layer": "pattern",
+   "dsc": "The beat almost everyone skips. State the point, show the object, then state the point again using the object's own vocabulary. That third beat converts an image into an explanation.",
+   "demo": "Attention compounds. A groove cut into rock by one thin line of water a day. Your attention is the water; the groove is the only thing you will be remembered for."
+  },
+  {
+   "nm": "And So",
+   "sh": "And so, [consequence].",
+   "layer": "phrase",
+   "dsc": "His primary causal hinge in the late books, up thirtyfold since 2014. It hands off from one movement to the next without a transition paragraph.",
+   "demo": "And so, the page went live with nothing above the fold but a sentence."
+  },
+  {
+   "nm": "The Would-Tense Flashforward",
+   "sh": "object in the scene \u2192 'would' \u2192 consequence years later \u2192 resumption cue",
+   "layer": "pattern",
+   "dsc": "Jump forward in time using 'would' as a tense of destiny, not of conditionality. Trigger it off a physical object in the present scene so the leap feels caused rather than authorial, then return immediately.",
+   "demo": "He kept the first cheque in a drawer. It would sit there for nine years, outlasting two companies and one marriage. \"Anyway,\" he said, sliding the drawer shut."
+  },
+  {
+   "nm": "The Two-Beat Close",
+   "sh": "[command 2-5w]. [command 2-5w].",
+   "layer": "phrase",
+   "dsc": "His workhorse ending, roughly a third of all chapter closes. Two or three short imperatives, rhythmically balanced. It only works if the body of the piece already used 'you' heavily \u2014 then it reads as permission rather than order.",
+   "demo": "Ship it ugly. Fix it live."
+  },
+  {
+   "nm": "Definition Landing",
+   "sh": "[abstract noun] is [\u226410 words].",
+   "layer": "phrase",
+   "dsc": "Close by compressing the piece's central abstraction into a portable definition of ten words or fewer. This is the ending most likely to get quoted back at you.",
+   "demo": "Taste is just the speed at which you notice something is wrong."
+  },
+  {
+   "nm": "Concession Pivot",
+   "sh": "Granted / Then again / Having said that, X. But Y.",
+   "layer": "phrase",
+   "dsc": "Raise the counter-case against yourself before the reader does, then turn. He does this rather than defending, and it reads as confidence rather than hedging.",
+   "demo": "Granted, nobody asked for a rewrite. But nobody was reading the old one either."
+  },
+  {
+   "nm": "Confession Pivot",
+   "sh": "Truth be told, [admission that costs you]",
+   "layer": "phrase",
+   "dsc": "A flag that always precedes an admission that lowers you. Used thirteen times in one 2024 book. It buys the right to assert in the next paragraph.",
+   "demo": "Truth be told, I had not read the brief properly."
+  }
+ ],
+ "patterns": [
+  {
+   "k": "RHYTHM",
+   "nm": "Not shorter sentences. Wider range.",
+   "dsc": "The single most misread thing about his prose. Memoir to memoir, his mean sentence length went UP over ten years, from 13.6 to 14.1 words. What rose faster was the spread: standard deviation up 15%, and the odds that a long sentence is followed immediately by a very short one up about 19%. The speed you feel is the gear change, not the gear.",
+   "do": "Stop trimming toward a uniform middle. Write the 30-word sentence AND the 4-word one, and put them next to each other."
+  },
+  {
+   "k": "DICTION",
+   "nm": "He did not shorten his words. He swapped which long words.",
+   "dsc": "Mean word length did not move at all across a decade. Words of nine characters or more held steady. What collapsed was Latinate abstraction \u2014 the -tion, -ment, -ness, -ity layer fell about 35% in his instructional prose. What replaced it: proper nouns, named objects, Sanskrit terms with inline glosses, clock times.",
+   "do": "Do not simplify. Substitute. Every abstract noun gets replaced by the named thing it was standing in for."
+  },
+  {
+   "k": "ADVERBS",
+   "nm": "He breaks Stephen King's rule, and keeps the half that matters",
+   "dsc": "King says the road to hell is paved with adverbs. Tested against 950,000 words, Om Swami splits the rule in two. He does NOT purge -ly adverbs \u2014 he runs 10 to 13 per thousand words, which is ordinary for English prose. What he strips is one specific kind. Adverbs of MANNER, the ones that describe how a thing was done, run at just 1.3 per thousand words in his 2024 books, down 31% from his early ones. Roughly one every 750 words. The adverbs he keeps almost all MEASURE instead: completely, exactly, nearly, barely, merely, simply. Simply is his single most-used adverb in every era of both corpora. On King's hardest rule \u2014 never modify a dialogue tag \u2014 he is near-absolute: 5 instances in a whole 2024 book, and across the late corpus he writes plain 'said' 165 times against 36 uses of every other tag combined.",
+   "do": "Do not hunt -ly words. Hunt manner adverbs specifically. If the adverb tells the reader HOW, cut it and fix the verb. If it tells them HOW MUCH or HOW EXACTLY, keep it. And never put one next to said."
+  },
+  {
+   "k": "COMPRESSION",
+   "nm": "Dramatise only where somebody changes.",
+   "dsc": "His biggest compressor. Quoted dialogue is reserved for emotional turns and decisions. Everything logistical \u2014 a refusal, an agreement, a plan \u2014 gets one line of reported speech. A lesser writer stages both scenes.",
+   "do": "Go through your draft. Any exchange conveying procedure becomes one reported sentence. Only exchanges where somebody changes their mind keep their quotation marks."
+  },
+  {
+   "k": "AUTHORITY",
+   "nm": "Spend your own status, never the reader's.",
+   "dsc": "The butt of nearly every joke is the teacher, the expert, the master, or himself. He is the fool in his own anecdotes. Having done that, he can then write an absolute sentence and it reads as observation rather than sermon.",
+   "do": "If a joke's target is your reader or your customer, cut it. If your piece has no joke at your own expense, you have not paid for your strongest claim."
+  },
+  {
+   "k": "UNDERSTATEMENT",
+   "nm": "Language magnitude must not track event magnitude.",
+   "dsc": "Twenty-two hours of daily meditation for months gets summarised in two words. The most transcendent event in a 52,000-word book is closed with a timestamp. He states in the prologue that he understates everything about himself \u2014 and then never compensates for it later.",
+   "do": "Find your biggest moment. Cut its adjectives to zero. End it on a measurement."
+  },
+  {
+   "k": "PEAKS",
+   "nm": "Get plainer as the stakes rise.",
+   "dsc": "Measured, and counterintuitive. His longest sentences and longest words appear in dry technical exposition. His shortest words appear in the starvation chapter; his shortest sentences at the two visions. Where a normal writer reaches for grandeur, he reaches for monosyllables.",
+   "do": "Measure your most emotional passage and your most technical one. If the emotional one has longer words, invert it."
+  },
+  {
+   "k": "STRUCTURE",
+   "nm": "Delete the paragraph that explains what the scene meant.",
+   "dsc": "The clearest difference between his 2014 and 2024 books. Early Om Swami renders a scene, then adds a paragraph telling you its significance. Late Om Swami keeps one sentence of that paragraph and moves it inside the scene. Everything else is deleted.",
+   "do": "Find your explaining paragraph. Keep its best sentence. Move that sentence up into the action. Delete the rest."
+  },
+  {
+   "k": "ENDINGS",
+   "nm": "Close on an opening, not a resolution.",
+   "dsc": "His 2014 chapter endings close a loop and settle. His 2024 endings open one. Four words at the end of a chapter is the cheapest retention gain available in the whole corpus.",
+   "do": "Rewrite the last sentence of every section as something unresolved. One sentence of work per section."
+  },
+  {
+   "k": "ANALOGY",
+   "nm": "The vehicle is always humbler than the subject.",
+   "dsc": "His analogies come from kitchens, tamed animals, small children, weather, and machines you have personally operated. Never aviation, physics, war, or neuroscience. Explaining a high idea with a washing machine is a status transaction: it says the idea is not above you.",
+   "do": "Ban any source domain that is more impressive than your subject. Cut every analogy at the end of its second sentence and never call it back."
+  },
+  {
+   "k": "REFUSAL",
+   "nm": "Withholding reads as knowing more.",
+   "dsc": "He raises questions and declines to answer them \u2014 by deferring to a later chapter, naming competing versions without picking one, asserting that further reasons exist, or simply declaring something unfathomable. The prose reads as knowing more than it says. That is where 'profound' actually comes from.",
+   "do": "Raise a real question. Refuse it once, cleanly. If it reads as evasion rather than authority, the surrounding prose did not have enough hard specifics in it."
+  },
+  {
+   "k": "PROCEDURE",
+   "nm": "Never interleave instructions with narrative.",
+   "dsc": "His 2015 books interrupt a chapter on grief with a five-step exercise. His 2024 books batch every procedure into an appendix or a link. Narrative runs clean; method is exiled.",
+   "do": "Pull every numbered how-to out of your prose and put it at the end. If the piece collapses without it, the prose was carrying the instruction badly."
+  },
+  {
+   "k": "SPECIFICITY",
+   "nm": "Be most specific exactly where you are least believable.",
+   "dsc": "His starvation chapter counts hours. His vision chapter inventories the colour of a garment and then notes that the colour contradicts what he had read. Contradicting your own expected iconography is a credibility instrument \u2014 an invented account matches the picture book; a real one does not.",
+   "do": "Find your least believable true claim. Add a detail that contradicts what a reader would expect, and say that it does."
+  }
+ ],
+ "neverdo": [
+  "Semicolons yoking two independent clauses \u2014 he cut 83% of them in ten years",
+  "A participle before the subject: 'Spotting the cab, I waved' \u2192 'I waved'",
+  "The gloss paragraph after a scene, explaining what the scene meant",
+  "Latinate register-lifters: ineluctably, cogent, salutary, obversely",
+  "'Moreover' and 'furthermore' \u2014 down 93% by 2024",
+  "Hedge-then-retract: 'I'm not saying X, but at the same time\u2026'",
+  "'Studies show' or 'research suggests' \u2014 zero across 216,000 words of teaching prose",
+  "'Obviously' \u2014 zero across four books",
+  "Adverbs modifying 'said' \u2014 8 in a whole 2024 book",
+  "Exclamation marks in your own voice \u2014 5 in 52,000 words, all in dialogue",
+  "Extending a metaphor past its second sentence, or calling it back later",
+  "Ending on someone else's quotation",
+  "Weather or landscape as a chapter opening",
+  "'Little did I know', 'words cannot describe', 'a shiver ran' \u2014 all zero",
+  "Summarising at the close. No 'in conclusion', no key-takeaways box",
+  "Jokes at the reader's expense. Sarcasm anywhere",
+  "Closing on fear or consequence \u2014 every close is permission or promise"
+ ]
+}

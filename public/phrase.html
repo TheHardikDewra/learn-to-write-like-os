@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phrase - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+</head><body>
+<section style="padding-top:56px"><div class="wrap">
+  <div class="eyebrow">Layer two · the phrase</div>
+  <h2 class="h2">Eighteen shapes he reaches for</h2>
+  <p class="lede">Each of these is a named, reusable sentence template pulled from his prose. The examples are written in his shape but from your world, so you can see the mechanism rather than admire his content. Filter by layer, then drill.</p>
+  <div class="controls">
+    <input type="search" id="q" placeholder="search templates…">
+    <button class="chip on" data-l="all">all</button>
+    <button class="chip" data-l="phrase">sentence-level</button>
+    <button class="chip" data-l="pattern">structural</button>
+    <button class="chip" data-l="lexicon">word-level</button>
+  </div>
+  <div id="list"></div>
+</div></section>
+<section><div class="wrap">
+  <div class="eyebrow">Generator</div>
+  <h2 class="h2" style="font-size:1.5rem">Drill one shape</h2>
+  <p class="lede small">Pick a template, get a blank scaffold to fill. Twenty reps of one shape beats one rep of twenty.</p>
+  <div class="controls"><select id="gsel" style="flex:1"></select><button class="btn" id="gen">give me a scaffold</button></div>
+  <div class="card" id="gout"><p class="small muted">Pick a template above.</p></div>
+</div></section>
+<footer><div class="wrap"><p class="small"><a href="lexicon.html">← the lexicon</a> · <a href="pattern.html">the pattern layer →</a></p></div></footer>
+<script src="app.js"></script>
+<script>
+initChrome();
+let T=[],flt="all";
+const SCAF={
+ "The Verdict Beat":["[25-35 words of action. Something happening, concretely, with a named object in it.]","[3-6 words. A judgement. Not a description.]"],
+ "The Disposable Gloss":["[Subject] [verb] [TERM], [1-6 word plain gloss], [rest of the sentence continues normally].","Test: delete the gloss. Does it still parse?"],
+ "Point At It":["[Abstract claim, under 12 words.]","[Someone points at or picks up a thing already in the scene.]","\"[Four words or fewer.]\""],
+ "Cost, Claim, Limit":["[What it cost you. A number. Zero adjectives.]","[The claim, flat.]","I am not saying [the thing you are not claiming]."],
+ "We Diagnose, You Prescribe":["We [the fault, stated as ours].","[One crossover sentence.]","You can [the instruction, concrete, doable this week]."],
+ "The Echo Pivot":["\"[Line of speech that ends the story.]\"","[Repeat that line verbatim]: [principle in 12 words or fewer]."],
+ "The Correction Frame":["[Thing] is not a [wrong object]. It is a [right object].","[One sentence on what the right object DOES that the wrong one does not.]"],
+ "The One-Breath Cascade":["[Question, longest?]","[shorter question?]","[shortest question?]","[Answer, immediately.]"],
+ "The Timestamp Close":["[The peak. Let it run.]","[A clock time, a date, or a measurement. Nothing else.]"],
+ "Number, Not Adjective":["Before: [your sentence with an intensifier]","After: [same sentence, intensifier replaced by an odd specific number]"],
+ "Pre-empt the Skeptic":["[The claim, plainly narrated.]","You could put this down to [rational explanation one], or [two], or [three].","[One factual, non-boastful credential.]","[A sentence declining to persuade.]"],
+ "The Re-Claim Beat":["[Claim, flat, under 15 words.]","[Concrete physical image, 1-2 sentences.]","[The claim again, using the image's own noun.]"],
+ "And So":["[Preceding movement ends.]","And so, [the consequence]."],
+ "The Would-Tense Flashforward":["[A physical object in the present scene.]","It would [consequence], [time interval] later, [what it outlasted].","\"[Resumption cue that returns you to the scene.]\""],
+ "The Two-Beat Close":["[Command, 2-5 words].","[Command, 2-5 words]."],
+ "Definition Landing":["[The piece's central abstract noun] is [10 words or fewer]."],
+ "Concession Pivot":["Granted, [the counter-case against you]. But [your turn]."],
+ "Confession Pivot":["Truth be told, [an admission that lowers you]."]
+};
+function draw(){
+  const q=document.getElementById("q").value.toLowerCase();
+  document.getElementById("list").innerHTML=T.filter(t=>
+    (flt==="all"||t.layer===flt) && (!q||(t.nm+t.dsc+t.sh).toLowerCase().includes(q)))
+    .map(t=>`<div class="tpl"><div class="nm">${t.nm}</div><div class="sh">${t.sh}</div>
+      <div class="dsc">${t.dsc}</div><div class="demo">${t.demo}</div></div>`).join("")
+    || '<p class="small muted">Nothing matches.</p>';
+}
+document.getElementById("q").oninput=draw;
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("[data-l]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); flt=b.dataset.l; draw();
+});
+document.getElementById("gen").onclick=()=>{
+  const nm=document.getElementById("gsel").value, s=SCAF[nm];
+  const t=T.find(x=>x.nm===nm);
+  document.getElementById("gout").innerHTML= s
+    ? `<div class="k">${nm}</div><div class="sh mono small" style="color:var(--accent);margin-bottom:10px">${t?t.sh:""}</div>
+       ${s.map(l=>`<div class="demo" style="margin-bottom:8px">${l}</div>`).join("")}
+       <p class="small muted" style="margin-top:12px">Write twenty of these. Then take the best three into the <a href="workbench.html">Workbench</a>.</p>`
+    : `<p class="small muted">No scaffold for that one yet - use the shape line above it.</p>`;
+};
+load("content").then(({content})=>{
+  T=content.templates; draw();
+  document.getElementById("gsel").innerHTML=T.map(t=>`<option>${t.nm}</option>`).join("");
+});
+</script></body></html>

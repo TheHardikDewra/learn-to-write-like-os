@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lexicon - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+</head><body>
+
+<section style="padding-top:56px"><div class="wrap">
+  <div class="eyebrow">Layer one · the word</div>
+  <h2 class="h2">158 words, three tiers</h2>
+  <p class="lede">Pulled statistically from 589,000 words: every word rarer than everyday English that he uses far more than average, then filtered so what survives is <em>voice</em> rather than subject matter. Words spread across many books are voice. Words clustered in one book are that book's topic, and those were cut.</p>
+
+  <div class="grid g3" style="margin-bottom:34px">
+    <div class="card"><div class="k">Tier A · 80 words</div><h3>Portable</h3><p class="small muted">Rare enough to be worth learning, secular enough to survive a client call. Use these tomorrow.</p></div>
+    <div class="card"><div class="k">Tier B · 38 terms</div><h3>Dharmic</h3><p class="small muted">Sanskrit that carries precision English loses. Each one says when to reach for it over the English near-miss.</p></div>
+    <div class="card"><div class="k">Tier C · 40 words</div><h3>Concrete</h3><p class="small muted">Not hard words. Specific ones. Each kills a generic noun: banyan instead of tree, jaggery instead of sugar.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="eyebrow">Trainer</div>
+  <h2 class="h2" style="font-size:1.5rem">Flashcards</h2>
+  <p class="lede small">Spaced repetition, saved in this browser. <b>Space</b> flips, <b>1</b> again, <b>2</b> hard, <b>3</b> got it.</p>
+  <div class="controls">
+    <button class="chip on" data-deck="a">Tier A</button>
+    <button class="chip" data-deck="b">Tier B</button>
+    <button class="chip" data-deck="c">Tier C</button>
+    <button class="chip" data-deck="due">Due only</button>
+    <span class="small muted" id="deckinfo" style="margin-left:auto"></span>
+  </div>
+  <div class="fc" id="card"><div class="muted small">loading…</div></div>
+  <div class="fc-bar">
+    <button class="btn ghost" id="flip">Flip &nbsp;<kbd>space</kbd></button>
+    <button class="btn ghost" id="g1">Again <kbd>1</kbd></button>
+    <button class="btn ghost" id="g2">Hard <kbd>2</kbd></button>
+    <button class="btn" id="g3">Got it <kbd>3</kbd></button>
+    <button class="chip" id="reset" style="margin-left:12px">reset progress</button>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Reference</div>
+  <h2 class="h2" style="font-size:1.5rem">The full list</h2>
+  <div class="controls">
+    <input type="search" id="q" placeholder="search word, meaning, or example…">
+    <button class="chip on" data-t="a">A · portable</button>
+    <button class="chip on" data-t="b">B · dharmic</button>
+    <button class="chip on" data-t="c">C · concrete</button>
+    <select id="lvl"><option value="">any difficulty</option><option value="1">1 · use tomorrow</option>
+      <option value="2">2 · writing first</option><option value="3">3 · one per essay</option></select>
+  </div>
+  <div class="scroller"><table class="tbl"><thead><tr>
+    <th style="width:130px">Word</th><th style="width:34%">Means</th><th>Use it like this</th><th style="width:52px">Tier</th>
+  </tr></thead><tbody id="rows"></tbody></table></div>
+  <p class="small muted" style="margin-top:12px" id="cnt"></p>
+</div></section>
+
+<footer><div class="wrap"><p class="small"><a href="index.html">← back to overview</a> · next: <a href="phrase.html">the phrase layer →</a></p></div></footer>
+
+<script src="app.js"></script>
+<script>
+initChrome();
+const KEY="os_srs_v1";
+let SRS=JSON.parse(localStorage.getItem(KEY)||"{}");
+const save=()=>localStorage.setItem(KEY,JSON.stringify(SRS));
+let ALL=[],deck="a",queue=[],cur=null,shown=false;
+
+function norm(v){
+  const A=v.tier_a.map(r=>({id:"a:"+r.word,tier:"a",word:r.word,sub:r.pos,def:r.def,ex:r.example,lvl:r.difficulty}));
+  const B=v.tier_b.map(r=>({id:"b:"+r.term,tier:"b",word:r.term,sub:"sanskrit",def:r.def,ex:r.when,lvl:2}));
+  const C=v.tier_c.map(r=>({id:"c:"+r.word,tier:"c",word:r.word,sub:r.domain,def:"replaces "+r.replaces,ex:"",lvl:1}));
+  return [...A,...B,...C];
+}
+const now=()=>Date.now();
+function due(c){const s=SRS[c.id]; return !s||s.due<=now();}
+function build(){
+  let pool = deck==="due" ? ALL.filter(due) : ALL.filter(c=>c.tier===deck);
+  if(deck!=="due") pool=pool.sort((x,y)=>(due(y)?1:0)-(due(x)?1:0));
+  else pool=pool.sort(()=>Math.random()-.5);
+  queue=pool; next();
+  document.getElementById("deckinfo").textContent =
+    `${ALL.filter(due).length} due of ${ALL.length} · ${Object.keys(SRS).length} started`;
+}
+function next(){ cur=queue.shift()||null; shown=false; render(); }
+function render(){
+  const el=document.getElementById("card");
+  if(!cur){el.innerHTML=`<div class="word" style="font-size:1.6rem">Deck clear</div>
+    <div class="def muted">Nothing due in this tier. Switch decks or come back later.</div>`;return;}
+  el.innerHTML=`<div class="pos">${cur.sub||""} · tier ${cur.tier.toUpperCase()}</div>
+    <div class="word">${cur.word}</div>
+    <div class="def ${shown?"":"hidden"}">${cur.def}</div>
+    ${cur.ex?`<div class="exs ${shown?"":"hidden"}">${cur.ex}</div>`:""}
+    ${shown?"":'<div class="small muted">press space to flip</div>'}`;
+}
+function gradeCard(g){
+  if(!cur)return;
+  const s=SRS[cur.id]||{n:0};
+  const mins=g===1?1:g===2?(s.n?60*10:10):(s.n?60*24*Math.min(30,2**s.n):60*24);
+  s.n=g===1?0:(s.n||0)+1; s.due=now()+mins*60000; SRS[cur.id]=s; save();
+  if(g===1) queue.push(cur);
+  next();
+  document.getElementById("deckinfo").textContent =
+    `${ALL.filter(due).length} due of ${ALL.length} · ${Object.keys(SRS).length} started`;
+}
+document.getElementById("flip").onclick=()=>{shown=!shown;render();};
+document.getElementById("g1").onclick=()=>gradeCard(1);
+document.getElementById("g2").onclick=()=>gradeCard(2);
+document.getElementById("g3").onclick=()=>gradeCard(3);
+document.getElementById("reset").onclick=()=>{if(confirm("Clear all flashcard progress?")){SRS={};save();build();}};
+addEventListener("keydown",e=>{
+  if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+  if(e.code==="Space"){e.preventDefault();shown=!shown;render();}
+  if(e.key==="1")gradeCard(1); if(e.key==="2")gradeCard(2); if(e.key==="3")gradeCard(3);
+});
+document.querySelectorAll("[data-deck]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("[data-deck]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); deck=b.dataset.deck; build();
+});
+
+const tiers={a:true,b:true,c:true};
+function table(){
+  const q=document.getElementById("q").value.toLowerCase();
+  const lv=document.getElementById("lvl").value;
+  const rows=ALL.filter(c=>tiers[c.tier]
+    && (!lv||String(c.lvl)===lv)
+    && (!q||(c.word+" "+c.def+" "+c.ex).toLowerCase().includes(q)));
+  document.getElementById("rows").innerHTML=rows.map(c=>`<tr>
+    <td class="w">${c.word}<div class="small muted" style="font-weight:400;font-family:var(--sans)">${c.sub||""}</div></td>
+    <td>${c.def}</td><td class="ex">${c.ex||"<span class='muted'> - </span>"}</td>
+    <td><span class="pill ${c.tier==="a"?"own":"no"}">${c.tier.toUpperCase()}</span></td></tr>`).join("");
+  document.getElementById("cnt").textContent=`${rows.length} of ${ALL.length} shown`;
+}
+document.getElementById("q").oninput=table;
+document.getElementById("lvl").onchange=table;
+document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{
+  b.classList.toggle("on"); tiers[b.dataset.t]=b.classList.contains("on"); table();
+});
+load("vocab").then(({vocab})=>{ ALL=norm(vocab); build(); table(); });
+</script>
+</body></html>

@@ -1,0 +1,61 @@
+{
+ "headline": "He keeps measuring adverbs and cuts manner adverbs.",
+ "rows": [
+  {
+   "corpus": "Books 2012-16",
+   "ly_per1k": 13.01,
+   "manner_per1k": 1.92,
+   "tag_adverbs_per_Mw": 173.1
+  },
+  {
+   "corpus": "Books 2024",
+   "ly_per1k": 10.18,
+   "manner_per1k": 1.33,
+   "tag_adverbs_per_Mw": 101.3
+  },
+  {
+   "corpus": "Blog 2011-12",
+   "ly_per1k": 12.88,
+   "manner_per1k": 1.92,
+   "tag_adverbs_per_Mw": 114.6
+  },
+  {
+   "corpus": "Blog live, last 12 posts",
+   "ly_per1k": 12.76,
+   "manner_per1k": 1.91,
+   "tag_adverbs_per_Mw": 76.4
+  }
+ ],
+ "composition_2024_books": {
+  "manner": 9.8,
+  "degree_measure": 27.2,
+  "time_frequency": 11.9,
+  "stance_linking": 12.7,
+  "other": 38.4
+ },
+ "top_adverbs_2024_books": [
+  "completely",
+  "simply",
+  "deeply",
+  "immediately",
+  "eventually",
+  "finally",
+  "exactly",
+  "nearly",
+  "extremely",
+  "certainly"
+ ],
+ "dialogue_tags_late": {
+  "said": 165,
+  "asked": 14,
+  "replied": 10,
+  "whispered": 4,
+  "chuckled": 2,
+  "thundered": 2,
+  "retorted": 1,
+  "countered": 1,
+  "hollered": 1,
+  "shouted": 1
+ },
+ "verdict": "Obeys the spirit of King's rule, not the letter. Adverbs that measure survive. Adverbs that describe manner are cut. Dialogue tags are never modified."
+}

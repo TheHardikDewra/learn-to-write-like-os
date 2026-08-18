@@ -1,0 +1,43 @@
+{
+ "live": {
+  "span": [
+   "2025-09-30",
+   "2026-07-19"
+  ],
+  "posts": 12,
+  "sents": 917,
+  "words": 13049,
+  "sent_mean": 14.2,
+  "sent_sd": 8.8,
+  "pct_le8": 30.2,
+  "pct_ge30": 6.3,
+  "pct_1syl": 71.7,
+  "pct_ge4syl": 2.4,
+  "pct_latinate": 2.6,
+  "pct_ly_adverb": 1.4,
+  "comma_per_sent": 1.07,
+  "mean_word_len": 4.27,
+  "burstiness": 9.0,
+  "beats_per1k_s": 21.8,
+  "conj_open_pct": 12.9,
+  "semicolon_per1k": 0.0,
+  "emdash_total": 10,
+  "excl_per1k": 0.38,
+  "you_per1k": 28.2,
+  "I_per1k": 19.0,
+  "we_per1k": 13.8
+ },
+ "books2024": {
+  "sent_mean": 14.2,
+  "sent_median": 13.0,
+  "pct_le8": 29.6,
+  "pct_ge30": 6.4,
+  "pct_1syl": 68.2,
+  "pct_ge4syl": 3.3,
+  "pct_latinate": 3.0,
+  "pct_ly_adverb": 1.1,
+  "comma_per_sent": 1.02,
+  "mean_word_len": 4.39,
+  "burstiness": 8.6
+ }
+}

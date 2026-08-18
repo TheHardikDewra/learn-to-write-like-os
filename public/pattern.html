@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pattern - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+</head><body>
+<section style="padding-top:56px"><div class="wrap">
+  <div class="eyebrow">Layer three · the pattern</div>
+  <h2 class="h2">The moves above the sentence</h2>
+  <p class="lede">Vocabulary you can borrow in a week. Sentence shapes take a month. These are the structural habits, and they are what actually separates his 2024 prose from his 2014 prose. Each one states the finding, then what to do about it on Monday.</p>
+  <div id="pats"></div>
+</div></section>
+<section><div class="wrap">
+  <div class="eyebrow">Tested claim</div>
+  <h2 class="h2" style="font-size:1.6rem">The Stephen King adverb rule, checked against 950,000 words</h2>
+  <p class="lede">"The road to hell is paved with adverbs." It is the most repeated piece of writing advice there is, so it is worth knowing whether the writer you admire actually follows it. He follows half of it, and the half he ignores is the half most people obsess over.</p>
+  <div class="scroller" style="max-height:none"><table class="tbl"><thead><tr>
+    <th>Corpus</th><th>All -ly per 1k</th><th>Manner adverbs per 1k</th><th>Adverbs on "said" per million</th>
+  </tr></thead><tbody id="advrows"></tbody></table></div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><div class="k">What he cuts</div><h3>Manner</h3>
+      <p class="small muted">Adverbs saying HOW something was done: angrily, gently, quietly, hurriedly. Down 31% between his early and late books, to about one every 750 words. On dialogue tags he is near-absolute - five in a whole 2024 book.</p></div>
+    <div class="card"><div class="k">What he keeps</div><h3>Measure</h3>
+      <p class="small muted">Adverbs saying HOW MUCH or HOW EXACTLY: completely, exactly, nearly, barely, merely, simply. These he uses freely. "Simply" is his single most-used adverb in every era of both corpora.</p></div>
+  </div>
+  <div class="note"><b>The rule to actually follow</b><p class="small" style="margin:0">Do not hunt for -ly words. Hunt for manner adverbs. If the word tells the reader how, cut it and fix the verb instead. If it tells them how much, keep it. And never put one beside "said" - across his late corpus he writes plain "said" 165 times against 36 uses of every other tag combined.</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Negative space</div>
+  <h2 class="h2">What he never does</h2>
+  <p class="lede">Counted across the corpus and found at zero or near zero. This list is more useful than the positive one, because deletion needs no talent. Start here.</p>
+  <div class="card"><div id="never"></div></div>
+</div></section>
+<footer><div class="wrap"><p class="small"><a href="phrase.html">← the phrase layer</a> · <a href="workbench.html">go write →</a></p></div></footer>
+<script src="app.js"></script>
+<script>
+initChrome();
+load("content","adverbs").then(({content,adverbs})=>{
+  document.getElementById("advrows").innerHTML=adverbs.rows.map(r=>`<tr>
+    <td class="w" style="font-size:.92rem">${r.corpus}</td>
+    <td class="mono">${r.ly_per1k}</td>
+    <td class="mono" style="color:var(--accent);font-weight:700">${r.manner_per1k}</td>
+    <td class="mono">${r.tag_adverbs_per_Mw}</td></tr>`).join("");
+  document.getElementById("pats").innerHTML=content.patterns.map(p=>`
+    <div class="card" style="margin-bottom:14px">
+      <div class="k">${p.k}</div><h3>${p.nm}</h3>
+      <p class="small" style="color:var(--ink-2)">${p.dsc}</p>
+      <div class="test" style="font-size:.88rem;padding:11px 14px;background:var(--surface-2);
+           border-radius:7px;border-left:3px solid var(--accent);margin-top:10px">
+        <b style="font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+           color:var(--accent);display:block;margin-bottom:4px">Do this</b>${p.do}</div>
+    </div>`).join("");
+  document.getElementById("never").innerHTML=content.neverdo.map(n=>
+    `<div class="metric"><div class="nm">${n}</div><div class="v off" style="font-size:.8rem">cut</div></div>`).join("");
+});
+</script></body></html>

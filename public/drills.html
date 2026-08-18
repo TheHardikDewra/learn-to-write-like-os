@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drills - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+</head><body>
+<section style="padding-top:56px"><div class="wrap">
+  <div class="eyebrow">The gym</div>
+  <h2 class="h2">Thirty-six drills</h2>
+  <p class="lede">Each isolates one mechanic and carries a pass/fail test you can apply without asking anyone's opinion. That test is the whole point - if you cannot fail a drill, you are not practising, you are producing. Tick them off; progress is saved in this browser.</p>
+  <div class="controls">
+    <input type="search" id="q" placeholder="search drills…">
+    <select id="ph"><option value="">all phases</option><option value="1">Phase 1 · Demolition</option>
+      <option value="2">Phase 2 · Construction</option><option value="3">Phase 3 · Voice</option></select>
+    <select id="tg"><option value="">all skills</option></select>
+    <span class="small muted" id="done" style="margin-left:auto"></span>
+  </div>
+  <div id="list"></div>
+</div></section>
+<footer><div class="wrap"><p class="small"><a href="pattern.html">← patterns</a> · <a href="regimen.html">the regimen →</a></p></div></footer>
+<script src="app.js"></script>
+<script>
+initChrome();
+const K="os_drills_v1"; let DONE=JSON.parse(localStorage.getItem(K)||"{}"), D=[];
+const save=()=>localStorage.setItem(K,JSON.stringify(DONE));
+function draw(){
+  const q=document.getElementById("q").value.toLowerCase();
+  const ph=document.getElementById("ph").value, tg=document.getElementById("tg").value;
+  const rows=D.filter(d=>(!ph||String(d.phase)===ph)&&(!tg||d.tag===tg)
+    &&(!q||(d.nm+d.trains+d.do+d.tag).toLowerCase().includes(q)));
+  document.getElementById("list").innerHTML=rows.map(d=>`
+    <div class="drill">
+      <div class="drill-h">
+        <h4><label style="cursor:pointer;display:flex;gap:10px;align-items:center">
+          <input type="checkbox" class="chk" data-id="${d.id}" ${DONE[d.id]?"checked":""}>
+          <span style="${DONE[d.id]?"opacity:.55":""}">${d.nm}</span></label></h4>
+        <div><span class="tag">${d.tag}</span> <span class="tag">phase ${d.phase}</span> <span class="tag">${d.min} min</span></div>
+      </div>
+      <div class="trains">${d.trains}</div>
+      <div class="do">${d.do}</div>
+      <div class="test"><b>Passes if</b>${d.test}</div>
+    </div>`).join("")||'<p class="small muted">Nothing matches.</p>';
+  document.querySelectorAll(".chk").forEach(c=>c.onchange=()=>{
+    DONE[c.dataset.id]=c.checked; if(!c.checked) delete DONE[c.dataset.id]; save(); draw();});
+  document.getElementById("done").textContent=`${Object.keys(DONE).length} of ${D.length} done`;
+}
+["q","ph","tg"].forEach(id=>{const e=document.getElementById(id);
+  e.oninput=draw; e.onchange=draw;});
+load("drills").then(({drills})=>{
+  D=drills.drills;
+  document.getElementById("tg").innerHTML='<option value="">all skills</option>'+
+    [...new Set(D.map(d=>d.tag))].sort().map(t=>`<option>${t}</option>`).join("");
+  draw();
+});
+</script></body></html>

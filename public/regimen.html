@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regimen - Write like Om Swami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
+</head><body>
+<section style="padding-top:56px"><div class="wrap">
+  <div class="eyebrow">The programme</div>
+  <h2 class="h2">Eight hours a day, twelve weeks</h2>
+  <p class="lede">You said you would give it eight hours. Here is what eight hours looks like when it is aimed rather than merely spent. Three phases: strip, build, then voice. The order matters - subtraction first, because deletion needs no talent and it is what makes room for everything else.</p>
+  <div class="note"><b>How to run this</b><p class="small" style="margin:0">Do the day in order. The break is not optional. Never skip Block 4 to do more of Block 3 - drills without shipping produce a technician who has never faced a reader. On a day you can only give two hours, do Block 1, Block 3, and Block 7.</p></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="eyebrow">Every day</div>
+  <h2 class="h2" style="font-size:1.6rem">The eight-hour block</h2>
+  <div class="phase" id="day"></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Twelve weeks</div>
+  <h2 class="h2" style="font-size:1.6rem">The arc</h2>
+  <span class="small muted" id="prog"></span>
+  <div id="phases" style="margin-top:14px"></div>
+</div></section>
+
+<footer><div class="wrap"><p class="small"><a href="drills.html">← the drills</a> · <a href="workbench.html">go write →</a></p></div></footer>
+<script src="app.js"></script>
+<script>
+initChrome();
+const K="os_week_v1"; let W=JSON.parse(localStorage.getItem(K)||"{}");
+const save=()=>localStorage.setItem(K,JSON.stringify(W));
+load("schedule","drills").then(({schedule,drills})=>{
+  const DM=Object.fromEntries(drills.drills.map(d=>[d.id,d]));
+  let clock=0;
+  document.getElementById("day").innerHTML=schedule.day.map(b=>{
+    const h=Math.floor(clock/60), m=clock%60; clock+=b.min;
+    const start=`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;
+    return `<div class="wk"><div class="n">+${start}<div style="color:var(--faint);font-weight:400">${b.min} min</div></div>
+      <div><h4>${b.nm}</h4><p class="small" style="color:var(--ink-2);margin:0 0 6px">${b.d}</p>
+      <p class="small muted" style="margin:0"><b>Why.</b> ${b.why}</p></div></div>`;
+  }).join("")+`<div class="wk"><div class="n">= 8h</div><div><h4>Total</h4>
+      <p class="small muted" style="margin:0">Eight hours exactly. Start whenever you wake - the clock is relative, not absolute. You are a night owl; run it from noon and finish at eight.</p></div></div>`;
+
+  document.getElementById("phases").innerHTML=schedule.phases.map(p=>`
+    <div class="phase">
+      <div class="phase-h"><div><h3>Phase ${p.n} · ${p.nm}</h3>
+        <div class="small muted">Weeks ${p.weeks}</div></div>
+        <div class="small" style="max-width:52ch;color:var(--ink-2)">${p.goal}</div></div>
+      ${p.w.map(w=>`<div class="wk">
+        <div class="n">WK ${w.n}<div style="margin-top:6px"><input type="checkbox" class="chk wchk" data-w="${w.n}" ${W[w.n]?"checked":""}></div></div>
+        <div><h4>${w.nm}</h4>
+          <p class="small" style="color:var(--ink-2);margin:0 0 6px">${w.focus}</p>
+          <p class="small muted" style="margin:0 0 4px"><b>Read aloud this week.</b> ${w.book}</p>
+          <ul>${w.tasks.map(t=>`<li>${t}</li>`).join("")}</ul>
+          <div class="small" style="margin-top:8px"><b>Drills.</b> ${w.drills.map(id=>DM[id]?`<a href="drills.html">${DM[id].nm}</a>`:id).join(" · ")}</div>
+          <div class="ship">Ship: ${w.ship}</div></div></div>`).join("")}
+    </div>`).join("");
+
+  function prog(){document.getElementById("prog").textContent=
+    `${Object.keys(W).length} of 12 weeks complete`;}
+  document.querySelectorAll(".wchk").forEach(c=>c.onchange=()=>{
+    W[c.dataset.w]=c.checked; if(!c.checked) delete W[c.dataset.w]; save(); prog();});
+  prog();
+});
+</script></body></html>
