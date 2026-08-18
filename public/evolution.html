@@ -92,14 +92,28 @@ function mini(el,pts,{alt=null,lab="",altLab="",h=150,bars=false}={}){
   let body;
   if(bars){
     const bw=Math.max(3,(w-pad.l-pad.r)/pts.length-3);
-    body=pts.map((p,i)=>`<rect class="bar ${p.y===0?"dim":""}" x="${X(i)-bw/2}" y="${Y(p.y)}" width="${bw}" height="${Math.max(1,Y(mn)-Y(p.y))}"><title>${p.x}: ${p.y}</title></rect>`).join("");
+    body=pts.map((p,i)=>{
+      const h=Y(mn)-Y(p.y);
+      if(p.y===0) return `<rect x="${X(i)-bw/2}" y="${Y(mn)-2}" width="${bw}" height="2" fill="var(--rule-2)"><title>${p.x}: 0</title></rect>`;
+      return `<rect class="bar" x="${X(i)-bw/2}" y="${Y(p.y)}" width="${bw}" height="${h}"><title>${p.x}: ${p.y}</title></rect>`;
+    }).join("");
   } else {
     const path=a=>a.map((p,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(p.y).toFixed(1)).join(" ");
     body=(alt?`<path class="ln alt" d="${path(alt)}"/>`:"")+`<path class="ln" d="${path(pts)}"/>`+
       pts.map((p,i)=>`<circle class="dot" cx="${X(i)}" cy="${Y(p.y)}" r="2.4"><title>${p.x}: ${p.y}</title></circle>`).join("");
   }
   const step=Math.ceil(pts.length/6);
-  const xl=pts.map((p,i)=>(i%step===0||i===pts.length-1)?`<text class="lbl" x="${X(i)}" y="${h-7}" text-anchor="${i===0?'start':i===pts.length-1?'end':'middle'}">${p.x}</text>`:"").join("");
+  const MINGAP=52;
+  let lastX=-1e9;
+  const xl=pts.map((p,i)=>{
+    const isLast=i===pts.length-1;
+    if(!(i%step===0||isLast)) return "";
+    const x=X(i);
+    if(!isLast && x-lastX<MINGAP) return "";
+    if(isLast && x-lastX<MINGAP) return "";   // never overlap the previous label
+    lastX=x;
+    return `<text class="lbl" x="${x}" y="${h-7}" text-anchor="${i===0?'start':isLast?'end':'middle'}">${p.x}</text>`;
+  }).join("");
   el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" style="height:${h}px">${g}${body}${xl}</svg>`+
     (alt?`<div class="small muted" style="margin-top:5px"><span style="color:var(--accent)">▬</span> ${lab} &nbsp; <span style="color:var(--muted)">▭</span> ${altLab}</div>`:"");
 }
