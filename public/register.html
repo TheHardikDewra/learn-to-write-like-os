@@ -124,7 +124,7 @@ document.getElementById("lp").innerHTML=LP.map((r,i)=>`<div class="wk"
 load("arc").then(({arc})=>{
   const mx=Math.max(...arc.arc.flatMap(d=>[d.you,d.I,d.we]));
   const H=v=>Math.max(2,Math.round(150*v/mx));
-  document.getElementById("arc").innerHTML=arc.arc.map(d=>`<div class="col" title="${d.decile} of the post — you ${d.you} · I ${d.I} · we ${d.we} · imperatives ${d.imp}%">
+  document.getElementById("arc").innerHTML=arc.arc.map(d=>`<div class="col" title="${d.decile} of the post - you ${d.you} · I ${d.I} · we ${d.we} · imperatives ${d.imp}%">
     <i style="height:${H(d.you)}px;background:var(--accent)"></i>
     <i style="height:${H(d.I)}px;background:var(--ink-2)"></i>
     <i style="height:${H(d.we)}px;background:var(--rule-2)"></i></div>`).join("");
