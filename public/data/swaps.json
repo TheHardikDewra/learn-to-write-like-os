@@ -1,0 +1,311 @@
+{
+"calm": [
+"equanimity",
+"quietude",
+"placid",
+"serene",
+"composure"
+],
+"quiet": [
+"quietude",
+"seclusion",
+"stillness"
+],
+"tired": [
+"lassitude",
+"torpor",
+"listless",
+"lethargy"
+],
+"lazy": [
+"torpor",
+"indolent",
+"listless"
+],
+"boring": [
+"mundane"
+],
+"ordinary": [
+"mundane"
+],
+"good": [
+"peerless",
+"impeccable",
+"adept"
+],
+"great": [
+"peerless",
+"consummate"
+],
+"amazing": [
+"peerless",
+"resplendent"
+],
+"beautiful": [
+"lissom",
+"resplendent"
+],
+"bright": [
+"effulgent",
+"resplendent",
+"luminous"
+],
+"rich": [
+"opulence",
+"affluence",
+"sumptuous",
+"opulent"
+],
+"clean": [
+"austere",
+"pristine",
+"immaculate"
+],
+"simple": [
+"austere"
+],
+"clear": [
+"lucidity",
+"lucid"
+],
+"skilled": [
+"adept"
+],
+"kind": [
+"magnanimous",
+"benevolent"
+],
+"eager": [
+"ardent"
+],
+"fake": [
+"unctuous"
+],
+"complicated": [
+"esoteric"
+],
+"short": [
+"ephemeral",
+"transient",
+"fleeting"
+],
+"temporary": [
+"ephemeral",
+"transient",
+"fleeting"
+],
+"hidden": [
+"latent",
+"dormant"
+],
+"constant": [
+"incessant",
+"unrelenting"
+],
+"always": [
+"unfailingly",
+"invariably"
+],
+"without": [
+"bereft",
+"devoid"
+],
+"unimportant": [
+"immaterial",
+"negligible"
+],
+"strange": [
+"inexplicable",
+"uncanny"
+],
+"respect": [
+"deference",
+"veneration",
+"reverence"
+],
+"effort": [
+"exertion"
+],
+"gather": [
+"muster"
+],
+"explain": [
+"expound",
+"elucidate"
+],
+"give": [
+"bestow",
+"impart"
+],
+"absorb": [
+"imbibe",
+"assimilate"
+],
+"list": [
+"enumerate"
+],
+"start": [
+"embark"
+],
+"settle": [
+"subside"
+],
+"want": [
+"hanker",
+"covet"
+],
+"nature": [
+"temperament"
+],
+"cure": [
+"panacea",
+"elixir"
+],
+"crying": [
+"lachrymal",
+"weeping"
+],
+"graceful": [
+"lissom",
+"supple"
+],
+"sulky": [
+"petulantly",
+"petulant"
+],
+"unlucky": [
+"haplessly"
+],
+"shaky": [
+"palsied"
+],
+"walk": [
+"circumambulate"
+],
+"sad": [
+"dejected"
+],
+"happy": [
+"elated"
+],
+"angry": [
+"irate"
+],
+"proud": [
+"haughty"
+],
+"humble": [
+"unassuming"
+],
+"big": [
+"colossal"
+],
+"weak": [
+"tenuous",
+"frail",
+"feeble"
+],
+"hard": [
+"arduous"
+],
+"easy": [
+"effortless"
+],
+"empty": [
+"barren",
+"desolate"
+],
+"full": [
+"replete",
+"brimming"
+],
+"lying": [
+"deceit"
+],
+"generous": [
+"magnanimous"
+],
+"careful": [
+"meticulous",
+"prudent"
+],
+"patient": [
+"forbearance"
+],
+"smell": [
+"aroma",
+"stench"
+],
+"light": [
+"effulgent",
+"radiance",
+"luminous"
+],
+"dark": [
+"sombre",
+"gloom"
+],
+"joy": [
+"elation"
+],
+"sadness": [
+"melancholy"
+],
+"peace": [
+"tranquillity",
+"serenity"
+],
+"tiredness": [
+"lassitude",
+"weariness"
+],
+"money": [
+"affluence",
+"opulence"
+],
+"beginning": [
+"outset"
+],
+"end": [
+"cessation",
+"culmination"
+],
+"change": [
+"metamorphosis"
+],
+"destroy": [
+"annihilate"
+],
+"forgive": [
+"absolve"
+],
+"teach": [
+"impart",
+"instruct"
+],
+"learn": [
+"imbibe",
+"assimilate"
+],
+"think": [
+"ruminate",
+"ponder",
+"contemplate"
+],
+"walk around": [
+"circumambulate"
+],
+"wave": [
+"gesticulate"
+],
+"pour": [
+"deluge"
+],
+"leave": [
+"forsake",
+"relinquish"
+],
+"agree": [
+"concur"
+]
+}

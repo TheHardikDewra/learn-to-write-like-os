@@ -85,52 +85,16 @@ const DKEY="os_draft_v1";
 ed.value=localStorage.getItem(DKEY)||"";
 
 /* --- word swap engine --- */
-let SWAPS={};
-function buildSwaps(v){
-  const m={};
-  const add=(k,val)=>{k=k.toLowerCase().replace(/[^a-z ]/g,"").trim(); if(!k)return;
-    (m[k]=m[k]||[]).push(val);};
-  v.tier_c.forEach(r=>{
-    // "replaces 'tree' - the huge spreading one" → key = tree
-    const mm=r.replaces.match(/'([^']+)'/);
-    if(mm) mm[1].split(/\s*\/\s*|\s+or\s+/).forEach(g=>add(g,r.word));
-  });
-  const A={
-    "calm":["equanimity","quietude","serene"],"quiet":["quietude","seclusion"],
-    "big":["immense","sumptuous"],"rich":["opulence","affluence","sumptuous"],
-    "tired":["lethargy","torpor","listless"],"lazy":["torpor","listless"],
-    "boring":["mundane"],"ordinary":["mundane"],"normal":["mundane"],
-    "good":["impeccable","peerless","adept","sublime"],"great":["peerless","sublime"],
-    "amazing":["peerless","resplendent","sublime"],"beautiful":["resplendent","sublime"],
-    "clean":["pristine","austere"],"simple":["austere","pristine"],"plain":["austere"],
-    "clear":["lucidity","lucid"],"clarity":["lucidity"],
-    "skilled":["adept"],"expert":["adept"],"kind":["benevolent"],
-    "passionate":["ardent"],"cheap":["frugal","frugally"],"careful with money":["frugal"],
-    "fake":["unctuous"],"smarmy":["unctuous"],"complicated":["esoteric"],"niche":["esoteric"],
-    "short lived":["transient","fleeting"],"temporary":["transient","fleeting"],
-    "hidden":["latent"],"natural":["innate"],"constant":["incessant","unrelenting"],
-    "always":["invariably","unfailingly"],"without":["devoid"],
-    "unimportant":["immaterial"],"helps":["conducive"],"strange":["inexplicable"],
-    "respect":["reverence"],"effort":["exertion"],"enough":["suffice"],
-    "gather":["muster"],"explain":["expound"],"give":["bestow","impart"],
-    "absorb":["imbibe"],"find out":["ascertain"],"list":["enumerate"],
-    "bring out":["evoke"],"start":["embark"],"calm down":["subside"],
-    "want":["hanker","longing"],"exaggerate":["overstate"],
-    "leftover":["residue"],"nature":["temperament"],"period":["stint"],
-    "cure":["panacea","elixir"],"blessing":["boon"],"history":["lineage"],
-    "focused":["engrossed"],"amazed":["spellbound"],"upset":["distraught"],
-    "thoughtful":["pensive"],"exciting":["heady"],"power":["potency"]
-  };
-  Object.entries(A).forEach(([k,arr])=>arr.forEach(w=>add(k,w)));
-  return m;
-}
+let SWAPS={}, VOCAB={};
 function swapsFor(text){
-  const low=" "+text.toLowerCase().replace(/[^a-z ]/g," ").replace(/\s+/g," ")+" ";
+  const used=new Set((" "+text.toLowerCase().replace(/[^a-z ]/g," ").replace(/\s+/g," ")+" ").trim().split(" "));
   const hits=[];
   for(const [gen,arr] of Object.entries(SWAPS)){
-    if(low.includes(" "+gen+" ")) hits.push([gen,[...new Set(arr)]]);
+    if(!used.has(gen)) continue;
+    const fresh=arr.filter(w=>!used.has(w));
+    if(fresh.length) hits.push([gen,fresh]);
   }
-  return hits.slice(0,26);
+  return hits.sort((a,b)=>b[1].length-a[1].length).slice(0,20);
 }
 
 /* --- prompts --- */
@@ -188,9 +152,9 @@ function run(){
 
   const sw=swapsFor(t);
   stx.innerHTML = sw.length
-    ? `<p class="small muted">Generic words you used, and what he would reach for. Click to copy.</p>`
+    ? `<p class="small muted">Generic words in your draft, and the rarer word he would reach for. Every substitution below is one he actually uses. Hover for the meaning, click to copy.</p>`
       + sw.map(([g,arr])=>`<div class="metric" style="display:block"><div class="nm">${g}</div>
-        <div class="sug">${arr.map(w=>`<span data-w="${w}">${w}</span>`).join("")}</div></div>`).join("")
+        <div class="sug">${arr.map(w=>`<span data-w="${w}" title="${(VOCAB[w]||{}).def||""}">${w}</span>`).join("")}</div></div>`).join("")
     : `<p class="small muted">No obvious generic words to swap. Add more text, or check the Concreteness tier on the Lexicon page.</p>`;
   stx.querySelectorAll("[data-w]").forEach(el=>el.onclick=()=>{
     navigator.clipboard?.writeText(el.dataset.w); el.textContent=el.dataset.w+" ✓";
@@ -210,7 +174,11 @@ document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{
   b.classList.add("on");
   ["m","f","s"].forEach(k=>document.getElementById("tab-"+k).classList.toggle("hidden",k!==b.dataset.tab));
 });
-load("vocab").then(({vocab})=>{ SWAPS=buildSwaps(vocab); run(); });
+load("vocab","swaps").then(({vocab,swaps})=>{
+  SWAPS=swaps;
+  (vocab.words||[]).forEach(w=>{VOCAB[w.w]=w;});
+  run();
+});
 fetch("data/prompts.json").then(r=>r.ok?r.json():null).then(d=>{
   if(!d||!d.prompts)return;
   PROMPTS=d.prompts;
