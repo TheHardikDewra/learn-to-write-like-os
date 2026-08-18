@@ -3,18 +3,39 @@ const PAGES=[["index.html","Overview"],["evolution.html","Evolution"],["lexicon.
   ["phrase.html","Phrase"],["pattern.html","Pattern"],["register.html","Register"],["workbench.html","Workbench"],
   ["drills.html","Drills"],["regimen.html","Regimen"]];
 
+/* Phosphor (MIT) sprite, inlined once per page */
+function icon(name, cls){
+  return `<svg class="ic ${cls||""}" aria-hidden="true"><use href="#ph-${name}"/></svg>`;
+}
+async function injectSprite(){
+  try{
+    const r=await fetch("icons.svg");
+    const t=await r.text();
+    const d=document.createElement("div");
+    d.style.cssText="position:absolute;width:0;height:0;overflow:hidden";
+    d.innerHTML=t; document.body.prepend(d);
+  }catch(e){}
+}
+const PAGE_ICON={"index.html":"books","evolution.html":"chart-line","lexicon.html":"text-aa",
+  "phrase.html":"quotes","pattern.html":"blueprint","register.html":"arrows-left-right",
+  "workbench.html":"note-pencil","drills.html":"barbell","regimen.html":"calendar-check"};
+
 function initChrome(){
-  const cur=(location.pathname.split("/").pop()||"index.html");
+  injectSprite();
+  const cur=(location.pathname.split("/").pop()||"index.html").replace(/^$/,"index.html");
   const h=document.createElement("header"); h.className="nav";
   h.innerHTML=`<div class="nav-in">
     <a class="brand" href="index.html">Write like <span>Om&nbsp;Swami</span></a>
     <nav class="navlinks" id="navlinks">${PAGES.map(([f,n])=>
-      `<a href="${f}" class="${f===cur?'on':''}">${n}</a>`).join("")}</nav>
-    <button class="tbtn" id="themeBtn" title="Light / dark" aria-label="Toggle theme">◐</button>
-    <button class="tbtn menubtn" id="menuBtn" aria-label="Menu" aria-expanded="false"
-      aria-controls="navlinks"><span></span><span></span><span></span></button>
+      `<a href="${f}" class="${f===cur?'on':''}">${icon(PAGE_ICON[f]||"circle")}<span>${n}</span></a>`).join("")}</nav>
+    <div class="navbtns">
+      <button class="tbtn" id="themeBtn" title="Light or dark" aria-label="Toggle theme">${icon("sun","i-sun")}${icon("moon","i-moon")}</button>
+      <button class="tbtn menubtn" id="menuBtn" aria-label="Menu" aria-expanded="false"
+        aria-controls="navlinks">${icon("list","i-open")}${icon("x","i-close")}</button>
+    </div>
   </div>`;
   document.body.prepend(h);
+  setTimeout(()=>{try{decorate()}catch(e){}},0);
 
   const saved=localStorage.getItem("os_theme");
   if(saved) document.documentElement.setAttribute("data-theme",saved);
@@ -25,14 +46,54 @@ function initChrome(){
     else{document.documentElement.removeAttribute("data-theme");localStorage.removeItem("os_theme");}
   };
   const btn=document.getElementById("menuBtn"), links=document.getElementById("navlinks");
-  const close=()=>{h.classList.remove("open");btn.setAttribute("aria-expanded","false");};
+  const close=()=>{h.classList.remove("open");btn.setAttribute("aria-expanded","false");
+    document.body.style.overflow="";};
   btn.onclick=e=>{e.stopPropagation();
     const open=!h.classList.contains("open");
-    h.classList.toggle("open",open); btn.setAttribute("aria-expanded",String(open));};
-  links.addEventListener("click",e=>{if(e.target.tagName==="A")close();});
+    h.classList.toggle("open",open); btn.setAttribute("aria-expanded",String(open));
+    document.body.style.overflow=open&&innerWidth<=900?"hidden":"";};
+  links.addEventListener("click",e=>{if(e.target.closest("a"))close();});
   document.addEventListener("click",e=>{if(!h.contains(e.target))close();});
   addEventListener("keydown",e=>{if(e.key==="Escape")close();});
   addEventListener("resize",()=>{if(innerWidth>900)close();});
+}
+/* decorate eyebrows / buttons with Phosphor glyphs, keyed by their own text */
+const EYEBROW_ICON=[
+  [/start here|how to use/i,"graduation-cap"],[/corpus|shelf/i,"books"],
+  [/measured|numbers|live finding|tested claim/i,"chart-line"],
+  [/layer one|the word/i,"text-aa"],[/layer two|the phrase/i,"quotes"],
+  [/layer three|the pattern|deep set/i,"blueprint"],
+  [/trainer|flashcard/i,"cards"],[/reference/i,"stack"],
+  [/the arc|unified|divergent|evolution/i,"chart-line"],
+  [/correction/i,"warning-circle"],[/negative space/i,"scissors"],
+  [/generator|workbench/i,"note-pencil"],[/the gym|drill/i,"barbell"],
+  [/programme|every day|twelve weeks/i,"calendar-check"],
+  [/books against blog|register/i,"arrows-left-right"],
+  [/pronoun|shape of one post|for your actual job/i,"seal-check"],
+  [/adoption|do this/i,"target"],[/how he actually used/i,"quotes"],
+];
+function decorate(){
+  document.querySelectorAll(".eyebrow").forEach(el=>{
+    if(el.querySelector(".ic")) return;
+    const t=el.textContent||"";
+    const hit=EYEBROW_ICON.find(([re])=>re.test(t));
+    el.insertAdjacentHTML("afterbegin", icon(hit?hit[1]:"sparkle")+" ");
+  });
+  document.querySelectorAll("input[type=search]").forEach(inp=>{
+    if(inp.dataset.dec) return; inp.dataset.dec=1;
+    const w=document.createElement("span"); w.className="searchwrap";
+    inp.parentNode.insertBefore(w,inp); w.appendChild(inp);
+    w.insertAdjacentHTML("afterbegin", icon("magnifying-glass","sic"));
+  });
+  document.querySelectorAll(".note b").forEach(el=>{
+    if(!el.querySelector(".ic")) el.insertAdjacentHTML("afterbegin", icon("lightning")+" ");
+  });
+  document.querySelectorAll(".drill .test b, .tpl .demo b").forEach(el=>{
+    if(!el.querySelector(".ic")) el.insertAdjacentHTML("afterbegin", icon("target")+" ");
+  });
+  document.querySelectorAll(".ship").forEach(el=>{
+    if(!el.querySelector(".ic")) el.insertAdjacentHTML("afterbegin", icon("seal-check")+" ");
+  });
 }
 const DATA={};
 async function load(...names){
@@ -40,6 +101,8 @@ async function load(...names){
     if(DATA[n])return;
     const r=await fetch(`data/${n}.json`); DATA[n]=await r.json();
   }));
+  queueMicrotask(()=>{try{decorate()}catch(e){}});
+  setTimeout(()=>{try{decorate()}catch(e){}},60);
   return DATA;
 }
 

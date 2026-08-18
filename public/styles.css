@@ -70,38 +70,56 @@ code,kbd{font-family:var(--mono);font-size:.88em}
 .small{font-size:.85rem}
 .tnum{font-variant-numeric:tabular-nums}
 
+/* ---------- icons (Phosphor, MIT) ---------- */
+.ic{width:1em;height:1em;flex:none;display:inline-block;vertical-align:-0.13em;
+  fill:currentColor;pointer-events:none}
+.ic-lg{width:1.35em;height:1.35em}
+
 /* ---------- nav ---------- */
 header.nav{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--rule)}
 .nav-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;
-  display:flex;align-items:center;gap:18px;height:58px}
+  display:flex;align-items:center;gap:16px;height:60px}
 .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;
-  border:0;color:var(--ink);white-space:nowrap;flex:none}
+  border:0;color:var(--ink);white-space:nowrap;flex:none;margin-right:auto}
 .brand span{color:var(--accent)}
-.navlinks{display:flex;gap:2px;flex:1;min-width:0;flex-wrap:wrap}
-.navlinks a{border:0;color:var(--muted);font-size:.82rem;padding:7px 11px;
-  border-radius:6px;white-space:nowrap;font-weight:500}
+.navlinks{display:flex;gap:2px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{border:0;color:var(--muted);font-size:.82rem;padding:7px 10px;
+  border-radius:7px;white-space:nowrap;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.navlinks a .ic{opacity:.65}
 .navlinks a:hover{background:var(--surface-2);color:var(--ink)}
+.navlinks a:hover .ic{opacity:1}
 .navlinks a.on{background:var(--accent);color:var(--accent-ink)}
+.navlinks a.on .ic{opacity:1}
+.navbtns{display:flex;gap:8px;flex:none;margin-left:4px}
 .tbtn{border:1px solid var(--rule-2);background:var(--surface);color:var(--muted);
-  width:38px;height:38px;min-width:38px;border-radius:8px;cursor:pointer;font-size:15px;flex:none;
-  display:flex;align-items:center;justify-content:center;padding:0}
+  width:40px;height:40px;min-width:40px;border-radius:9px;cursor:pointer;font-size:17px;flex:none;
+  display:inline-flex;align-items:center;justify-content:center;padding:0}
 .tbtn:hover{color:var(--ink);border-color:var(--accent)}
-.menubtn{display:none;flex-direction:column;gap:4px}
-.menubtn span{display:block;width:17px;height:2px;background:currentColor;border-radius:2px;
-  transition:transform .18s ease,opacity .18s ease}
-header.nav.open .menubtn span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-header.nav.open .menubtn span:nth-child(2){opacity:0}
-header.nav.open .menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.tbtn:active{transform:scale(.94)}
+.menubtn{display:none}
+/* theme glyph: show sun on dark, moon on light */
+#themeBtn .i-moon{display:none}
+:root[data-theme="light"] #themeBtn .i-sun{display:none}
+:root[data-theme="light"] #themeBtn .i-moon{display:inline-block}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) #themeBtn .i-sun{display:none}
+  :root:not([data-theme="dark"]) #themeBtn .i-moon{display:inline-block}
+}
+#menuBtn .i-close{display:none}
+header.nav.open #menuBtn .i-open{display:none}
+header.nav.open #menuBtn .i-close{display:inline-block}
 
-/* tablet + mobile: collapse to a panel */
+/* tablet + mobile: collapse to a panel, buttons hard right */
 @media(max-width:900px){
-  .nav-in{gap:12px;padding:0 18px}
-  .menubtn{display:flex}
+  .nav-in{gap:10px;padding:0 16px;height:58px}
+  .menubtn{display:inline-flex}
   .navlinks{position:absolute;left:0;right:0;top:58px;flex-direction:column;gap:0;
-    background:var(--bg);border-bottom:1px solid var(--rule);
-    padding:6px 18px 14px;display:none}
+    align-items:stretch;background:var(--bg);border-bottom:1px solid var(--rule);
+    padding:8px 16px 16px;display:none;max-height:calc(100dvh - 58px);overflow-y:auto;
+    box-shadow:0 12px 24px -18px rgba(0,0,0,.6)}
   header.nav.open .navlinks{display:flex}
-  .navlinks a{padding:13px 12px;font-size:.95rem;border-radius:8px;width:100%}
+  .navlinks a{padding:14px 12px;font-size:1rem;border-radius:9px;width:100%;gap:12px}
+  .navlinks a .ic{width:1.2em;height:1.2em;opacity:.8}
   .navlinks a+a{border-top:1px solid var(--rule)}
   .navlinks a.on{border-top-color:transparent}
 }
@@ -336,4 +354,44 @@ footer{padding:44px 0 60px;font-size:.84rem;color:var(--muted)}
 }
 @media(max-width:700px){
   .g2,.g3{grid-template-columns:1fr}
+}
+
+/* --- icon placement --- */
+.eyebrow{display:flex;align-items:center;gap:7px}
+.eyebrow .ic{width:.95em;height:.95em}
+.searchwrap{position:relative;display:flex;align-items:center;flex:1;min-width:0}
+.searchwrap .sic{position:absolute;left:11px;width:15px;height:15px;color:var(--faint);z-index:1}
+.searchwrap input[type=search]{padding-left:34px;width:100%}
+.note b .ic,.drill .test b .ic,.tpl .demo b .ic,.ship .ic{width:1.05em;height:1.05em;margin-right:2px}
+.card .k .ic{width:.95em;height:.95em;margin-right:4px}
+
+/* --- mobile polish --- */
+@media(max-width:700px){
+  body{font-size:15.5px}
+  .wrap{padding:0 18px}
+  section{padding:44px 0}
+  .h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .hero h1{font-size:clamp(2rem,8.5vw,2.8rem)}
+  .lede{font-size:1rem}
+  .card{padding:18px}
+  .btn,.chip{min-height:42px;display:inline-flex;align-items:center}
+  .chk{width:22px;height:22px}
+  .controls{gap:8px}
+  .controls select{flex:1;min-width:140px}
+  .fc-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .fc-bar .btn{justify-content:center}
+  .fc-bar #reset{grid-column:1/-1;margin-left:0!important;justify-content:center}
+  .scroller{max-height:70vh}
+  .wrow{padding:14px}
+  .tpl{padding-left:14px}
+  .drill{padding:16px}
+  .metric{padding:10px 0}
+  #editor{min-height:280px}
+  .score{font-size:2.8rem}
+  .stat .n{font-size:1.6rem}
+  .arcbar{height:110px}
+  .arcx span{font-size:.5rem}
+}
+@media(max-width:700px){
+  a,button,.chip,.navlinks a{-webkit-tap-highlight-color:transparent}
 }
