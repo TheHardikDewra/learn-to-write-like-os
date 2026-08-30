@@ -9,25 +9,23 @@
 <section style="padding-top:56px"><div class="wrap">
   <div class="eyebrow">Layer two · the phrase</div>
   <h2 class="h2">Eighteen shapes he reaches for</h2>
-  <p class="lede">Each of these is a named, reusable sentence template pulled from his prose. The examples are written in his shape but from your world, so you can see the mechanism rather than admire his content. Filter by layer, then drill.</p>
+  <p class="lede">Each of these is a named, reusable sentence template pulled from his prose. Under every template sit the real sentences it was extracted from: found in the blog corpus by a matcher written for that move, checked word for word against the live post, and linked to it. <b>The arrow marks the beat change.</b> The tinted line at the end of a card is the same shape rewritten from your world, so you can copy the mechanism without copying his content.</p>
   <div class="controls">
-    <input type="search" id="q" placeholder="search templates…">
+    <input type="search" id="q" placeholder="search templates and pulls…">
     <button class="chip on" data-l="all">all</button>
     <button class="chip" data-l="phrase">sentence-level</button>
     <button class="chip" data-l="pattern">structural</button>
     <button class="chip" data-l="lexicon">word-level</button>
+    <span class="small muted" id="ecount" style="margin-left:auto"></span>
   </div>
   <div id="list"></div>
 </div></section>
+
 <section><div class="wrap">
   <div class="eyebrow">How he actually used it</div>
-  <h2 class="h2" style="font-size:1.6rem">Five real examples per move</h2>
-  <p class="lede">Templates are useless without evidence. Every line below was pulled out of the corpus by a matcher written for that specific move, then checked. All of them come from his public blog rather than the books, and each links to the post it came from so you can read the sentence in its place. <b>The arrow marks the beat change.</b></p>
-  <div class="controls">
-    <input type="search" id="eq" placeholder="search the examples…">
-    <span class="small muted" id="ecount" style="margin-left:auto"></span>
-  </div>
-  <div id="exlist"></div>
+  <h2 class="h2" style="font-size:1.5rem">Four more measured moves</h2>
+  <p class="lede small">These sit outside the eighteen templates but he leans on them constantly. Same rules as above: every line verified verbatim against the post it links to.</p>
+  <div id="xlist"></div>
 </div></section>
 
 <section><div class="wrap">
@@ -41,7 +39,7 @@
 <script src="app.js"></script>
 <script>
 initChrome();
-let T=[],flt="all";
+let T=[],EX={},XT={},flt="all";
 const SCAF={
  "The Verdict Beat":["[25-35 words of action. Something happening, concretely, with a named object in it.]","[3-6 words. A judgement. Not a description.]"],
  "The Disposable Gloss":["[Subject] [verb] [TERM], [1-6 word plain gloss], [rest of the sentence continues normally].","Test: delete the gloss. Does it still parse?"],
@@ -62,18 +60,64 @@ const SCAF={
  "Concession Pivot":["Granted, [the counter-case against you]. But [your turn]."],
  "Confession Pivot":["Truth be told, [an admission that lowers you]."]
 };
+function fmtQuote(t){
+  const parts=t.split(" ⟶ ");
+  return parts.length>1
+    ? `${parts[0]} <b style="color:var(--accent)">⟶</b> <b>${parts[1]}</b>`
+    : t;
+}
+function pulls(g,open,q){
+  if(!g||!g.ex.length) return "";
+  const hits=q?g.ex.filter(e=>(e.t+" "+e.src).toLowerCase().includes(q)):g.ex;
+  const show=(open||q)?(q?hits:g.ex):g.ex.slice(0,2);
+  const rest=g.ex.length-show.length;
+  return `<div class="exhead">How he used it · ${g.ex.length} ${g.ex.length===1?"pull":"pulls"}</div>
+    ${g.dsc?`<div class="exnote">${g.dsc}</div>`:""}
+    ${show.map(e=>`<div class="pull">${fmtQuote(e.t)}
+      <div class="ct"><a href="${e.url}" target="_blank" rel="noopener">${e.src}</a>, ${e.y}</div></div>`).join("")}
+    ${rest>0?`<button class="morebtn" data-more>show ${rest} more</button>`:""}`;
+}
+const OPEN=new Set();
 function draw(){
-  const q=document.getElementById("q").value.toLowerCase();
-  document.getElementById("list").innerHTML=T.filter(t=>
-    (flt==="all"||t.layer===flt) && (!q||(t.nm+t.dsc+t.sh).toLowerCase().includes(q)))
-    .map(t=>`<div class="tpl"><div class="nm">${t.nm}</div><div class="sh">${t.sh}</div>
-      <div class="dsc">${t.dsc}</div><div class="demo">${t.demo}</div></div>`).join("")
-    || '<p class="small muted">Nothing matches.</p>';
+  const q=(document.getElementById("q").value||"").toLowerCase();
+  let npulls=0;
+  document.getElementById("list").innerHTML=T.filter(t=>{
+    if(flt!=="all"&&t.layer!==flt) return false;
+    if(!q) return true;
+    const g=EX[t.nm];
+    const inEx=g&&g.ex.some(e=>(e.t+" "+e.src).toLowerCase().includes(q));
+    return (t.nm+t.dsc+t.sh).toLowerCase().includes(q)||inEx;
+  }).map(t=>{
+    const g=EX[t.nm];
+    if(g) npulls+=g.ex.length;
+    return `<div class="tpl" data-nm="${t.nm}"><div class="nm">${t.nm}</div><div class="sh">${t.sh}</div>
+      <div class="dsc">${t.dsc}</div>
+      ${pulls(g,OPEN.has(t.nm),q)}
+      <div class="exhead" style="color:var(--muted)">The same shape from your world</div>
+      <div class="demo">${t.demo}</div></div>`;
+  }).join("") || '<p class="small muted">Nothing matches.</p>';
+  drawExtras(q);
+  const xn=Object.values(XT).reduce((a,v)=>a+v.ex.length,0);
+  document.getElementById("ecount").textContent=`${npulls+xn} real pulls`;
+}
+function drawExtras(q){
+  document.getElementById("xlist").innerHTML=Object.values(XT).map(v=>{
+    const hits=q?v.ex.filter(e=>(e.t+" "+v.nm+" "+e.src).toLowerCase().includes(q)):v.ex;
+    if(q&&!hits.length&&!v.nm.toLowerCase().includes(q)) return "";
+    return `<div class="tpl"><div class="nm">${v.nm}</div>
+      <div class="dsc">${v.dsc}</div>
+      ${(q?hits:v.ex).map(e=>`<div class="pull">${fmtQuote(e.t)}
+        <div class="ct"><a href="${e.url}" target="_blank" rel="noopener">${e.src}</a>, ${e.y}</div></div>`).join("")}</div>`;
+  }).join("");
 }
 document.getElementById("q").oninput=draw;
 document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("[data-l]").forEach(x=>x.classList.remove("on"));
   b.classList.add("on"); flt=b.dataset.l; draw();
+});
+document.getElementById("list").addEventListener("click",e=>{
+  const b=e.target.closest("[data-more]"); if(!b) return;
+  OPEN.add(b.closest(".tpl").dataset.nm); draw();
 });
 document.getElementById("gen").onclick=()=>{
   const nm=document.getElementById("gsel").value, s=SCAF[nm];
@@ -84,37 +128,9 @@ document.getElementById("gen").onclick=()=>{
        <p class="small muted" style="margin-top:12px">Write twenty of these. Then take the best three into the <a href="workbench.html">Workbench</a>.</p>`
     : `<p class="small muted">No scaffold for that one yet - use the shape line above it.</p>`;
 };
-function drawEx(){
-  const q=(document.getElementById("eq").value||"").toLowerCase();
-  const keys=Object.keys(EX);
-  let shown=0;
-  document.getElementById("exlist").innerHTML=keys.map(k=>{
-    const v=EX[k];
-    const hits=v.ex.filter(e=>!q||(e.t+" "+v.nm).toLowerCase().includes(q));
-    if(!hits.length) return "";
-    shown+=hits.length;
-    return `<div class="card" style="margin-bottom:14px">
-      <div class="k">${v.nm}</div>
-      <p class="small muted" style="margin-bottom:12px">${v.dsc}</p>
-      ${hits.map(e=>{
-        const parts=e.t.split(" ⟶ ");
-        const body=parts.length>1
-          ? `${parts[0]} <b style="color:var(--accent)">⟶</b> <b>${parts[1]}</b>`
-          : e.t;
-        const cite=e.url
-          ? `<a href="${e.url}" target="_blank" rel="noopener">${e.src}</a>, ${e.y}`
-          : `${e.src}, ${e.y}`;
-        return `<div class="demo" style="margin-bottom:8px">${body}
-          <div class="small muted" style="font-family:var(--sans);font-style:normal;margin-top:6px">${cite}</div></div>`;
-      }).join("")}</div>`;
-  }).join("");
-  document.getElementById("ecount").textContent=`${shown} examples`;
-}
-let EX={};
-document.getElementById("eq").oninput=drawEx;
 load("content","examples").then(({content,examples})=>{
-  EX=examples; drawEx();
-  T=content.templates; draw();
+  T=content.templates; EX=examples.templates; XT=examples.extras;
+  draw();
   document.getElementById("gsel").innerHTML=T.map(t=>`<option>${t.nm}</option>`).join("");
 });
 </script></body></html>

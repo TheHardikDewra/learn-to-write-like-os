@@ -11,7 +11,7 @@
    "nm": "The Disposable Gloss",
    "sh": "term, plain gloss, \u2026sentence continues",
    "layer": "phrase",
-   "dsc": "Introduce an unfamiliar word by dropping a 1-6 word plain-English gloss between commas. No parentheses, no 'which means'. The gloss is grammatically disposable \u2014 delete it and the sentence still stands.",
+   "dsc": "Introduce an unfamiliar word by dropping a 1-6 word plain-English gloss between commas. No parentheses, no 'which means'. The gloss is grammatically disposable - delete it and the sentence still stands.",
    "demo": "She wanted sannidhya, nearness, more than she wanted answers."
   },
   {
@@ -25,7 +25,7 @@
    "nm": "Cost, Claim, Limit",
    "sh": "[number you paid] \u2192 [the claim] \u2192 [what you are not saying]",
    "layer": "pattern",
-   "dsc": "Before a claim strong enough to sound like a lecture, state what it cost you, with a number and zero adjectives. Make the claim. Then bound it. The order is fixed \u2014 the limit comes after, never before.",
+   "dsc": "Before a claim strong enough to sound like a lecture, state what it cost you, with a number and zero adjectives. Make the claim. Then bound it. The order is fixed - the limit comes after, never before.",
    "demo": "I spent eleven months and \u20b94 lakh on ads that did not convert. Positioning beats creative. I am not saying creative does not matter."
   },
   {
@@ -102,7 +102,7 @@
    "nm": "The Two-Beat Close",
    "sh": "[command 2-5w]. [command 2-5w].",
    "layer": "phrase",
-   "dsc": "His workhorse ending, roughly a third of all chapter closes. Two or three short imperatives, rhythmically balanced. It only works if the body of the piece already used 'you' heavily \u2014 then it reads as permission rather than order.",
+   "dsc": "His workhorse ending, roughly a third of all chapter closes. Two or three short imperatives, rhythmically balanced. It only works if the body of the piece already used 'you' heavily - then it reads as permission rather than order.",
    "demo": "Ship it ugly. Fix it live."
   },
   {
@@ -137,19 +137,19 @@
   {
    "k": "DICTION",
    "nm": "He did not shorten his words. He swapped which long words.",
-   "dsc": "Mean word length did not move at all across a decade. Words of nine characters or more held steady. What collapsed was Latinate abstraction \u2014 the -tion, -ment, -ness, -ity layer fell about 35% in his instructional prose. What replaced it: proper nouns, named objects, Sanskrit terms with inline glosses, clock times.",
+   "dsc": "Mean word length did not move at all across a decade. Words of nine characters or more held steady. What collapsed was Latinate abstraction - the -tion, -ment, -ness, -ity layer fell about 35% in his instructional prose. What replaced it: proper nouns, named objects, Sanskrit terms with inline glosses, clock times.",
    "do": "Do not simplify. Substitute. Every abstract noun gets replaced by the named thing it was standing in for."
   },
   {
    "k": "ADVERBS",
    "nm": "He breaks Stephen King's rule, and keeps the half that matters",
-   "dsc": "King says the road to hell is paved with adverbs. Tested against 950,000 words, Om Swami splits the rule in two. He does NOT purge -ly adverbs \u2014 he runs 10 to 13 per thousand words, which is ordinary for English prose. What he strips is one specific kind. Adverbs of MANNER, the ones that describe how a thing was done, run at just 1.3 per thousand words in his 2024 books, down 31% from his early ones. Roughly one every 750 words. The adverbs he keeps almost all MEASURE instead: completely, exactly, nearly, barely, merely, simply. Simply is his single most-used adverb in every era of both corpora. On King's hardest rule \u2014 never modify a dialogue tag \u2014 he is near-absolute: 5 instances in a whole 2024 book, and across the late corpus he writes plain 'said' 165 times against 36 uses of every other tag combined.",
+   "dsc": "King says the road to hell is paved with adverbs. Tested against 950,000 words, Om Swami splits the rule in two. He does NOT purge -ly adverbs - he runs 10 to 13 per thousand words, which is ordinary for English prose. What he strips is one specific kind. Adverbs of MANNER, the ones that describe how a thing was done, run at just 1.3 per thousand words in his 2024 books, down 31% from his early ones. Roughly one every 750 words. The adverbs he keeps almost all MEASURE instead: completely, exactly, nearly, barely, merely, simply. Simply is his single most-used adverb in every era of both corpora. On King's hardest rule - never modify a dialogue tag - he is near-absolute: 5 instances in a whole 2024 book, and across the late corpus he writes plain 'said' 165 times against 36 uses of every other tag combined.",
    "do": "Do not hunt -ly words. Hunt manner adverbs specifically. If the adverb tells the reader HOW, cut it and fix the verb. If it tells them HOW MUCH or HOW EXACTLY, keep it. And never put one next to said."
   },
   {
    "k": "COMPRESSION",
    "nm": "Dramatise only where somebody changes.",
-   "dsc": "His biggest compressor. Quoted dialogue is reserved for emotional turns and decisions. Everything logistical \u2014 a refusal, an agreement, a plan \u2014 gets one line of reported speech. A lesser writer stages both scenes.",
+   "dsc": "His biggest compressor. Quoted dialogue is reserved for emotional turns and decisions. Everything logistical - a refusal, an agreement, a plan - gets one line of reported speech. A lesser writer stages both scenes.",
    "do": "Go through your draft. Any exchange conveying procedure becomes one reported sentence. Only exchanges where somebody changes their mind keep their quotation marks."
   },
   {
@@ -161,7 +161,7 @@
   {
    "k": "UNDERSTATEMENT",
    "nm": "Language magnitude must not track event magnitude.",
-   "dsc": "Twenty-two hours of daily meditation for months gets summarised in two words. The most transcendent event in a 52,000-word book is closed with a timestamp. He states in the prologue that he understates everything about himself \u2014 and then never compensates for it later.",
+   "dsc": "Twenty-two hours of daily meditation for months gets summarised in two words. The most transcendent event in a 52,000-word book is closed with a timestamp. He states in the prologue that he understates everything about himself - and then never compensates for it later.",
    "do": "Find your biggest moment. Cut its adjectives to zero. End it on a measurement."
   },
   {
@@ -191,7 +191,7 @@
   {
    "k": "REFUSAL",
    "nm": "Withholding reads as knowing more.",
-   "dsc": "He raises questions and declines to answer them \u2014 by deferring to a later chapter, naming competing versions without picking one, asserting that further reasons exist, or simply declaring something unfathomable. The prose reads as knowing more than it says. That is where 'profound' actually comes from.",
+   "dsc": "He raises questions and declines to answer them - by deferring to a later chapter, naming competing versions without picking one, asserting that further reasons exist, or simply declaring something unfathomable. The prose reads as knowing more than it says. That is where 'profound' actually comes from.",
    "do": "Raise a real question. Refuse it once, cleanly. If it reads as evasion rather than authority, the surrounding prose did not have enough hard specifics in it."
   },
   {
@@ -203,27 +203,27 @@
   {
    "k": "SPECIFICITY",
    "nm": "Be most specific exactly where you are least believable.",
-   "dsc": "His starvation chapter counts hours. His vision chapter inventories the colour of a garment and then notes that the colour contradicts what he had read. Contradicting your own expected iconography is a credibility instrument \u2014 an invented account matches the picture book; a real one does not.",
+   "dsc": "His starvation chapter counts hours. His vision chapter inventories the colour of a garment and then notes that the colour contradicts what he had read. Contradicting your own expected iconography is a credibility instrument - an invented account matches the picture book; a real one does not.",
    "do": "Find your least believable true claim. Add a detail that contradicts what a reader would expect, and say that it does."
   }
  ],
  "neverdo": [
-  "Semicolons yoking two independent clauses \u2014 he cut 83% of them in ten years",
+  "Semicolons yoking two independent clauses - he cut 83% of them in ten years",
   "A participle before the subject: 'Spotting the cab, I waved' \u2192 'I waved'",
   "The gloss paragraph after a scene, explaining what the scene meant",
   "Latinate register-lifters: ineluctably, cogent, salutary, obversely",
-  "'Moreover' and 'furthermore' \u2014 down 93% by 2024",
+  "'Moreover' and 'furthermore' - down 93% by 2024",
   "Hedge-then-retract: 'I'm not saying X, but at the same time\u2026'",
-  "'Studies show' or 'research suggests' \u2014 zero across 216,000 words of teaching prose",
-  "'Obviously' \u2014 zero across four books",
-  "Adverbs modifying 'said' \u2014 8 in a whole 2024 book",
-  "Exclamation marks in your own voice \u2014 5 in 52,000 words, all in dialogue",
+  "'Studies show' or 'research suggests' - zero across 216,000 words of teaching prose",
+  "'Obviously' - zero across four books",
+  "Adverbs modifying 'said' - 8 in a whole 2024 book",
+  "Exclamation marks in your own voice - 5 in 52,000 words, all in dialogue",
   "Extending a metaphor past its second sentence, or calling it back later",
   "Ending on someone else's quotation",
   "Weather or landscape as a chapter opening",
-  "'Little did I know', 'words cannot describe', 'a shiver ran' \u2014 all zero",
+  "'Little did I know', 'words cannot describe', 'a shiver ran' - all zero",
   "Summarising at the close. No 'in conclusion', no key-takeaways box",
   "Jokes at the reader's expense. Sarcasm anywhere",
-  "Closing on fear or consequence \u2014 every close is permission or promise"
+  "Closing on fear or consequence - every close is permission or promise"
  ]
 }

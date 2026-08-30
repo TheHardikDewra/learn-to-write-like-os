@@ -191,20 +191,22 @@ function analyse(text){
 }
 
 /* target bands: calibrated to THE LIVE VOICE - his last 12 blog posts,
-   Sep 2025 to Jul 2026 - which is measurably tighter than his 2024 books. */
+   Oct 2025 to Aug 2026 - which is measurably tighter than his 2024 books.
+   Values come from the same analyse() logic below, run over the re-scraped
+   corpus, so the bands and the grader always agree. */
 const BANDS={
-  sent_mean:[12,16.5,"words per sentence","Live 14.2 · his 2024 books 14.2 · his 2024 blog was 16.6. He tightened."],
-  sent_sd:[7,11.5,"sentence-length spread","Live 8.8. The variance is the style, not the average."],
-  pct_le8:[24,42,"% sentences ≤ 8 words","Live 30.2%. Nearly one in three. This is where the verdict sits."],
-  pct_ge30:[3,9.5,"% sentences ≥ 30 words","Live 6.3%. You still need long ones to make the short ones land."],
-  pct_1syl:[66,100,"% one-syllable words","Live 71.7%. Seven in ten, and rising."],
-  pct_ge4syl:[0,4,"% 4+ syllable words","Live 2.4%. Save the big words for dry exposition."],
-  pct_latinate:[0,3.8,"% Latinate abstraction","Live 2.6%. The -tion/-ment/-ness layer he stripped out."],
-  pct_ly_adverb:[0,1.9,"% -ly adverbs","Live 1.4%. He kept measuring adverbs and cut manner adverbs."],
-  comma_per_sent:[0.7,1.35,"commas per sentence","Live 1.07. One or two clauses, not four."],
-  burstiness:[7,12.5,"gear-change (avg jump)","Live 9.0. Long, then short."],
+  sent_mean:[12,16.5,"words per sentence","Live 14.3 · his 2024 books 14.2 · his 2024 blog was 16.6. He tightened."],
+  sent_sd:[7,11.5,"sentence-length spread","Live 9.2. The variance is the style, not the average."],
+  pct_le8:[24,42,"% sentences ≤ 8 words","Live 29.6%. Nearly one in three. This is where the verdict sits."],
+  pct_ge30:[3,9.5,"% sentences ≥ 30 words","Live 7.0%. You still need long ones to make the short ones land."],
+  pct_1syl:[66,100,"% one-syllable words","Live 72.3%. Seven in ten, and rising."],
+  pct_ge4syl:[0,4,"% 4+ syllable words","Live 2.3%. Save the big words for dry exposition."],
+  pct_latinate:[0,3.8,"% Latinate abstraction","Live 2.4%. The -tion/-ment/-ness layer he stripped out."],
+  pct_ly_adverb:[0,1.9,"% -ly adverbs","Live 1.3%. He kept measuring adverbs and cut manner adverbs."],
+  comma_per_sent:[0.7,1.35,"commas per sentence","Live 1.13. One or two clauses, not four."],
+  burstiness:[7,12.5,"gear-change (avg jump)","Live 9.3. Long, then short."],
   beats_per1k_s:[0,60,"verdict beats / 1k sentences","Rare by design: only 1.6% of his sentences. A deliberate device, not a rhythm to hit."],
-  conj_open_pct:[7,18,"% sentences opening And/But/So","Live 12.9%. One in eight. This is why he reads like speech."]
+  conj_open_pct:[7,18,"% sentences opening And/But/So","Live 13.0%. One in eight. This is why he reads like speech."]
 };
 function grade(k,v){
   const [lo,hi]=BANDS[k]; if(v>=lo&&v<=hi) return "ok";

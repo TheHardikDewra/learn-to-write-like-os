@@ -232,7 +232,17 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
 .tpl .sh{font-family:var(--mono);font-size:.78rem;color:var(--accent);margin-bottom:6px}
 .tpl .dsc{font-size:.92rem;color:var(--ink-2)}
 .tpl .demo{font-family:var(--serif);font-size:1rem;background:var(--surface-2);
-  border-radius:7px;padding:11px 14px;margin-top:9px;color:var(--ink-2)}
+  border-radius:7px;padding:11px 14px;margin-top:7px;color:var(--ink-2)}
+.tpl .exhead{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-top:14px}
+.tpl .exnote{font-size:.8rem;color:var(--muted);margin-top:5px}
+.tpl .pull{font-family:var(--serif);font-size:.98rem;border-left:2px solid var(--rule-2);
+  padding:1px 0 1px 13px;margin-top:10px;color:var(--ink-2)}
+.tpl .pull .ct{font-family:var(--sans);font-size:.74rem;color:var(--muted);margin-top:4px}
+.tpl .pull .ct a{color:var(--muted)}
+.morebtn{font-family:var(--mono);font-size:.7rem;color:var(--muted);background:none;
+  border:1px solid var(--rule);border-radius:5px;padding:4px 10px;margin-top:10px;cursor:pointer}
+.morebtn:hover{color:var(--accent);border-color:var(--rule-2)}
 
 /* ---------- schedule ---------- */
 .phase{border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:18px;background:var(--surface)}
